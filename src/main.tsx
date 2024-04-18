@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootLayout } from "./layouts/RootLayout.tsx";
 import { ErrorRoute } from "./routes/ErrorRoute.tsx";
+import { HomeRoute } from "./routes/HomeRoute.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -13,11 +14,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <div>index</div>,
+        element: <HomeRoute />,
       },
       {
         path: "/ost",
-        element: <div>ost</div>,
+        element: <main>ost</main>,
       },
     ],
   },
