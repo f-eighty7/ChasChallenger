@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootLayout } from "./layouts/RootLayout.tsx";
 import { ErrorRoute } from "./routes/ErrorRoute.tsx";
 import { HomeRoute } from "./routes/HomeRoute.tsx";
+import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -17,8 +18,8 @@ const router = createBrowserRouter([
         element: <HomeRoute />,
       },
       {
-        path: "/ost",
-        element: <main>ost</main>,
+        path: "/adventure",
+        element: <AdventureRoute />,
       },
     ],
   },
