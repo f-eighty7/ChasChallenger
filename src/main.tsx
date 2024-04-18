@@ -6,6 +6,8 @@ import { ErrorRoute } from "./routes/ErrorRoute.tsx";
 import { HomeRoute } from "./routes/HomeRoute.tsx";
 import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import "./index.css";
+import { Provider } from 'react-redux'
+import store from './Store/Store.js'
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,9 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
+    <Provider store = {store}>
     <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
 
