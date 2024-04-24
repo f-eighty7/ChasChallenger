@@ -23,6 +23,13 @@ a {
   cursor: pointer;
 }
 
+button {
+  padding: 0.5rem;
+  border: 2px solid white;
+  border-radius: 0.8rem;
+  background-color: #303030;
+}
+
 main {
   display: flex;
   flex-direction: column;
