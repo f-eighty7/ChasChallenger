@@ -1,0 +1,46 @@
+.charactersList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  list-style: none;
+  gap: 1rem;
+}
+
+.character {
+  padding: 0.5rem;
+  border: 2px solid white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.character:hover {
+  background-color: #404040;
+}
+
+.characterIcon {
+  width: 40%;
+}
+
+@media (min-width: 375px) {
+  .characterIcon {
+    width: 6rem;
+  }
+}
+
+@media (min-width: 425px) {
+}
+
+@media (min-width: 768px) {
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
+}
+
+@media (min-width: 1920px) {
+}
+
+@media (min-width: 2560px) {
+}
