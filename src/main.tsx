@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
+import store from "./Store/Store.js";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootLayout } from "./layouts/RootLayout.tsx";
 import { ErrorRoute } from "./routes/ErrorRoute.tsx";
 import { HomeRoute } from "./routes/HomeRoute.tsx";
+import { CharactersRoute } from "./routes/CharactersRoute.tsx";
 import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import "./index.css";
-import { Provider } from 'react-redux'
-import store from './Store/Store.js'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
         element: <HomeRoute />,
       },
       {
+        path: "/characters",
+        element: <CharactersRoute />,
+      },
+      {
         path: "/adventure",
         element: <AdventureRoute />,
       },
@@ -29,9 +34,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Provider store = {store}>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );
-

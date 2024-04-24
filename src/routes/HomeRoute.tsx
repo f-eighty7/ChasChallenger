@@ -5,6 +5,7 @@ export const HomeRoute = () => {
     <main>
       <p>Home</p>
       <Link to={"/adventure"}>Adventure!</Link>
+      <Link to={"/characters"}>Characters</Link>
     </main>
   );
 };
