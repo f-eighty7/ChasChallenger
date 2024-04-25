@@ -1,4 +1,6 @@
+import { MouseEventHandler } from "react";
 import style from "./CharactersRoute.module.css";
+import { Link } from "react-router-dom";
 
 export type Character = {
   name: string;
@@ -17,6 +19,23 @@ export type Character = {
   professionName: null; //should be enum/string literal?
   speciesName: null; //should be enum/string literal?
   //image? (url)
+};
+
+const handleCharacterClicked = (character: Character) => {
+  //TODO: set selected character and move on to next route in flow
+  console.log(character.name, "selected!");
+};
+
+const handleDeleteCharacterClicked = (
+  event: React.MouseEvent<HTMLButtonElement>
+) => {
+  event.stopPropagation();
+};
+
+const handleFavoriteCharacterClicked = (
+  event: React.MouseEvent<HTMLButtonElement>
+) => {
+  event.stopPropagation();
 };
 
 export const CharactersRoute = () => {
@@ -57,13 +76,8 @@ export const CharactersRoute = () => {
     },
   ]; //TODO: get from server
 
-  const handleCharacterClicked = (character: Character) => {
-    //TODO: set selected character and move on to next route in flow
-    console.log(character.name, "selected!");
-  };
-
   return (
-    <main>
+    <main className={style.page}>
       <h1>Your Characters</h1>
       <ul className={style.charactersList}>
         {characters.map((character, index) => {
@@ -73,21 +87,34 @@ export const CharactersRoute = () => {
               key={character.name + index}
               onClick={() => handleCharacterClicked(character)}
             >
-              <img
-                className={style.characterIcon}
-                src="/images/defaultCharacterIcon.png" /*TODO: load actual image and have default as error*/
-                alt={`${character.name}`}
-              />
-              <h2>{character.class}</h2>
-              <h2>{character.name}</h2>
-              <h2>lvl {character.level}</h2>
+              <div className={style.characterIdentity}>
+                <img
+                  className={style.characterIcon}
+                  src="/images/defaultCharacterIcon.png" /*TODO: load actual image and have default as error*/
+                  alt={`${character.name}`}
+                />
+                <h2>{character.name}</h2>
+              </div>
+              <div className={style.characterActions}>
+                <button type="button" onClick={handleDeleteCharacterClicked}>
+                  {/*TODO: change to delete icon*/}Del
+                </button>
+                <button type="button" onClick={handleFavoriteCharacterClicked}>
+                  {/*TODO: change to favorite icon*/}Fav
+                </button>
+              </div>
+              <div className={style.characterInformation}>
+                <p>{character.class}</p>
+                <p>lvl {character.level}</p>
+                <p>{character.hitpoints} hp</p>
+              </div>
             </li>
           );
         })}
       </ul>
-      <div>
-        <button type="button">Create</button>
-      </div>
+      <Link className={style.link} relative="path" to="new">
+        New
+      </Link>
     </main>
   );
 };

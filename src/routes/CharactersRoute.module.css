@@ -1,3 +1,9 @@
+.page {
+  width: 100%;
+  padding: 1rem 0;
+  gap: 1rem;
+}
+
 .charactersList {
   display: flex;
   flex-direction: column;
@@ -7,7 +13,9 @@
 }
 
 .character {
-  padding: 0.5rem;
+  display: grid;
+  grid-template: 2fr 1fr / 5fr 1fr;
+  padding: 0.75rem;
   border: 2px solid white;
   border-radius: 0.5rem;
   cursor: pointer;
@@ -17,8 +25,50 @@
   background-color: #404040;
 }
 
+.characterIdentity {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.characterIdentity > h2 {
+  font-size: 2rem;
+}
+
+.characterInformation {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.characterInformation > p {
+  font-size: 1.25rem;
+}
+
+.characterActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .characterIcon {
-  width: 40%;
+  width: 30%;
+}
+
+.link {
+  padding: 0.5rem;
+  border: 2px solid white;
+  border-radius: 0.8rem;
+  background-color: #303030;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: #404040;
+}
+
+.link:active {
+  background-color: #202020;
 }
 
 @media (min-width: 375px) {
@@ -31,12 +81,21 @@
 }
 
 @media (min-width: 768px) {
+  .charactersList {
+    max-width: 32rem;
+  }
 }
 
 @media (min-width: 1024px) {
+  .charactersList {
+    max-width: 42rem;
+  }
 }
 
 @media (min-width: 1440px) {
+  .charactersList {
+    max-width: 52rem;
+  }
 }
 
 @media (min-width: 1920px) {
