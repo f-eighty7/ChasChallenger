@@ -7,6 +7,7 @@ import { RootLayout } from "./layouts/RootLayout.tsx";
 import { ErrorRoute } from "./routes/ErrorRoute.tsx";
 import { HomeRoute } from "./routes/HomeRoute.tsx";
 import { CharactersRoute } from "./routes/CharactersRoute.tsx";
+import { NewCharacterRoute } from "./routes/NewCharacterRoute.tsx";
 import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import "./index.css";
 
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: "/characters",
         element: <CharactersRoute />,
+      },
+      {
+        path: "/characters/new",
+        element: <NewCharacterRoute />,
       },
       {
         path: "/adventure",
