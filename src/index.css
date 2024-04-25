@@ -30,6 +30,14 @@ button {
   background-color: #303030;
 }
 
+button:hover {
+  background-color: #404040;
+}
+
+button:active {
+  background-color: #202020;
+}
+
 main {
   display: flex;
   flex-direction: column;
