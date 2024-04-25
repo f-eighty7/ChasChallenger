@@ -8,6 +8,7 @@ import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import "./index.css";
 import { Provider } from 'react-redux'
 import store from './Store/Store.js'
+import LoginForm from './components/LoginForm.jsx'
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
         path: "/adventure",
         element: <AdventureRoute />,
       },
+      {
+        path: "/login",
+        element: <LoginForm />
+      }
     ],
   },
 ]);
@@ -34,4 +39,3 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     </Provider>
   </React.StrictMode>
 );
-
