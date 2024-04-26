@@ -14,6 +14,14 @@ export interface Story {
   summery: string;
 }
 
+export interface StoryItemProps {
+  story: Story;
+  onSelected: (id: string) => void;
+}
+export interface StoryId {
+  id: string;
+}
+
 export interface Character {
   name: string;
   age: number;

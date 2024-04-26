@@ -2,16 +2,16 @@
 import { Story } from "../types/types";
 //import { RootState } from "../Store/Store";
 import { useEffect, useState } from "react";
-import { getStories } from "../api/storiesApi";
+import { getResumeStory } from "../api/resumeStoryApi";
 import { Link } from "react-router-dom";
 
 export const CountinueStory = () => {
-  const [stories, setStories] = useState<Story[]>([]);
+  const [resumeStories, setResumeStories] = useState<Story[]>([]);
 
   useEffect(() => {
     const fetchStory = async () => {
-      const stories = await getStories();
-      setStories(stories);
+      const stories = await getResumeStory();
+      setResumeStories(stories);
     };
     fetchStory();
   }, []);
@@ -20,10 +20,10 @@ export const CountinueStory = () => {
     <>
       <h2>Summary of story and character</h2>
       <div>
-        {stories.map((story, id) => (
+        {resumeStories.map(({ id, name, summery }) => (
           <div key={id}>
-            <p>{story.name}</p>
-            <p>{story.summery}</p>
+            <p>{name}</p>
+            <p>{summery}</p>
           </div>
         ))}
       </div>
@@ -33,3 +33,4 @@ export const CountinueStory = () => {
     </>
   );
 };
+ 

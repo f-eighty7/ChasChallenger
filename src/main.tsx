@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import store from './Store/Store.js'
 import LoginForm from './components/LoginForm.jsx'
 import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
+import { StoriesRoute } from "./routes/StoriesRoute.tsx";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/countinuestory",
         element: <CountinueStoryRoute />,
+      },
+      {
+        path: "/stories",
+        element: <StoriesRoute />,
       },
     ],
   },
