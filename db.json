@@ -14,7 +14,8 @@
       "charisma": 15,
       "backstory": "living life",
       "professionName": "enjoyer of life",
-      "speciesName": "none"
+      "speciesName": "none",
+      "id": "4340"
     }
   ],
   "resumeStory": [
@@ -39,15 +40,90 @@
   "user": [
     {
       "email": "hej@test.com",
-      "password:": "test123"
+      "password:": "test123",
+      "id": "7e90"
     }
   ],
   "storyId": [
     {
-      "id": "74"
+      "id": "222"
+    }
+  ],
+  "storyMessages": [
+    {
+      "id": "31",
+      "text": "Nu börjar äventyret! Det var en gång en magisk värld som kallades Lumaria, där solen alltid sken och glädjen fyllde luften. I Lumaria, där vänlighet och skratt regerade överallt, bodde en mångfald av underbara och färgglada varelser.",
+      "sender": "DM"
     },
     {
-      "id": "222"
+      "id": "65",
+      "text": "halllååååå",
+      "sender": "Player"
+    },
+    {
+      "id": "32",
+      "text": "I det glittrande skogarna, som kändes som att de var tagna ur sagornas värld, dansade gnistrande älvor bland träden till ljudet av de glada fåglarna. Deras vingar kastade ljusstrålar som målade regnbågar på marken, och deras skratt klingade genom skogen som en melodi av glädje.",
+      "sender": "DM"
+    },
+    {
+      "id": "21",
+      "text": "bla bla bra! hurra",
+      "sender": "Player"
+    },
+    {
+      "id": "33",
+      "text": "På de gröna ängarna betade söta små enhörningar sida vid sida med lurviga kaniner och fredliga hjortar. De sprang och lekte bland blommorna och skapade ett kalejdoskopiskt hav av färger och livfull energi.",
+      "sender": "DM"
+    },
+    {
+      "id": "55",
+      "text": "heeej",
+      "sender": "Player"
+    },
+    {
+      "id": "34",
+      "text": "I Lumarias höga berg bor de kloka dvärgarna, som smider fantastiska skatter av ädelstenar och tillverkar magiska artefakter. Deras skicklighet i hantverk och deras kärlek till äventyr gör dem till hjältar i hela landet.",
+      "sender": "DM"
+    },
+    {
+      "id": "19",
+      "text": "Nu är våren här!!!",
+      "sender": "Player"
+    },
+    {
+      "id": "35",
+      "text": "Och mitt i all denna magi och värme fanns det ett litet samhälle av lurviga varelser kallade Fluffians. Fluffians var små, mjuka varelser med stora ögon och ännu större hjärtan. De älskade ingenting mer än att sprida glädje och skratt genom sina upptåg och busigheter.",
+      "sender": "DM"
+    },
+    {
+      "id": "5",
+      "text": "heeej skoj",
+      "sender": "Player"
+    },
+    {
+      "id": "36",
+      "text": "I Lumaria levde alla dessa varelser i harmoni och fred. De delade sina glädjeämnen och sorger, skapade nya vänner och upplevde spännande äventyr tillsammans. För i Lumaria visste de att det som var mest värdefullt i livet var kärleken och vänskapen de delade med varandra. Och i denna sagolika värld fortsatte äventyren, alltid fyllda med skratt och värme.",
+      "sender": "DM"
+    },
+    {
+      "id": "2",
+      "text": "hejsvej! alla glada",
+      "sender": "Player"
+    },
+    {
+      "id": "90",
+      "text": "idag är de snö",
+      "sender": "Player"
+    },
+    {
+      "id": "3",
+      "text": "varför hej hopp!",
+      "sender": "Player"
+    },
+    {
+      "id": "40",
+      "text": "tjolahopp",
+      "sender": "DM"
     }
   ]
 }

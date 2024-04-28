@@ -22,6 +22,21 @@ export interface StoryId {
   id: string;
 }
 
+export interface ResumeStory {
+  id: string;
+  name: string;
+  summery: string;
+}
+
+export interface StoryMessages {
+  id: string;
+  text: string;
+  sender: string;
+}
+export interface StoryMessageItemProps {
+  storyMessages: StoryMessages;
+}
+
 export interface Character {
   name: string;
   age: number;
