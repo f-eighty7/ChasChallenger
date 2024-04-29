@@ -18,24 +18,30 @@ export type Character = {
   backstory: string;
   professionName: null; //should be enum/string literal?
   speciesName: null; //should be enum/string literal?
+  //favorite: bool;
   //image? (url)
 };
 
 const handleCharacterClicked = (character: Character) => {
   //TODO: set selected character and move on to next route in flow
   console.log(character.name, "selected!");
+  console.warn("Not yet implemented");
 };
 
 const handleDeleteCharacterClicked = (
   event: React.MouseEvent<HTMLButtonElement>
 ) => {
   event.stopPropagation();
+
+  console.warn("Not yet implemented");
 };
 
 const handleFavoriteCharacterClicked = (
   event: React.MouseEvent<HTMLButtonElement>
 ) => {
   event.stopPropagation();
+
+  console.warn("Not yet implemented");
 };
 
 export const CharactersRoute = () => {
@@ -96,11 +102,19 @@ export const CharactersRoute = () => {
                 <h2>{character.name}</h2>
               </div>
               <div className={style.characterActions}>
-                <button type="button" onClick={handleDeleteCharacterClicked}>
-                  {/*TODO: change to delete icon*/}Del
+                <button
+                  type="button"
+                  title="Delete character"
+                  onClick={handleDeleteCharacterClicked}
+                >
+                  <i className={"fa fa-trash"} />
                 </button>
-                <button type="button" onClick={handleFavoriteCharacterClicked}>
-                  {/*TODO: change to favorite icon*/}Fav
+                <button
+                  type="button"
+                  title="Toggle if character is favorited"
+                  onClick={handleFavoriteCharacterClicked}
+                >
+                  <i className={"fa fa-star-o"} />
                 </button>
               </div>
               <div className={style.characterInformation}>
