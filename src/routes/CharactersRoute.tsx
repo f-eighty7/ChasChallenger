@@ -13,6 +13,9 @@ const handleDeleteCharacterClicked = (
 ) => {
   event.stopPropagation();
 
+  //maybe disable on favorited characters
+  //have some sort of confirmation
+
   console.warn("Not yet implemented");
 };
 
