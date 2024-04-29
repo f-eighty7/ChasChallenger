@@ -43,6 +43,11 @@ input {
   color: black;
 }
 
+select,
+option {
+  color: black;
+}
+
 main {
   display: flex;
   flex-direction: column;
