@@ -16,6 +16,7 @@ type Character = {
     speciesName: null; //should be enum/string literal?
     //favorite: bool;
     //image? (url)
+    //id?
   };
 
   export default Character;
