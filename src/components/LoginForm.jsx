@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './LoginForm.css'; // Ensure this path is correct
+import './LoginForm.css';
 
 function LoginForm() {
     const [username, setUsername] = useState('');
