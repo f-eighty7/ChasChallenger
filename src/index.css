@@ -38,6 +38,11 @@ button:active {
   background-color: #202020;
 }
 
+input {
+  padding: 0.25rem;
+  color: black;
+}
+
 main {
   display: flex;
   flex-direction: column;
