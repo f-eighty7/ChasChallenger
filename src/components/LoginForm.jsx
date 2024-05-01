@@ -50,7 +50,7 @@ function LoginForm() {
                 </div>
                 <button className="button" type="submit">Logga in</button>
                 <label className="signUp">Vill du bli en av oss? 
-                    <button onClick={() => { alert('Navigate to sign up page'); }}>Skapa konto</button></label>
+                    <button onClick={() => { }}>Skapa konto</button></label>
             </form>
         </div>
     );
