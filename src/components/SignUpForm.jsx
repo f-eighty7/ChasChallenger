@@ -1,18 +1,20 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './SignUpForm.css';
+import { useNavigate } from 'react-router-dom';
 
 function SignUpForm() {
-    // State for managing input fields
+    
+    const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    // Function to handle form submission
+    
     const handleSubmit = async (event) => {
-        event.preventDefault(); // Prevent default form submission behavior
+        event.preventDefault();
 
-        // Simple front-end validation for example purposes
+       
         if (password !== confirmPassword) {
             alert("Passwords don't match!");
             return;
@@ -32,10 +34,12 @@ function SignUpForm() {
     };
 
     return (
+        <div className="signup-form-container">
+            
         <form onSubmit={handleSubmit} className="signup-form">
-        <h2>Sign Up</h2>
+        <div className="skapaKonto">Skapa konto</div> 
         <div>
-            <label>Email:</label>
+            <label>E-post:</label>
             <input 
                 type="email" 
                 value={email} 
@@ -44,7 +48,7 @@ function SignUpForm() {
             />
         </div>
         <div>
-            <label>Password:</label>
+            <label>Lösenord:</label>
             <input 
                 type="password" 
                 value={password} 
@@ -53,7 +57,7 @@ function SignUpForm() {
             />
         </div>
         <div>
-            <label>Confirm Password:</label>
+            <label>Bekräfta lösenord:</label>
             <input 
                 type="password" 
                 value={confirmPassword} 
@@ -63,6 +67,7 @@ function SignUpForm() {
         </div>
         <button type="submit">Sign Up</button>
     </form>
+    </div>
     );
 }
 

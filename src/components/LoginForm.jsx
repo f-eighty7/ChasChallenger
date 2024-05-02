@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './LoginForm.css';
+import {Link} from 'react-router-dom'
 
 function LoginForm() {
     const [username, setUsername] = useState('');
@@ -50,7 +51,7 @@ function LoginForm() {
                 </div>
                 <button className="button" type="submit">Logga in</button>
                 <label className="signUp">Vill du bli en av oss? 
-                    <button onClick={() => { }}>Skapa konto</button></label>
+                  <Link to="/signup"><button onClick={() => { }}>Skapa konto</button></Link></label>
             </form>
         </div>
     );
