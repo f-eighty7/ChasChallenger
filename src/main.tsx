@@ -9,6 +9,7 @@ import "./index.css";
 import { Provider } from 'react-redux'
 import store from './Store/Store.js'
 import LoginForm from './components/LoginForm.jsx'
+import SignUpForm from './components/SignUpForm.jsx'
 import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
 import { StoriesRoute } from "./routes/StoriesRoute.tsx";
 
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginForm />,
+      },
+      {
+        path: "/signup",
+        element: <SignUpForm />,
       },
       {
         path: "/countinuestory",

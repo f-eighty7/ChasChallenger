@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import './LoginForm.css'; // Ensure this path is correct
+import './LoginForm.css';
+import {Link} from 'react-router-dom'
 
 function LoginForm() {
     const [username, setUsername] = useState('');
@@ -27,10 +28,11 @@ function LoginForm() {
     };
 
     return (
-        <div className="form-container">
-            <form className="form" onSubmit={handleLogin}>
+        <div className="loginForm-container">
+            <form className="loginForm" onSubmit={handleLogin}>
+                <label className="login">Login</label>
                 <div>
-                    <label className="label">Username:</label>
+                    <label className="label">E-post:</label>
                     <input
                         className="input"
                         type="text"
@@ -39,7 +41,7 @@ function LoginForm() {
                     />
                 </div>
                 <div>
-                    <label className="label">Password:</label>
+                    <label className="label">Lösenord:</label>
                     <input
                         className="input"
                         type="password"
@@ -48,6 +50,8 @@ function LoginForm() {
                     />
                 </div>
                 <button className="button" type="submit">Logga in</button>
+                <label className="signUp">Vill du bli en av oss? 
+                  <Link to="/signup"><button onClick={() => { }}>Skapa konto</button></Link></label>
             </form>
         </div>
     );
