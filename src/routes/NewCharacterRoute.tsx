@@ -2,7 +2,7 @@ import style from "./NewCharacterRoute.module.css";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Character from "../types/Character";
-import { useState } from "react";
+import { ChangeEvent, ChangeEventHandler, useState } from "react";
 
 /*
 type Character = {
@@ -44,20 +44,22 @@ export const NewCharacterRoute = () => {
       class: "wizard",
       level: 1,
       hitpoints: 1,
-      strength: 10,
-      dexterity: 10,
-      intelligence: 10,
-      wisdom: 10,
-      constitution: 10,
-      charisma: 10,
+      strength: 0,
+      dexterity: 0,
+      intelligence: 0,
+      wisdom: 0,
+      constitution: 0,
+      charisma: 0,
       backstory: "Backstory",
       professionName: null,
       speciesName: null,
     },
   });
 
-  const [abilityScoreAllocations, setAbilityScoreAllocations] =
-    useState<number>(10); //TODO: find out right amounts
+  // const [abilityScoreAllocations, setAbilityScoreAllocations] =
+  const [abilityScoreAllocations, setAbilityScoreAllocations] = useState<
+    number[]
+  >([15, 14, 13, 12, 10, 8]);
 
   return (
     <main>
@@ -152,28 +154,47 @@ export const NewCharacterRoute = () => {
 
         <div>
           <h2>Ability Scores</h2>
-          <p>{abilityScoreAllocations} points remaining</p>
 
           <div>
             <label htmlFor="strength">
               <h3>Strength</h3>
             </label>
 
-            <button type="button">-</button>
-            <input
-              type="number"
+            <select
               id="strength"
               {...register("strength", {
-                required: "Age is required!",
-                disabled: true,
+                required: "Strength is required!",
                 min: {
-                  value: 0,
-                  message: "Age must be a positive value!",
+                  value: 8,
+                  message: "Strength is required!",
+                },
+                onChange: (event: ChangeEvent<HTMLSelectElement>) => {
+                  console.log(event.currentTarget);
+                  console.log(event.target.value);
+                  //TODO: disable value on all dropdowns when selected
+                  //Enable again when unselected
+                  setAbilityScoreAllocations(() =>
+                    abilityScoreAllocations.filter(
+                      (value) => value !== parseInt(event.target.value)
+                    )
+                  );
                 },
               })}
-            />
-            <button type="button">+</button>
-            {/* LO */}
+            >
+              {[
+                <option key={"defaultStrength"} value={0} disabled>
+                  0
+                </option>,
+                ...abilityScoreAllocations.map((abiliyScore) => {
+                  return (
+                    <option key={abiliyScore} value={abiliyScore}>
+                      {abiliyScore}
+                    </option>
+                  );
+                }),
+              ]}
+            </select>
+            {errors.strength && <p>{errors.strength.message}</p>}
           </div>
         </div>
 
