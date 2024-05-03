@@ -9,8 +9,6 @@ export const StoryItem = ({ story, onSelected }: StoryItemProps) => {
     onSelected(story.summery);
   };
   const handleToggleCard = () => {
-    console.log("klick");
-
     setIsExpanded(!isExpanded);
   };
   return (

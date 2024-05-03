@@ -4,7 +4,6 @@ import { StoryItem } from "./StoryItem";
 import premadeStories from "../api/stories.json";
 
 export const Stories = () => {
-
   const onSelected = (story: string) => {
     const storyText: StoryText = {
       text: story,
@@ -24,7 +23,7 @@ export const Stories = () => {
           })}
         </ul>
       </div>
-      <button style={{ color: "black" }}>Skapa ny story</button>
+      <button>Skapa ny story</button>
     </>
   );
 };
