@@ -1,48 +1,55 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import './LoginForm.css';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 function LoginForm() {
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleLogin = async (event) => {
         event.preventDefault();
+        setErrorMessage(''); // Clear previous errors
 
         try {
-            const response = await axios.post('URL', {
-                username: username,
-                password: password
+            const response = await axios.post('http://localhost:5106/login', {
+                email,
+                password
             });
 
             if (response.data.token) {
                 localStorage.setItem('token', response.data.token);
-                console.log("Login lyckades!!!");
+                console.log("Login successful!");
+                // Redirect or perform further actions
             } else {
-                console.log("Login mysslyckades!!!", response.data.message);
+                console.log("Login failed:", response.data.message);
+                setErrorMessage(response.data.message || 'Failed to login.');
             }
         } catch (error) {
-            console.error("Login error!!!", error.response.data);
+            console.error("Login error:", error.response ? error.response.data : 'Server error');
+            setErrorMessage(error.response ? error.response.data : 'Server error');
         }
     };
 
     return (
         <div className="loginForm-container">
             <form className="loginForm" onSubmit={handleLogin}>
-                <label className="login">Login</label>
+                <h1 className="login">Login</h1>
                 <div>
-                    <label className="label">E-post:</label>
+                    <label htmlFor="email" className="label">E-post:</label>
                     <input
+                        id="email"
                         className="input"
-                        type="text"
-                        value={username}
-                        onChange={(e) => setUsername(e.target.value)}
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
                 <div>
-                    <label className="label">Lösenord:</label>
+                    <label htmlFor="password" className="label">Lösenord:</label>
                     <input
+                        id="password"
                         className="input"
                         type="password"
                         value={password}
@@ -50,8 +57,10 @@ function LoginForm() {
                     />
                 </div>
                 <button className="button" type="submit">Logga in</button>
-                <label className="signUp">Vill du bli en av oss? 
-                  <Link to="/signup"><button onClick={() => { }}>Skapa konto</button></Link></label>
+                {errorMessage && <p className="error">{errorMessage}</p>}
+                <p className="signUp">Vill du bli en av oss? 
+                  <Link to="/signup" className="buttonLink">Skapa konto</Link>
+                </p>
             </form>
         </div>
     );

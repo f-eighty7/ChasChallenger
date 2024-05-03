@@ -21,7 +21,7 @@ function SignUpForm() {
         }
 
         try {
-            const response = await axios.post('https://your-api-url.com/signup', {
+            const response = await axios.post('http://localhost:5106/register', {
                 email,
                 password
             });
