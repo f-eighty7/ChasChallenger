@@ -1,0 +1,27 @@
+.card {
+  width: 300px;
+  padding: 1rem;
+  border-radius: 20px;
+  background: #ebebeb;
+  color: black;
+  cursor: pointer;
+  transition: all 0.3 ease;
+  margin: 3rem;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+  list-style: none;
+}
+.card:hover {
+  transform: scale(1.05);
+  transition: 0.3s ease;
+}
+.name {
+  text-align: center;
+}
+.summery {
+  height: 200px;
+  overflow: hidden;
+  line-height: 150%;
+}
+.summery-expanded {
+  height: auto;
+}
