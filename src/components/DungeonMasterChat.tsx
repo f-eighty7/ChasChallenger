@@ -24,7 +24,6 @@ export const DungeonMasterChat = () => {
     }
 
     const newMessage: StoryMessages = {
-      id: "2",
       text: input,
       sender: "Player",
     };
@@ -49,7 +48,7 @@ export const DungeonMasterChat = () => {
       <br />
       <div>
         {messages.map((storyMessages: StoryMessages) => (
-          <MessageItem key={storyMessages.id} storyMessages={storyMessages} />
+          <MessageItem key={storyMessages.text} storyMessages={storyMessages} />
         ))}
       </div>
       <form onSubmit={handleSubmit}>
