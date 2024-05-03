@@ -1,0 +1,15 @@
+.story-resume-item {
+    display: flex;
+    flex-direction: column;
+    background: #ebebeb;
+    padding: 1rem;
+  border-radius: 20px;
+}
+.name {
+  text-align: center;
+}
+.summery {
+  height: 200px;
+  overflow: hidden;
+  line-height: 150%;
+}

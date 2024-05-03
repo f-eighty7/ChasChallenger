@@ -27,6 +27,9 @@ export interface ResumeStory {
   name: string;
   summery: string;
 }
+export interface ResumeStoryProps {
+  resumeStory: ResumeStory;
+}
 
 export interface StoryMessages {
   text: string;
