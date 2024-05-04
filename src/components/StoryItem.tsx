@@ -22,18 +22,20 @@ export const StoryItem = ({ story, onSelected }: StoryItemProps) => {
         >
           {story.summery}
         </p>
-        <button
-          className={style["choose-story-button"]}
-          onClick={handleToggleCard}
-        >
-          {isExpanded ? "Read less" : "Read more"}
-        </button>
-        <button
-          className={style["choose-story-button"]}
-          onClick={handleSelected}
-        >
-          Select
-        </button>
+        <div className={style["story-buttons"]}>
+          <button
+            className={style["read-more-button"]}
+            onClick={handleToggleCard}
+          >
+            {isExpanded ? "Read less" : "Read more"}
+          </button>
+          <button
+            className={style["select-story-button"]}
+            onClick={handleSelected}
+          >
+            Select
+          </button>
+        </div>
       </li>
     </>
   );

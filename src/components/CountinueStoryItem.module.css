@@ -1,8 +1,9 @@
 .story-resume-item {
     display: flex;
     flex-direction: column;
-    background: #ebebeb;
+    background: #454545;
     padding: 1rem;
+    margin: 1rem;
   border-radius: 20px;
 }
 .name {

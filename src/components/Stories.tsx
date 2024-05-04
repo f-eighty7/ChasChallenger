@@ -14,6 +14,7 @@ export const Stories = () => {
 
   return (
     <>
+      <button style={{margin: "1rem"}}>Make your own story</button>
       <div>
         <ul>
           {premadeStories.map((story: Story) => {
@@ -23,7 +24,6 @@ export const Stories = () => {
           })}
         </ul>
       </div>
-      <button>Skapa ny story</button>
     </>
   );
 };

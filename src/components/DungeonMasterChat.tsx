@@ -40,12 +40,10 @@ export const DungeonMasterChat = () => {
   /*   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchData("https://pokeapi.co/api/v2/pokemon/"));
-  }, []); */  
+  }, []); */
 
   return (
     <div>
-      Chat
-      <br />
       <div>
         {messages.map((storyMessages: StoryMessages) => (
           <MessageItem key={storyMessages.text} storyMessages={storyMessages} />
@@ -53,12 +51,27 @@ export const DungeonMasterChat = () => {
       </div>
       <form onSubmit={handleSubmit}>
         <input
+          style={{
+            paddingTop: "0.5rem",
+            paddingBottom: "0.5rem",
+            paddingLeft: "2rem",
+            paddingRight: "2rem",
+            borderRadius: "20px",
+            color: "black",
+            marginTop: "2rem",
+            marginBottom: "2rem",
+          }}
           type="text"
           placeholder="Prompt..."
           value={input}
           onChange={handleChange}
         />
-        <button type="submit">Send message</button>
+        <button
+          type="submit"
+          style={{ paddingRight: "1rem", paddingLeft: "1rem" }}
+        >
+          Send
+        </button>
       </form>
     </div>
   );

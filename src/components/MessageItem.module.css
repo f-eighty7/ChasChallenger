@@ -5,7 +5,6 @@
   text-align: center;
 }
 .sender-received {
-  color: white;
   background: rgb(95, 132, 36);
   border-radius: 50%;
   height: 25px;
@@ -24,7 +23,7 @@
   border-radius: 4px 20px 20px 4px;
   min-height: 20px;
   background: #454545;
-  color: white;
+  margin-left: 25px;
 }
 
 .message-sent {
@@ -35,7 +34,6 @@
   text-align: center;
 }
 .sender-sent {
-  color: white;
   background: rgb(81, 26, 71);
   border-radius: 50%;
   height: 25px;
@@ -54,5 +52,4 @@
   min-height: 20px;
   padding: 10px;
   margin-left: auto;
-  color: white;
 }

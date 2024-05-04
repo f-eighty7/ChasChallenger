@@ -6,22 +6,40 @@
   color: black;
   cursor: pointer;
   transition: all 0.3 ease;
-  margin: 3rem;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
   list-style: none;
 }
 .card:hover {
   transform: scale(1.05);
-  transition: 0.3s ease;
+  transition: 0.5s ease;
 }
 .name {
   text-align: center;
+  color: black;
+  padding: 1rem;
 }
 .summery {
   height: 200px;
   overflow: hidden;
   line-height: 150%;
+  color: black;
+  padding: 0.5rem;
 }
 .summery-expanded {
   height: auto;
+  color: black;
+  padding: 0.5;
+}
+.story-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.read-more-button,
+.select-story-button {
+  padding: 0.5rem 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
