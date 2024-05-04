@@ -17,7 +17,6 @@ export const CountinueStory = () => {
 
   return (
     <>
-      <h2>Summary of story and character</h2>
       <ul>
         {resumeStories.map((resumeStory: ResumeStory) => {
           return (

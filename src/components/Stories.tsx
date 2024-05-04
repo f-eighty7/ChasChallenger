@@ -1,4 +1,4 @@
-import { promptStoryText } from "../api/storiesApi";
+//import { promptStoryText } from "../api/storiesApi";
 import { Story, StoryText } from "../types/types";
 import { StoryItem } from "./StoryItem";
 import premadeStories from "../api/stories.json";
@@ -8,12 +8,13 @@ export const Stories = () => {
     const storyText: StoryText = {
       text: story,
     };
-    promptStoryText(storyText);
+    //promptStoryText(storyText);
     console.log(storyText);
   };
 
   return (
     <>
+      <button style={{margin: "1rem"}}>Make your own story</button>
       <div>
         <ul>
           {premadeStories.map((story: Story) => {
@@ -23,7 +24,6 @@ export const Stories = () => {
           })}
         </ul>
       </div>
-      <button>Skapa ny story</button>
     </>
   );
 };

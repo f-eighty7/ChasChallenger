@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { MessageItem } from "./MessageItem";
 import { StoryMessages } from "../types/types";
 import { addStoryMessage, getStoryMessages } from "../api/storyMessagesApi";
+import style from "./DungeonMasterChat.module.css";
 
 export const DungeonMasterChat = () => {
   const [messages, setMessages] = useState<StoryMessages[]>([]);
@@ -32,7 +33,7 @@ export const DungeonMasterChat = () => {
     setMessages([...messages, newMessage]);
     setInput("");
   };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
     setInput(text);
   };
@@ -40,25 +41,25 @@ export const DungeonMasterChat = () => {
   /*   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchData("https://pokeapi.co/api/v2/pokemon/"));
-  }, []); */  
+  }, []); */
 
   return (
     <div>
-      Chat
-      <br />
       <div>
         {messages.map((storyMessages: StoryMessages) => (
           <MessageItem key={storyMessages.text} storyMessages={storyMessages} />
         ))}
       </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
+      <form onSubmit={handleSubmit} className={style["prompt-wrapper"]}>
+        <textarea
+          className={style.prompt}
           placeholder="Prompt..."
           value={input}
           onChange={handleChange}
         />
-        <button type="submit">Send message</button>
+        <button type="submit" className={style["send-button"]}>
+          Send
+        </button>
       </form>
     </div>
   );
