@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { MessageItem } from "./MessageItem";
 import { StoryMessages } from "../types/types";
 import { addStoryMessage, getStoryMessages } from "../api/storyMessagesApi";
+import style from "./DungeonMasterChat.module.css";
 
 export const DungeonMasterChat = () => {
   const [messages, setMessages] = useState<StoryMessages[]>([]);
@@ -32,7 +33,7 @@ export const DungeonMasterChat = () => {
     setMessages([...messages, newMessage]);
     setInput("");
   };
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const text = e.target.value;
     setInput(text);
   };
@@ -49,27 +50,14 @@ export const DungeonMasterChat = () => {
           <MessageItem key={storyMessages.text} storyMessages={storyMessages} />
         ))}
       </div>
-      <form onSubmit={handleSubmit}>
-        <input
-          style={{
-            paddingTop: "0.5rem",
-            paddingBottom: "0.5rem",
-            paddingLeft: "2rem",
-            paddingRight: "2rem",
-            borderRadius: "20px",
-            color: "black",
-            marginTop: "2rem",
-            marginBottom: "2rem",
-          }}
-          type="text"
+      <form onSubmit={handleSubmit} className={style["prompt-wrapper"]}>
+        <textarea
+          className={style.prompt}
           placeholder="Prompt..."
           value={input}
           onChange={handleChange}
         />
-        <button
-          type="submit"
-          style={{ paddingRight: "1rem", paddingLeft: "1rem" }}
-        >
+        <button type="submit" className={style["send-button"]}>
           Send
         </button>
       </form>

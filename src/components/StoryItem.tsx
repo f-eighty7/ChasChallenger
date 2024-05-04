@@ -4,9 +4,13 @@ import { useState } from "react";
 
 export const StoryItem = ({ story, onSelected }: StoryItemProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [selected, setSelected] = useState(false);
 
   const handleSelected = () => {
-    onSelected(story.summery);
+    if (!selected) {
+      onSelected(story.summery);
+    }
+    setSelected(!selected);
   };
   const handleToggleCard = () => {
     setIsExpanded(!isExpanded);
@@ -30,10 +34,12 @@ export const StoryItem = ({ story, onSelected }: StoryItemProps) => {
             {isExpanded ? "Read less" : "Read more"}
           </button>
           <button
-            className={style["select-story-button"]}
+            className={`${style["select-story-button"]} ${
+              selected ? style["selected-story-button"] : ""
+            }`}
             onClick={handleSelected}
           >
-            Select
+            {selected ? "Selected" : "Select"}
           </button>
         </div>
       </li>

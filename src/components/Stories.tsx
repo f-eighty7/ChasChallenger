@@ -1,4 +1,4 @@
-import { promptStoryText } from "../api/storiesApi";
+//import { promptStoryText } from "../api/storiesApi";
 import { Story, StoryText } from "../types/types";
 import { StoryItem } from "./StoryItem";
 import premadeStories from "../api/stories.json";
@@ -8,7 +8,7 @@ export const Stories = () => {
     const storyText: StoryText = {
       text: story,
     };
-    promptStoryText(storyText);
+    //promptStoryText(storyText);
     console.log(storyText);
   };
 
