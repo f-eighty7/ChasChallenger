@@ -1,12 +1,11 @@
-//import { useSelector } from "react-redux";
-import { Story } from "../types/types";
-//import { RootState } from "../Store/Store";
+import { ResumeStory } from "../types/types";
 import { useEffect, useState } from "react";
 import { getResumeStory } from "../api/resumeStoryApi";
 import { Link } from "react-router-dom";
+import { CountinueStoryItem } from "./CountinueStoryItem";
 
 export const CountinueStory = () => {
-  const [resumeStories, setResumeStories] = useState<Story[]>([]);
+  const [resumeStories, setResumeStories] = useState<ResumeStory[]>([]);
 
   useEffect(() => {
     const fetchStory = async () => {
@@ -18,19 +17,19 @@ export const CountinueStory = () => {
 
   return (
     <>
-      <h2>Summary of story and character</h2>
-      <div>
-        {resumeStories.map(({ id, name, summery }) => (
-          <div key={id}>
-            <p>{name}</p>
-            <p>{summery}</p>
-          </div>
-        ))}
-      </div>
+      <ul>
+        {resumeStories.map((resumeStory: ResumeStory) => {
+          return (
+            <CountinueStoryItem
+              key={resumeStory.id}
+              resumeStory={resumeStory}
+            />
+          );
+        })}
+      </ul>
       <Link to={"/adventure"}>
-        <button style={{ color: "black" }}>Fortsätt påbörjad story</button>
+        <button style={{ color: "black" }}>Countinue Story</button>
       </Link>
     </>
   );
 };
- 

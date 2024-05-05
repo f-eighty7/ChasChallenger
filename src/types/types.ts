@@ -18,8 +18,8 @@ export interface StoryItemProps {
   story: Story;
   onSelected: (id: string) => void;
 }
-export interface StoryId {
-  id: string;
+export interface StoryText {
+  text: string;
 }
 
 export interface ResumeStory {
@@ -27,9 +27,11 @@ export interface ResumeStory {
   name: string;
   summery: string;
 }
+export interface ResumeStoryProps {
+  resumeStory: ResumeStory;
+}
 
 export interface StoryMessages {
-  id: string;
   text: string;
   sender: string;
 }
