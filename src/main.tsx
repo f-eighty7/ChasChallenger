@@ -11,6 +11,7 @@ import store from './Store/Store.js'
 import LoginForm from './components/LoginForm.jsx'
 import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
 import { StoriesRoute } from "./routes/StoriesRoute.tsx";
+import { WelcomeRoute }  from "./routes/WelcomeRoute.jsx";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/stories",
         element: <StoriesRoute />,
+      },
+      {
+        path: "/welcome",
+        element: <WelcomeRoute />,
       },
     ],
   },
