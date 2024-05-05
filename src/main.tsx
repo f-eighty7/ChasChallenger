@@ -16,7 +16,7 @@ import { SignupRoute } from "./routes/SignupRoute.tsx";
 import { CharactersRoute } from "./routes/CharactersRoute.tsx";
 import { CreateCharacterRoute } from "./routes/CreateCharacterRoute.tsx";
 import { SelectCharacterRoute } from "./routes/SelectCharacterRoute.tsx";
-import { WelcomeRoute } from "./routes/WelcomeRoute.jsx";
+
 
 const router = createBrowserRouter([
   {
@@ -63,10 +63,6 @@ const router = createBrowserRouter([
       {
         path: "/stories",
         element: <StoriesRoute />,
-      },
-      {
-        path: "/welcome",
-        element: <WelcomeRoute />,
       },
     ],
   },

@@ -1,8 +1,12 @@
+// @ts-ignore
+
 import { Link } from "react-router-dom";
+import Navbar from "../components/Navbar";
 
 export const MastersWelcomeRoute = () => {
   return (
     <main>
+      <Navbar></Navbar>
       <h1 style={{ padding: "1rem", marginTop: "5rem" }}>Master's Welcome</h1>
       <p
         style={{
