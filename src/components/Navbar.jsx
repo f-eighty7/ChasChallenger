@@ -1,24 +1,26 @@
 import axios from 'axios';
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import "./Navbar.css";
 
 function Navbar() {
     return (
         <nav>
             <ul>
                 <li>
-                    <Link to={'/'}>Home</Link>
+                    <Link to={'/'}
+                    className='title'>Master Chass</Link>
                 </li>
                 <li>
-                    <Link to={'/login'}>Login</Link>
+                    <NavLink to={'/login'}>Login</NavLink>
                 </li>
                 <li>
-                    <Link to={'/characters'}>Characters</Link>
+                    <NavLink to={'/characters'}>Characters</NavLink>
 
                 </li>
                 <li>
-                    <Link to='/stories'>Stories</Link>
+                    <NavLink to='/stories'>Stories</NavLink>
                     
                 </li>
 
