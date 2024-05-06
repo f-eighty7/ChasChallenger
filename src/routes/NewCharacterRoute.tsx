@@ -57,9 +57,45 @@ export const NewCharacterRoute = () => {
   });
 
   // const [abilityScoreAllocations, setAbilityScoreAllocations] =
+  // const [abilityScoreAllocations, setAbilityScoreAllocations] = useState<
+  //   number[]
+  // >([15, 14, 13, 12, 10, 8]);
+
+  type AbilityScoreOption = {
+    value: number;
+    avalible: boolean;
+  };
   const [abilityScoreAllocations, setAbilityScoreAllocations] = useState<
-    number[]
-  >([15, 14, 13, 12, 10, 8]);
+    AbilityScoreOption[]
+  >([
+    {
+      value: 15,
+      avalible: true,
+    },
+    {
+      value: 14,
+      avalible: true,
+    },
+    {
+      value: 13,
+      avalible: true,
+    },
+    {
+      value: 12,
+      avalible: true,
+    },
+    {
+      value: 10,
+      avalible: true,
+    },
+    {
+      value: 8,
+      avalible: true,
+    },
+  ]);
+
+  const [strengthAbilityScore, setStrengthAbilityScore] = useState(0);
+  const [dexterityAbilityScore, setDexterityAbilityScore] = useState(0);
 
   return (
     <main>
@@ -155,13 +191,14 @@ export const NewCharacterRoute = () => {
         <div>
           <h2>Ability Scores</h2>
 
-          <div>
+          <div id="strength-ability-score">
             <label htmlFor="strength">
               <h3>Strength</h3>
             </label>
 
             <select
               id="strength"
+              value={strengthAbilityScore}
               {...register("strength", {
                 required: "Strength is required!",
                 min: {
@@ -169,32 +206,113 @@ export const NewCharacterRoute = () => {
                   message: "Strength is required!",
                 },
                 onChange: (event: ChangeEvent<HTMLSelectElement>) => {
-                  console.log(event.currentTarget);
-                  console.log(event.target.value);
-                  //TODO: disable value on all dropdowns when selected
-                  //Enable again when unselected
-                  setAbilityScoreAllocations(() =>
-                    abilityScoreAllocations.filter(
-                      (value) => value !== parseInt(event.target.value)
-                    )
-                  );
+                  setAbilityScoreAllocations(() => {
+                    //Copy array
+                    const newArray = [...abilityScoreAllocations];
+
+                    //Disable option for selected value
+                    const selectedOption = newArray.find(
+                      (abilityScore) =>
+                        abilityScore.value == parseInt(event.target.value)
+                    );
+                    if (selectedOption) selectedOption.avalible = false;
+
+                    //Enable option for previous selected value
+                    const previousSelected = newArray.find(
+                      (abilityScore) =>
+                        abilityScore.value == strengthAbilityScore
+                    );
+                    if (previousSelected) previousSelected.avalible = true;
+
+                    //Return modified array to setState
+                    return newArray;
+                  });
+
+                  //Update dropdown value to new value
+                  setStrengthAbilityScore(parseInt(event.target.value) | 0);
                 },
               })}
             >
               {[
-                <option key={"defaultStrength"} value={0} disabled>
+                <option key={"defaultStrength"} value={0}>
                   0
                 </option>,
                 ...abilityScoreAllocations.map((abiliyScore) => {
                   return (
-                    <option key={abiliyScore} value={abiliyScore}>
-                      {abiliyScore}
+                    <option
+                      key={abiliyScore.value}
+                      value={abiliyScore.value}
+                      disabled={!abiliyScore.avalible}
+                    >
+                      {abiliyScore.value}
                     </option>
                   );
                 }),
               ]}
             </select>
             {errors.strength && <p>{errors.strength.message}</p>}
+          </div>
+
+          <div id="dexterity-ability-score">
+            <label htmlFor="dexterity">
+              <h3>Dexterity</h3>
+            </label>
+
+            <select
+              id="dexterity"
+              value={dexterityAbilityScore}
+              {...register("dexterity", {
+                required: "Dexterity is required!",
+                min: {
+                  value: 8,
+                  message: "Dexterity is required!",
+                },
+                onChange: (event: ChangeEvent<HTMLSelectElement>) => {
+                  setAbilityScoreAllocations(() => {
+                    //Copy array
+                    const newArray = [...abilityScoreAllocations];
+
+                    //Disable option for selected value
+                    const selectedOption = newArray.find(
+                      (abilityScore) =>
+                        abilityScore.value == parseInt(event.target.value)
+                    );
+                    if (selectedOption) selectedOption.avalible = false;
+
+                    //Enable option for previous selected value
+                    const previousSelected = newArray.find(
+                      (abilityScore) =>
+                        abilityScore.value == dexterityAbilityScore
+                    );
+                    if (previousSelected) previousSelected.avalible = true;
+
+                    //Return modified array to setState
+                    return newArray;
+                  });
+
+                  //Update dropdown value to new value
+                  setDexterityAbilityScore(parseInt(event.target.value) | 0);
+                },
+              })}
+            >
+              {[
+                <option key={"defaultDexterity"} value={0}>
+                  0
+                </option>,
+                ...abilityScoreAllocations.map((abiliyScore) => {
+                  return (
+                    <option
+                      key={abiliyScore.value}
+                      value={abiliyScore.value}
+                      disabled={!abiliyScore.avalible}
+                    >
+                      {abiliyScore.value}
+                    </option>
+                  );
+                }),
+              ]}
+            </select>
+            {errors.dexterity && <p>{errors.dexterity.message}</p>}
           </div>
         </div>
 
