@@ -1,31 +1,11 @@
-import style from "./NewCharacterRoute.module.css";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import style from "./NewCharacterRoute.module.css";
 import Character from "../types/Character";
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
-
-/*
-type Character = {
-    name: string;
-    age: number;
-    gender: string; //should be enum/string literal?
-    class: string; //should be enum/string literal?
-    level: number;
-    hitpoints: number;
-    strength: number;
-    dexterity: number;
-    intelligence: number;
-    wisdom: number;
-    constitution: number;
-    charisma: number;
-    backstory: string;
-    professionName: null; //should be enum/string literal?
-    speciesName: null; //should be enum/string literal?
-    //favorite: bool;
-    //image? (url)
-    //id?
-  };
- */
+import AbilityAttribute from "../types/AbilityAttributes";
+import AbilityScoreOption from "../types/AbilityScoreOption";
+import { AbilityScoreDropdown } from "../components/AbilityScoreDropdown";
 
 const formSubmit = (data: Character) => {
   console.log(data);
@@ -56,15 +36,15 @@ export const NewCharacterRoute = () => {
     },
   });
 
-  // const [abilityScoreAllocations, setAbilityScoreAllocations] =
-  // const [abilityScoreAllocations, setAbilityScoreAllocations] = useState<
-  //   number[]
-  // >([15, 14, 13, 12, 10, 8]);
+  const abilityAttributes: AbilityAttribute[] = [
+    "strength",
+    "dexterity",
+    "intelligence",
+    "wisdom",
+    "constitution",
+    "charisma",
+  ];
 
-  type AbilityScoreOption = {
-    value: number;
-    avalible: boolean;
-  };
   const [abilityScoreAllocations, setAbilityScoreAllocations] = useState<
     AbilityScoreOption[]
   >([
@@ -93,9 +73,6 @@ export const NewCharacterRoute = () => {
       avalible: true,
     },
   ]);
-
-  const [strengthAbilityScore, setStrengthAbilityScore] = useState(0);
-  const [dexterityAbilityScore, setDexterityAbilityScore] = useState(0);
 
   return (
     <main>
@@ -190,130 +167,18 @@ export const NewCharacterRoute = () => {
 
         <div>
           <h2>Ability Scores</h2>
-
-          <div id="strength-ability-score">
-            <label htmlFor="strength">
-              <h3>Strength</h3>
-            </label>
-
-            <select
-              id="strength"
-              value={strengthAbilityScore}
-              {...register("strength", {
-                required: "Strength is required!",
-                min: {
-                  value: 8,
-                  message: "Strength is required!",
-                },
-                onChange: (event: ChangeEvent<HTMLSelectElement>) => {
-                  setAbilityScoreAllocations(() => {
-                    //Copy array
-                    const newArray = [...abilityScoreAllocations];
-
-                    //Disable option for selected value
-                    const selectedOption = newArray.find(
-                      (abilityScore) =>
-                        abilityScore.value == parseInt(event.target.value)
-                    );
-                    if (selectedOption) selectedOption.avalible = false;
-
-                    //Enable option for previous selected value
-                    const previousSelected = newArray.find(
-                      (abilityScore) =>
-                        abilityScore.value == strengthAbilityScore
-                    );
-                    if (previousSelected) previousSelected.avalible = true;
-
-                    //Return modified array to setState
-                    return newArray;
-                  });
-
-                  //Update dropdown value to new value
-                  setStrengthAbilityScore(parseInt(event.target.value) | 0);
-                },
-              })}
-            >
-              {[
-                <option key={"defaultStrength"} value={0}>
-                  0
-                </option>,
-                ...abilityScoreAllocations.map((abiliyScore) => {
-                  return (
-                    <option
-                      key={abiliyScore.value}
-                      value={abiliyScore.value}
-                      disabled={!abiliyScore.avalible}
-                    >
-                      {abiliyScore.value}
-                    </option>
-                  );
-                }),
-              ]}
-            </select>
-            {errors.strength && <p>{errors.strength.message}</p>}
-          </div>
-
-          <div id="dexterity-ability-score">
-            <label htmlFor="dexterity">
-              <h3>Dexterity</h3>
-            </label>
-
-            <select
-              id="dexterity"
-              value={dexterityAbilityScore}
-              {...register("dexterity", {
-                required: "Dexterity is required!",
-                min: {
-                  value: 8,
-                  message: "Dexterity is required!",
-                },
-                onChange: (event: ChangeEvent<HTMLSelectElement>) => {
-                  setAbilityScoreAllocations(() => {
-                    //Copy array
-                    const newArray = [...abilityScoreAllocations];
-
-                    //Disable option for selected value
-                    const selectedOption = newArray.find(
-                      (abilityScore) =>
-                        abilityScore.value == parseInt(event.target.value)
-                    );
-                    if (selectedOption) selectedOption.avalible = false;
-
-                    //Enable option for previous selected value
-                    const previousSelected = newArray.find(
-                      (abilityScore) =>
-                        abilityScore.value == dexterityAbilityScore
-                    );
-                    if (previousSelected) previousSelected.avalible = true;
-
-                    //Return modified array to setState
-                    return newArray;
-                  });
-
-                  //Update dropdown value to new value
-                  setDexterityAbilityScore(parseInt(event.target.value) | 0);
-                },
-              })}
-            >
-              {[
-                <option key={"defaultDexterity"} value={0}>
-                  0
-                </option>,
-                ...abilityScoreAllocations.map((abiliyScore) => {
-                  return (
-                    <option
-                      key={abiliyScore.value}
-                      value={abiliyScore.value}
-                      disabled={!abiliyScore.avalible}
-                    >
-                      {abiliyScore.value}
-                    </option>
-                  );
-                }),
-              ]}
-            </select>
-            {errors.dexterity && <p>{errors.dexterity.message}</p>}
-          </div>
+          {abilityAttributes.map((abilityAttribute: AbilityAttribute) => {
+            return (
+              <AbilityScoreDropdown
+                key={abilityAttribute}
+                abilityScoreAttribute={abilityAttribute}
+                abilityScoreAllocations={abilityScoreAllocations}
+                setAbilityScoreAllocations={setAbilityScoreAllocations}
+                register={register}
+                errors={errors}
+              />
+            );
+          })}
         </div>
 
         <button type="submit">Create!</button>
