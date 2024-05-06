@@ -1,3 +1,4 @@
+import Profession from "./Profession";
 import Species from "./Species";
 
 type Character = {
@@ -14,7 +15,7 @@ type Character = {
     constitution: number;
     charisma: number;
     backstory: string;
-    profession: null; //should be enum/string literal?
+    profession: Profession;
     species: Species;
     //favorite: bool;
     //image? (url)

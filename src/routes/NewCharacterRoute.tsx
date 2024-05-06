@@ -6,6 +6,7 @@ import Character from "../types/Character";
 import AbilityAttribute from "../types/AbilityAttributes";
 import AbilityScoreOption from "../types/AbilityScoreOption";
 import { AbilityScoreDropdown } from "../components/AbilityScoreDropdown";
+import Profession, { ProfessionsArray } from "../types/Profession";
 import Species, { SpeciesArray } from "../types/Species";
 
 const formSubmit = (data: Character) => {
@@ -42,7 +43,7 @@ export const NewCharacterRoute = () => {
       constitution: 0,
       charisma: 0,
       backstory: "Backstory",
-      profession: null,
+      profession: Profession.profression1,
       species: Species.human,
     },
   });
@@ -201,6 +202,26 @@ export const NewCharacterRoute = () => {
           </select>
 
           {errors.species && <p>{errors.species.message}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="profession">
+            <h2>Profession</h2>
+          </label>
+          <select
+            id="profession"
+            {...register("profession", { required: "Profession is required!" })}
+          >
+            {ProfessionsArray().map((profession) => {
+              return (
+                <option key={profession} value={Profession[profession]}>
+                  {profession}
+                </option>
+              );
+            })}
+          </select>
+
+          {errors.profession && <p>{errors.profession.message}</p>}
         </div>
 
         <button type="submit">Create!</button>
