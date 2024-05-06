@@ -3,7 +3,6 @@
 
 .active {
     background-color: #BFBBBB;
-
 }
 
 nav {
@@ -17,6 +16,7 @@ nav {
     width: 100vw;
     justify-content: space-between;
     padding: 0 3rem;
+    
 
 }
 
@@ -78,6 +78,7 @@ nav .menu span {
     background-color: white;
     border-radius: 0.2rem;
 }
+
 
 @media (max-width: 650px) {
     nav .menu {
