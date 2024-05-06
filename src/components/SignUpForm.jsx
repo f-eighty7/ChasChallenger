@@ -21,7 +21,7 @@ function SignUpForm() {
         }
 
         try {
-            const response = await axios.post('http://localhost:5106/register', {
+            const response = await axios.post('http://localhost:5001/register', {
                 email,
                 password
             });

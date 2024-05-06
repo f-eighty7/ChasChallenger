@@ -10,21 +10,23 @@ function LoginForm() {
 
     const handleLogin = async (event) => {
         event.preventDefault();
-        setErrorMessage(''); // Clear previous errors
+        setErrorMessage(''); 
 
         try {
-            const response = await axios.post('http://localhost:5106/login', {
+            const response = await axios.post('http://localhost:5001/login', {
                 email,
                 password
             });
-
-            if (response.data.token) {
-                localStorage.setItem('token', response.data.token);
+            console.log(response)
+            if (response.data.
+                accessToken) {
+                localStorage.setItem('token', response.data.
+                accessToken);
                 console.log("Login successful!");
                 // Redirect or perform further actions
             } else {
                 console.log("Login failed:", response.data.message);
-                setErrorMessage(response.data.message || 'Failed to login.');
+               /*  setErrorMessage(response.data.message || 'Failed to login.'); */
             }
         } catch (error) {
             console.error("Login error:", error.response ? error.response.data : 'Server error');
