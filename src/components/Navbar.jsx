@@ -2,17 +2,23 @@ import axios from 'axios';
 
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import "./Navbar.css";
+import style from "./Navbar.module.css";
 
 function Navbar() {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [activeItem, setActiveItem] = useState(null);
+
+    const handleItemClicked = (item) => {
+        setActiveItem(item === activeItem ? null : item);
+    }
+    // const classNameFunction = ({ isActive }) => (isActive ? "active_link" : "");
     
     return (
         <nav>
                     <Link to={'/'}
-                    className='title'>Master Chass</Link>
+                    className={style.title}>Master Chass</Link>
                 <div
-                className='menu'
+                className={style.menu}
                 onClick={() => {
                     setMenuOpen(!menuOpen)
                 }}
@@ -22,20 +28,33 @@ function Navbar() {
                 <span></span>
                 </div>
             <ul 
-            className={menuOpen ? "open" : ""}
+            className={`${menuOpen ? style.open : ''}`}
            >
                 <li>
-                    <NavLink to={'/welcome'}>Welcome</NavLink>
+                    <NavLink 
+                        to={'/welcome'}
+                        onClick={() => handleItemClicked('welcome')}
+                        className={`${activeItem === 'welcome' ? style['active'] : ''}`}>Welcome</NavLink>
                 </li>
                 <li>
-                    <NavLink to={'/login'}>Login</NavLink>
+                    <NavLink 
+
+                        to={'/login'}
+                        onClick={() => handleItemClicked('login')}
+                        className={`${activeItem === 'login' ? style['active'] : ''}`}>Login</NavLink>
                 </li>
                 <li>
-                    <NavLink to={'/characters'}>Characters</NavLink>
+                    <NavLink 
+                        to={'/characters'}
+                        onClick={() => handleItemClicked('characters')}
+                        className={`${activeItem === 'characters' ? style['active'] : ''}`}>Characters</NavLink>
 
                 </li>
                 <li>
-                    <NavLink to='/stories'>Stories</NavLink>
+                    <NavLink 
+                        to={'/stories'}
+                        onClick={() => handleItemClicked('stories')}
+                        className={`${activeItem === 'stories' ? style['active'] : ''}`}>Stories</NavLink>
                     
                 </li>
 
