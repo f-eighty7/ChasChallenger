@@ -6,10 +6,21 @@ import Character from "../types/Character";
 import AbilityAttribute from "../types/AbilityAttributes";
 import AbilityScoreOption from "../types/AbilityScoreOption";
 import { AbilityScoreDropdown } from "../components/AbilityScoreDropdown";
+import Species, { SpeciesArray } from "../types/Species";
 
 const formSubmit = (data: Character) => {
   console.log(data);
 };
+
+const abilityAttributes: AbilityAttribute[] = [
+  //TODO: refactor to enum like Species.ts
+  "strength",
+  "dexterity",
+  "intelligence",
+  "wisdom",
+  "constitution",
+  "charisma",
+];
 
 export const NewCharacterRoute = () => {
   const {
@@ -20,8 +31,8 @@ export const NewCharacterRoute = () => {
     defaultValues: {
       name: "",
       age: 0,
-      gender: "male",
-      class: "wizard",
+      gender: "male", //TODO: refactor to enum like Species.ts
+      class: "wizard", //TODO: refactor to enum like Species.ts
       level: 1,
       hitpoints: 1,
       strength: 0,
@@ -31,19 +42,10 @@ export const NewCharacterRoute = () => {
       constitution: 0,
       charisma: 0,
       backstory: "Backstory",
-      professionName: null,
-      speciesName: null,
+      profession: null,
+      species: Species.human,
     },
   });
-
-  const abilityAttributes: AbilityAttribute[] = [
-    "strength",
-    "dexterity",
-    "intelligence",
-    "wisdom",
-    "constitution",
-    "charisma",
-  ];
 
   const [abilityScoreAllocations, setAbilityScoreAllocations] = useState<
     AbilityScoreOption[]
@@ -179,6 +181,26 @@ export const NewCharacterRoute = () => {
               />
             );
           })}
+        </div>
+
+        <div>
+          <label htmlFor="species">
+            <h2>Species</h2>
+          </label>
+          <select
+            id="species"
+            {...register("species", { required: "Species is required!" })}
+          >
+            {SpeciesArray().map((species) => {
+              return (
+                <option key={species} value={Species[species]}>
+                  {species}
+                </option>
+              );
+            })}
+          </select>
+
+          {errors.species && <p>{errors.species.message}</p>}
         </div>
 
         <button type="submit">Create!</button>

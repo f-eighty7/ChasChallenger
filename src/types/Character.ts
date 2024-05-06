@@ -1,3 +1,5 @@
+import Species from "./Species";
+
 type Character = {
     name: string;
     age: number;
@@ -12,8 +14,8 @@ type Character = {
     constitution: number;
     charisma: number;
     backstory: string;
-    professionName: null; //should be enum/string literal?
-    speciesName: null; //should be enum/string literal?
+    profession: null; //should be enum/string literal?
+    species: Species;
     //favorite: bool;
     //image? (url)
     //id?
