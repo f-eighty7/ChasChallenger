@@ -66,6 +66,10 @@ main {
   margin-left: auto;
 }
 
+.capitalize::first-letter {
+  text-transform: capitalize;
+}
+
 @media (min-width: 375px) {
   .container {
     max-width: 375px;
