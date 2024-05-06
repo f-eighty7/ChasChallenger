@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import style from "./NewCharacterRoute.module.css";
 import Character from "../types/Character";
@@ -8,10 +8,6 @@ import AbilityScoreOption from "../types/AbilityScoreOption";
 import { AbilityScoreDropdown } from "../components/AbilityScoreDropdown";
 import Profession, { ProfessionsArray } from "../types/Profession";
 import Species, { SpeciesArray } from "../types/Species";
-
-const formSubmit = (data: Character) => {
-  console.log(data);
-};
 
 const abilityAttributes: AbilityAttribute[] = [
   //TODO: refactor to enum like Species.ts
@@ -24,6 +20,14 @@ const abilityAttributes: AbilityAttribute[] = [
 ];
 
 export const NewCharacterRoute = () => {
+  const navigate = useNavigate();
+
+  const formSubmit = (data: Character) => {
+    // data.hitpoints = data.constitution * xyz; TODO: hitpoints calculation
+    console.log(data); //TODO: send data to backend to create character
+    navigate("..", { relative: "path", replace: true });
+  };
+
   const {
     register,
     handleSubmit,
@@ -42,7 +46,7 @@ export const NewCharacterRoute = () => {
       wisdom: 0,
       constitution: 0,
       charisma: 0,
-      backstory: "Backstory",
+      backstory: "",
       profession: Profession.profression1,
       species: Species.human,
     },
@@ -222,6 +226,24 @@ export const NewCharacterRoute = () => {
           </select>
 
           {errors.profession && <p>{errors.profession.message}</p>}
+        </div>
+
+        <div>
+          <label htmlFor="backstory">
+            <h2>Backstory</h2>
+          </label>
+          <textarea
+            id="backstory"
+            className={style.backstory}
+            {...register("backstory", {
+              maxLength: {
+                value: 500,
+                message: "Max 500 characters!",
+              },
+            })}
+          ></textarea>
+
+          {errors.backstory && <p>{errors.backstory.message}</p>}
         </div>
 
         <button type="submit">Create!</button>
