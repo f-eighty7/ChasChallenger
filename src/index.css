@@ -38,15 +38,18 @@ button:active {
   background-color: #202020;
 }
 
-input {
+input,
+textarea {
   padding: 0.25rem;
+  font: inherit;
   color: black;
 }
 
 select,
 select option {
-  color: black;
+  font: inherit;
   text-transform: capitalize;
+  color: black;
 }
 
 main {
