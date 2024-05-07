@@ -248,7 +248,7 @@ export const NewCharacterRoute = () => {
 
         <button type="submit">Create!</button>
       </form>
-      <Link relative="path" to="..">
+      <Link className={style.backButton} relative="path" to="..">
         Back
       </Link>
     </main>

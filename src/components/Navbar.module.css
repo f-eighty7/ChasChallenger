@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap');
+
+
+.active {
+    background-color: #BFBBBB;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    background-color: #2489D7;
+    position: sticky;
+    top: 0;
+    height: 100%;
+    z-index: 10;
+    width: 100vw;
+    justify-content: space-between;
+    padding: 0 3rem;
+    
+
+}
+
+nav .title {
+    font-family: "Cinzel Decorative", serif;
+    font-size: 1.2rem;
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    height: 100%;
+
+}
+
+nav ul {
+
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+
+}
+
+nav ul li {
+
+    list-style: none;
+    height: 100%;
+
+}
+
+nav ul li a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 0.5rem;
+    margin: 0 0.5rem;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+
+}
+
+nav ul li a:not(.active,.title):hover {
+    background:linear-gradient(to right, #287ED2, #02DDFB);
+
+
+}
+
+
+nav .menu {
+    display: none;
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 1.5rem;
+    height: 1rem;
+}
+
+nav .menu span {
+    height: 0.2rem;
+    width: 100%;
+    background-color: white;
+    border-radius: 0.2rem;
+}
+
+
+@media (max-width: 650px) {
+    nav .menu {
+        display: flex;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: start;
+        padding: .2rem;
+        height: 100%;
+    }
+
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        margin-bottom: 0.25rem;
+    }
+    
+    nav ul.open {
+        display: flex;
+    }
+
+    nav ul li {
+        width: 100%;
+        text-align: center;
+
+    }
+
+    nav ul li a {
+        margin: .2rem .5rem;
+    }
+
+}

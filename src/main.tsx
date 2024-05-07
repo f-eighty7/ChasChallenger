@@ -9,6 +9,11 @@ import { HomeRoute } from "./routes/HomeRoute.tsx";
 import { CharactersRoute } from "./routes/CharactersRoute.tsx";
 import { NewCharacterRoute } from "./routes/NewCharacterRoute.tsx";
 import { AdventureRoute } from "./routes/AdventureRoute.tsx";
+import { LoginRoute } from "./routes/LoginRoute.tsx";
+import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
+import { StoriesRoute } from "./routes/StoriesRoute.tsx";
+import { MastersWelcomeRoute } from "./routes/MastersWelcomeRoute.tsx";
+import { SignupRoute } from "./routes/SignupRoute.tsx";
 import "./index.css";
 
 const router = createBrowserRouter([
@@ -30,8 +35,28 @@ const router = createBrowserRouter([
         element: <NewCharacterRoute />,
       },
       {
+        path: "/welcome",
+        element: <MastersWelcomeRoute />,
+      },
+      {
         path: "/adventure",
         element: <AdventureRoute />,
+      },
+      {
+        path: "/login",
+        element: <LoginRoute />,
+      },
+      {
+        path: "/signup",
+        element: <SignupRoute />,
+      },
+      {
+        path: "/countinuestory",
+        element: <CountinueStoryRoute />,
+      },
+      {
+        path: "/stories",
+        element: <StoriesRoute />,
       },
     ],
   },
