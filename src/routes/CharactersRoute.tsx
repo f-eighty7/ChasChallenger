@@ -1,6 +1,8 @@
 import style from "./CharactersRoute.module.css";
 import { Link } from "react-router-dom";
 import Character from "../types/Character";
+import Profession from "../types/Profession";
+import Species from "../types/Species";
 
 const handleCharacterClicked = (character: Character) => {
   //TODO: set selected character and move on to next route in flow
@@ -43,8 +45,8 @@ export const CharactersRoute = () => {
       constitution: 10,
       charisma: 10,
       backstory: "Bondafan",
-      professionName: null,
-      speciesName: null,
+      profession: Profession.profression1,
+      species: Species.human,
     },
     {
       name: "Bar",
@@ -60,8 +62,8 @@ export const CharactersRoute = () => {
       constitution: 10,
       charisma: 10,
       backstory: "Arbetslös",
-      professionName: null,
-      speciesName: null,
+      profession: Profession.profression2,
+      species: Species.goblin,
     },
   ]; //TODO: get from server
 
