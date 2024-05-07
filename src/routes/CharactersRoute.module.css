@@ -25,10 +25,11 @@
   border: 2px solid white;
   border-radius: 0.5rem;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .character:hover {
-  background-color: #404040;
+  scale: 1.025;
 }
 
 .characterIdentity {
