@@ -21,6 +21,9 @@ body {
   background-color: #303030;
   background-image: url(./components/back.png);
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center ;
+  height: 100vh;
 }
 
 button {
@@ -52,6 +55,13 @@ main {
   .container {
     max-width: 375px;
   }
+
+  /* body {
+    background-image: url(./components/back.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+
+  } */
 }
 
 @media (min-width: 425px) {
