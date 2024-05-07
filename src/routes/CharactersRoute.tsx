@@ -1,14 +1,8 @@
 import style from "./CharactersRoute.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Character from "../types/Character";
 import Profession from "../types/Profession";
 import Species from "../types/Species";
-
-const handleCharacterClicked = (character: Character) => {
-  //TODO: set selected character and move on to next route in flow
-  console.log(character.name, "selected!");
-  console.warn("Not yet implemented");
-};
 
 const handleDeleteCharacterClicked = (
   event: React.MouseEvent<HTMLButtonElement>
@@ -30,6 +24,8 @@ const handleFavoriteCharacterClicked = (
 };
 
 export const CharactersRoute = () => {
+  const navigate = useNavigate();
+
   const characters: Character[] = [
     {
       name: "Foo",
@@ -66,6 +62,13 @@ export const CharactersRoute = () => {
       species: Species.goblin,
     },
   ]; //TODO: get from server
+
+  const handleCharacterClicked = (character: Character) => {
+    //TODO: set selected character and move on to next route in flow
+    console.log(character.name, "selected!");
+
+    navigate("/adventure", { replace: true });
+  };
 
   return (
     <main className={style.page}>
