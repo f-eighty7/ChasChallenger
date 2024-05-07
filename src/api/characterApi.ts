@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { Character } from "../types/types";
 
-const BASE_URL = "http://localhost:3000/addCharacter";
+const BASE_URL = "http://localhost:8000/addCharacter";
 
 // CREATE
 export const createCharacter = async (character: Character) => {

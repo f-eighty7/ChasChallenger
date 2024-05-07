@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { Register } from "../types/types";
 
-const BASE_URL = "http://localhost:3000/user";
+const BASE_URL = "http://localhost:8000/user";
 
 // CREATE
 export const createUser = async (user: Register) => {

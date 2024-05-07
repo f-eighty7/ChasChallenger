@@ -1,7 +1,7 @@
 import axios from "axios";
 import type { StoryText } from "../types/types";
 
-const BASE_URL = "http://localhost:3001/stories";
+const BASE_URL = "http://localhost:8000/stories";
 
 // CREATE
 export const promptStoryText = async (text: StoryText) => {
