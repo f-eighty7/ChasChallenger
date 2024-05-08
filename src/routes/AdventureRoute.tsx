@@ -1,4 +1,5 @@
-import { DungeonMasterChat } from "../components/DungeonMasterChat";
+/* import { DungeonMasterChat } from "../components/DungeonMasterChat"; */
+import { ChatTest } from '../components/ChatTest'
 
 export const AdventureRoute = () => {
   return (
@@ -6,7 +7,8 @@ export const AdventureRoute = () => {
       <h1 style={{ padding: "1rem", marginTop: "1rem", marginBottom: "1rem" }}>
         Master Chat
       </h1>
-      <DungeonMasterChat />
+      {/* <DungeonMasterChat /> */}
+      <ChatTest />
     </main>
   );
 };

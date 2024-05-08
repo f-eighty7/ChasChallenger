@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import "./LoginForm.css";
 import { Link } from "react-router-dom";
 
+
 function LoginForm() {
+  
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -13,20 +15,32 @@ function LoginForm() {
         setErrorMessage(''); 
 
         try {
+            const sessionToken = localStorage.getItem('token');
+
             const response = await axios.post('http://localhost:5001/login', {
                 email,
                 password
-            });
+            },{
+                headers: {
+                    'Content-Type': 'application/json', 
+                    Authorization: `Bearer ${sessionToken}`
+                }
+        
+        
+         } );
+
+
             console.log(response)
-            if (response.data.
-                accessToken) {
-                localStorage.setItem('token', response.data.
-                accessToken);
-                console.log("Login successful!");
-                // Redirect or perform further actions
+            if (response.data.accessToken) { 
+               localStorage.setItem('token', response.data.accessToken);
+              
+                console.log("Inloggningen lyckades! Här är kommer inloggningstoken !!!" ,response.data.accessToken)
+                
+                /* console.log("Här är local Storage!!!!", localStorage.getItem("token")) */
+               
             } else {
                 console.log("Login failed:", response.data.message);
-               /*  setErrorMessage(response.data.message || 'Failed to login.'); */
+               
             }
         } catch (error) {
             console.error("Login error:", error.response ? error.response.data : 'Server error');
@@ -69,3 +83,4 @@ function LoginForm() {
 }
 
 export default LoginForm;
+
