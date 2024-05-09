@@ -1,9 +1,10 @@
 import React, { useState, useContext } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../context/AuthContext';
+
+axios.defaults.withCredentials = true
 
 export function ChatTest() {
-    const user = useContext(AuthContext);
+    
     const [query, setQuery] = useState('');
     const [response, setResponse] = useState('');
     const [loading, setLoading] = useState(false);
@@ -13,19 +14,14 @@ export function ChatTest() {
     };
 
     const handleSend = async () => {
-        if (!query.trim() || !user || !user.token) {
-            setResponse('Invalid user credentials or empty query.');
-            return;
-        }
-        setLoading(true);
+   
         try {
-            const result = await axios.post('http://localhost:5001/getAnswerFromChatGPT', { query }, {
-                headers: {
-                    Authorization: `Bearer ${user.token}`
-                }
-            });
+            const result = await axios.post(`http://localhost:5001/getAnswerFromChatGPT?query=${query}`
+             
+            );
             if (result.status === 200) {
-                setResponse(result.data);
+               
+                console.log("SYNS DENNA!!!))))", result.data)
             } else {
                 setResponse('Failed to get response from the server.');
             }
