@@ -36,7 +36,7 @@ export const AbilityScoreDropdown = ({
           required: `${abilityScoreAttribute} is required!`,
           min: {
             value: 8,
-            message: `${abilityScoreAttribute} is required!`,
+            message: `You need to choose a value for ${abilityScoreAttribute}!`,
           },
           onChange: (event: ChangeEvent<HTMLSelectElement>) => {
             setAbilityScoreAllocations(() => {
@@ -67,7 +67,7 @@ export const AbilityScoreDropdown = ({
       >
         {[
           <option key={`default${abilityScoreAttribute}`} value={0}>
-            0
+            Choose
           </option>,
           ...abilityScoreAllocations.map((abiliyScore) => {
             return (
@@ -87,6 +87,29 @@ export const AbilityScoreDropdown = ({
           {errors[`${abilityScoreAttribute}`]?.message}
         </p>
       )}
+
+      <button
+        type="button"
+        onClick={() => {
+          setAbilityScoreAllocations(() => {
+            //Copy array
+            const newArray = [...abilityScoreAllocations];
+
+            //Enable option for selected value
+            const selected = newArray.find(
+              (abilityScore) => abilityScore.value == attributeAbilityScore
+            );
+            if (selected) selected.avalible = true;
+
+            //Return modified array to setState
+            return newArray;
+          });
+
+          setAttributeAbilityScore(0);
+        }}
+      >
+        Reset
+      </button>
     </div>
   );
 };
