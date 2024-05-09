@@ -21,7 +21,8 @@ export function ChatTest() {
             );
             if (result.status === 200) {
                
-                console.log("SYNS DENNA!!!))))", result.data)
+                console.log("GPT:", result.data)
+                setResponse(result.data)
             } else {
                 setResponse('Failed to get response from the server.');
             }
@@ -45,7 +46,7 @@ export function ChatTest() {
                 {loading ? 'Sending...' : 'Send'}
             </button>
             <div>
-                <p>Response: {response}</p>
+                <p>{response}</p>
             </div>
         </div>
     );
