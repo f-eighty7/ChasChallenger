@@ -37,9 +37,8 @@ export const NewCharacterRoute = () => {
       name: "",
       age: 0,
       gender: "male", //TODO: refactor to enum like Species.ts
-      class: "wizard", //TODO: refactor to enum like Species.ts
       level: 1,
-      hitpoints: 1,
+      healthpoints: 1,
       strength: 0,
       dexterity: 0,
       intelligence: 0,
@@ -47,7 +46,7 @@ export const NewCharacterRoute = () => {
       constitution: 0,
       charisma: 0,
       backstory: "",
-      profession: Profession.profression1,
+      profession: Profession.profession1,
       species: Species.human,
     },
   });
@@ -156,11 +155,12 @@ export const NewCharacterRoute = () => {
           {errors.gender && <p>{errors.gender.message}</p>}
         </div>
 
+        {/* NOTE: Classes are on hold for MVP
         <div>
           <label htmlFor="class">
             <h2>Class</h2>
           </label>
-          <select //TODO: add all classes
+          <select
             id="class"
             {...register("class", { required: "Class is required!" })}
           >
@@ -170,7 +170,7 @@ export const NewCharacterRoute = () => {
           </select>
 
           {errors.class && <p>{errors.class.message}</p>}
-        </div>
+        </div> */}
 
         <div>
           <h2>Ability Scores</h2>

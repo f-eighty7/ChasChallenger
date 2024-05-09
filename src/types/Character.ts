@@ -4,10 +4,10 @@ import Species from "./Species";
 type Character = {
     name: string;
     age: number;
-    gender: string; //should be enum/string literal?
-    class: string; //should be enum/string literal?
+    gender: string;
+    // class: string; //enum
     level: number;
-    hitpoints: number;
+    healthpoints: number;
     strength: number;
     dexterity: number;
     intelligence: number;
@@ -17,9 +17,8 @@ type Character = {
     backstory: string;
     profession: Profession;
     species: Species;
-    //favorite: bool;
-    //image? (url)
-    //id?
+    imageUrl: string;
+    isFavorite: boolean;
   };
 
   export default Character;

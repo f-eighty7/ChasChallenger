@@ -31,9 +31,8 @@ export const CharactersRoute = () => {
       name: "Foo",
       age: 26,
       gender: "male",
-      class: "Wizard",
       level: 1,
-      hitpoints: 10,
+      healthpoints: 10,
       strength: 10,
       dexterity: 10,
       intelligence: 10,
@@ -41,16 +40,17 @@ export const CharactersRoute = () => {
       constitution: 10,
       charisma: 10,
       backstory: "Bondafan",
-      profession: Profession.profression1,
+      profession: Profession.profession1,
       species: Species.human,
+      imageUrl: "",
+      isFavorite: false,
     },
     {
       name: "Bar",
       age: 30,
       gender: "female",
-      class: "Rogue",
       level: 5,
-      hitpoints: 10,
+      healthpoints: 10,
       strength: 10,
       dexterity: 10,
       intelligence: 10,
@@ -58,8 +58,10 @@ export const CharactersRoute = () => {
       constitution: 10,
       charisma: 10,
       backstory: "Arbetslös",
-      profession: Profession.profression2,
+      profession: Profession.profession2,
       species: Species.goblin,
+      imageUrl: "",
+      isFavorite: false,
     },
   ]; //TODO: get from server
 
@@ -84,8 +86,13 @@ export const CharactersRoute = () => {
               <div className={style.characterIdentity}>
                 <img
                   className={style.characterIcon}
-                  src="/images/defaultCharacterIcon.png" /*TODO: load actual image and have default as error*/
-                  alt={`${character.name}`}
+                  src={character.imageUrl}
+                  alt={`${character.name}'s icon`}
+                  loading="lazy"
+                  onError={(error) =>
+                    ((error.target as HTMLImageElement).src =
+                      "/images/missingCharacterIcon.png")
+                  }
                 />
                 <h2>{character.name}</h2>
               </div>
@@ -106,9 +113,8 @@ export const CharactersRoute = () => {
                 </button>
               </div>
               <div className={style.characterInformation}>
-                <p>{character.class}</p>
                 <p>lvl {character.level}</p>
-                <p>{character.hitpoints} hp</p>
+                <p>{character.healthpoints} hp</p>
               </div>
             </li>
           );
@@ -120,27 +126,3 @@ export const CharactersRoute = () => {
     </main>
   );
 };
-
-/*
-import { Link } from "react-router-dom";
-
-export const CharactersRoute = () => {
-  return (
-    <main>
-      <h1 style={{ padding: "1rem", marginTop: "5rem", marginBottom: "3rem" }}>
-        Characters
-      </h1>
-      <Link to="/createcharacter">
-        <button>Create character</button>
-      </Link>{" "}
-      <br />
-      <Link to="/selectcharacter">
-        <button>Select character</button>
-      </Link>
-      <Link to="/login" style={{ padding: "0.5rem", margin: "1rem" }}>
-        Back
-      </Link>
-    </main>
-  );
-};
-*/
