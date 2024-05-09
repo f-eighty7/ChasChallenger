@@ -15,8 +15,12 @@ import { StoriesRoute } from "./routes/StoriesRoute.tsx";
 import { MastersWelcomeRoute } from "./routes/MastersWelcomeRoute.tsx";
 import { SignupRoute } from "./routes/SignupRoute.tsx";
 import "./index.css";
+import { AuthProvider} from "./context/AuthContext.jsx"
 
-const router = createBrowserRouter([
+
+const router = createBrowserRouter
+([
+  
   {
     path: "/",
     element: <RootLayout />,
@@ -63,9 +67,14 @@ const router = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
+  
   <React.StrictMode>
+    <AuthProvider >
     <Provider store={store}>
       <RouterProvider router={router} />
     </Provider>
+    </AuthProvider>
   </React.StrictMode>
+  
 );
+
