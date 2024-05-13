@@ -20,6 +20,7 @@ function ButtonGradientBlue({ buttonText }) {
                 left: '50%',
                 transform: 'translateX(-50%)',
                 position: "absolute",
+                border: 'none',
 
             }}>
                 {buttonText}

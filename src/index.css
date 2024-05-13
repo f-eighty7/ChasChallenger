@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url("https://fonts.googleapis.om/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap");
 
 :root {
@@ -9,7 +13,7 @@
   min-width: 0;
   min-height: 0;
   padding: 0;
-  border: 0;
+  border: 0; 
   margin: 0;
   color: var(--text-color);
 }

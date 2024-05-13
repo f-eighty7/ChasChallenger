@@ -20,7 +20,7 @@ export const HomeRoute = () => {
             textShadow: "4px 4px 6px rgba(0, 0, 0, 0.8)",
           }}
         >
-          MasteR
+          Fantasy
         </h2>
         <h1
           style={{
@@ -29,6 +29,7 @@ export const HomeRoute = () => {
             lineHeight: "80%",
             textShadow: "4px 4px 6px rgba(0, 0, 0, 0.8)",
           }}
+          className=""
         >
           ChasS
         </h1>
