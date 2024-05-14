@@ -17,6 +17,15 @@
   resize: none;
 }
 
+.avatarIcon {
+  display: flex;
+  flex-direction: column;
+}
+
+.avatarIcon img {
+  width: 12rem;
+}
+
 .backButton {
   padding-bottom: 1.5rem;
 }

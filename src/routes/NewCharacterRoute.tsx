@@ -48,6 +48,8 @@ export const NewCharacterRoute = () => {
       backstory: "",
       profession: Profession.profession1,
       species: Species.human,
+      imageUrl: "",
+      isFavorite: false,
     },
   });
 
@@ -79,6 +81,17 @@ export const NewCharacterRoute = () => {
       avalible: true,
     },
   ]);
+
+  const [avatarIconUrl, setAvatarIconUrl] = useState<string>(
+    "/src/assets/images/defaultCharacterIcon.png"
+  );
+
+  const handleGenerateAvatarButtonClicked = () => {
+    console.warn("Not yet implemented");
+
+    //TODO: send prompt with other character information to generate a representative avatar icon, then set to show like vvv
+    setAvatarIconUrl("https://avatars.githubusercontent.com/u/72140147?v=4");
+  };
 
   return (
     <main>
@@ -244,6 +257,16 @@ export const NewCharacterRoute = () => {
           ></textarea>
 
           {errors.backstory && <p>{errors.backstory.message}</p>}
+        </div>
+
+        <div className={style.avatarIcon}>
+          <label htmlFor="">
+            <h2>Avatar</h2>
+          </label>
+          <img src={avatarIconUrl} alt="Your Avatar" />
+          <button type="button" onClick={handleGenerateAvatarButtonClicked}>
+            Generate New
+          </button>
         </div>
 
         <button type="submit">Create!</button>
