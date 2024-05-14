@@ -186,10 +186,6 @@ export const NewCharacterRoute = () => {
               />
             );
           })}
-
-          <button type="button" onClick={() => {}}>
-            Reset All
-          </button>
         </div>
 
         <div>

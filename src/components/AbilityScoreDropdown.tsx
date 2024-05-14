@@ -87,7 +87,8 @@ export const AbilityScoreDropdown = ({
           {errors[`${abilityScoreAttribute}`]?.message}
         </p>
       )}
-
+      {/* 
+      TODO: reset buttons, moving on for now as reset does not set <select> value, leads to validation not working and its wasting time
       <button
         type="button"
         onClick={() => {
@@ -105,11 +106,12 @@ export const AbilityScoreDropdown = ({
             return newArray;
           });
 
+          //BUG: does not set <select> value, leads to validation not working
           setAttributeAbilityScore(0);
         }}
       >
         Reset
-      </button>
+      </button> */}
     </div>
   );
 };
