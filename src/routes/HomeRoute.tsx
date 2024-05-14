@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import ButtonGradientBlue from "../components/ButtonGradientBlue";
+import ButtonOne from "../components/ButtonOne";
 
 export const HomeRoute = () => {
   return (
@@ -34,8 +34,8 @@ export const HomeRoute = () => {
           ChasS
         </h1>
       </div>
-      <Link to={"/welcome"}>
-        <ButtonGradientBlue buttonText={"Start"} />
+      <Link to={"/login"}>
+        {/* <ButtonOne buttonText={"Start"} /> */}
       </Link>
     </main>
   );

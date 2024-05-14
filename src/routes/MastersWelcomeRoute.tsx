@@ -1,7 +1,7 @@
 // @ts-ignore
 
 import { Link } from "react-router-dom";
-import ButtonGradientBlue from "../components/ButtonGradientBlue";
+import ButtonOne from "../components/ButtonOne";
 
 export const MastersWelcomeRoute = () => {
   return (
@@ -13,7 +13,7 @@ export const MastersWelcomeRoute = () => {
         fontFamily: '"Cinzel Decorative", serif',
         fontSize: "3rem",
       
-        }}>Master's Welcome</h1>
+        }}>Welcome</h1>
       <p
         style={{
           padding: "1rem",
@@ -27,7 +27,7 @@ export const MastersWelcomeRoute = () => {
         hic cumque quas odit ex nemo libero possimus. Possimus, ab.
       </p>
       <Link to={"/login"}>
-        <ButtonGradientBlue buttonText={'Next'} />
+        <ButtonOne buttonText={'Next'} />
       </Link>
     </main>
   );
