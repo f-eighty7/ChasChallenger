@@ -91,7 +91,7 @@ export const CharactersRoute = () => {
                   loading="lazy"
                   onError={(error) =>
                     ((error.target as HTMLImageElement).src =
-                      "/images/missingCharacterIcon.png")
+                      "src/assets/images/defaultCharacterIcon.png")
                   }
                 />
                 <h2>{character.name}</h2>
