@@ -54,7 +54,7 @@ function LoginForm()
 
     return (
 			// border-2 border-indigo-600 BORDER IS MISSING
-			<div className="bg-zinc-800 p-5 rounded-xl ">
+			<div className="bg-zinc-800 p-5 rounded-xl border">
 				<form
 					className="max-w-sm mx-auto"
 					onSubmit={handleLogin}>
