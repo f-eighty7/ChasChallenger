@@ -1,5 +1,6 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect, useRef } from 'react';
 import axios from 'axios';
+import './ChatTest.css'
 
 axios.defaults.withCredentials = true
 
@@ -10,12 +11,19 @@ export function ChatTest() {
     const [loading, setLoading] = useState(false);
     const [history, setHistory] = useState([]);
 
+    const endOfMessagesRef = useRef(null)
+
     const handleInputChange = (e) => {
         setQuery(e.target.value);
     };
 
     const handleSend = async () => {
-        setLoading(true)
+        if (!query.trim()) return;
+
+        const newHistory = [...history, { query, response: 'loading' }];
+        setHistory(newHistory);
+        setQuery('');
+        setLoading(true);
    
         try {
             const result = await axios.post(`http://localhost:5001/getAnswerFromChatGPT?query=${query}`
@@ -25,6 +33,7 @@ export function ChatTest() {
                
                 console.log("Svar:", result.data)
                 setResponse(result.data)
+
 
                 setHistory([...history, { query, response: result.data }]);
             } else {
@@ -38,31 +47,48 @@ export function ChatTest() {
         }
     };
 
+    useEffect(() => {
+        if (endOfMessagesRef.current){
+            endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth'})
+        }
+    },[history])
+
     return (
-        <div>
-            <input
-                type="text"
-                value={query}
-                onChange={handleInputChange}
-                placeholder="Type your message..."
-            />
-            <button onClick={handleSend} disabled={!query.trim() || loading}>
-                {loading ? 'Sending...' : 'Send'}
-            </button>
-            <div>
-                <p>{response}</p>
-            </div>
-            <div>
-                <h2>Chat History</h2>
-                <ul>
+        <div className="chat-container">
+            <div className="chat-box">
+                <div className="chat-history">
                     {history.map((msg, index) => (
-                        <li key={index}>
-                            <strong>Query:</strong> {msg.query} <br />
-                            <strong>Response:</strong> {msg.response} <br />
-                        </li>
+                        <div key={index} className="chat-message">
+                            <div className="user-query bubble">
+                                <strong></strong> {msg.query}
+                            </div>
+                            <div className="chat-response bubble">
+                                <strong></strong> {msg.response === 'loading' ? (
+                                    <span className="loader">
+                                            <span></span>_<span></span><span></span>
+                                            <span></span><span></span><span></span>
+                                            </span>
+) : msg.response}
+                                
+                            </div>
+                        </div>
                     ))}
-                </ul>
-            </div>
+                    <div ref={endOfMessagesRef} />
+                </div>
         </div>
+                <div className="chat-input">
+                    <input
+                        type="text"
+                        value={query}
+                        onChange={handleInputChange}
+                        placeholder="skriv nåt för fan..."
+                    />
+                    <button onClick={handleSend} disabled={!query.trim() || loading}>
+                        {loading ? 'Sending...' : 'Send'}
+                    </button>
+                </div>
+                {/* {response && <div className="chat-response">{response}</div>} */}
+            </div>
+        
     );
 }
