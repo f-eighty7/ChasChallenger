@@ -31,12 +31,12 @@ function Navbar() {
             <ul 
             className={`${menuOpen ? style.open : ''}`}
            >
-                <li>
+                {/* <li>
                     <NavLink 
                         to={'/welcome'}
                         onClick={() => handleItemClicked('welcome')}
                         className={`${activeItem === 'welcome' ? style['active'] : ''}`}>Welcome</NavLink>
-                </li>
+                </li> */}
                 <li>
                     <NavLink 
 

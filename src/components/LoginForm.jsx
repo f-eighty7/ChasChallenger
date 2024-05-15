@@ -53,14 +53,11 @@ function LoginForm()
     };
 
     return (
-			// border-2 border-indigo-600 BORDER IS MISSING
 			<div className="bg-zinc-800 p-5 rounded-xl border">
 				<form
 					className="max-w-sm mx-auto"
 					onSubmit={handleLogin}>
-				<h1
-					className="text-center text-xl">
-					Log in</h1>
+					<h1 className="text-center text-xl">Log in</h1>
 					<div className="mb-5">
 						<label
 							htmlFor="email"
@@ -98,7 +95,7 @@ function LoginForm()
 							/>
 							{errorMessage && <p className="error">{errorMessage}</p>}
 							<input
-                                className="input-checkbox"
+								className="input-checkbox"
 								id="remember"
 								type="checkbox"
 								value=""
@@ -109,13 +106,23 @@ function LoginForm()
 							className="ms-2 text-sm font-medium text-white dark:text-gray-300">
 							Remember me
 						</label>
-					</div>
-					<p className="signUp">Did you forget your password?</p>
+				</div>
+				<div
+				className="text-center">
 					<Link
-						to="/signup"
-						className="buttonLink">
-						<ButtonOne buttonText="Sign up" />
+						to="/signup">
+						<ButtonOne
+							paddingClass={"px-10"}
+							marginClass={"mt-3"}
+							buttonText="Sign up"
+						/>
 					</Link>
+					<Link
+						to={"/error"}>
+						<button className="underline text-xs">* Forgot your Password?</button>
+					</Link>
+
+				</div>
 				</form>
 			</div>
 		);
