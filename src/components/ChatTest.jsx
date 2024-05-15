@@ -65,10 +65,10 @@ export function ChatTest() {
                             <div className="chat-response bubble">
                                 <strong></strong> {msg.response === 'loading' ? (
                                     <span className="loader">
-                                            <span></span>_<span></span><span></span>
+                                            <span></span>.<span></span><span></span>
                                             <span></span><span></span><span></span>
                                             </span>
-) : msg.response}
+                                            ) : msg.response}
                                 
                             </div>
                         </div>
