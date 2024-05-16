@@ -14,9 +14,10 @@ function Navbar() {
     // const classNameFunction = ({ isActive }) => (isActive ? "active_link" : "");
     
     return (
-        <nav>
+        <nav
+        className='bg-zinc-800/70 p-2'>
                     <Link to={'/'}
-                    className={style.title}>Master Chass</Link>
+                    className={style.title}>fantasy ChasS</Link>
                 <div
                 className={style.menu}
                 onClick={() => {
@@ -30,12 +31,12 @@ function Navbar() {
             <ul 
             className={`${menuOpen ? style.open : ''}`}
            >
-                <li>
+                {/* <li>
                     <NavLink 
                         to={'/welcome'}
                         onClick={() => handleItemClicked('welcome')}
                         className={`${activeItem === 'welcome' ? style['active'] : ''}`}>Welcome</NavLink>
-                </li>
+                </li> */}
                 <li>
                     <NavLink 
 

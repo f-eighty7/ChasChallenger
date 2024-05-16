@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./LoginForm.css";
 import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ButtonOne from "./ButtonOne";
 
 axios.defaults.withCredentials = true
 
@@ -56,37 +58,81 @@ function LoginForm()
     };
 
     return (
-        <div className="loginForm-container">
-            <form className="loginForm" onSubmit={handleLogin}>
-                <h1 className="login">Login</h1>
-                <div>
-                    <label htmlFor="email" className="label">E-post:</label>
-                    <input
-                        id="email"
-                        className="input"
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label htmlFor="password" className="label">Lösenord:</label>
-                    <input
-                        id="password"
-                        className="input"
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                </div>
-                <button className="button" type="submit">Logga in</button>
-                {errorMessage && <p className="error">{errorMessage}</p>}
-                <p className="signUp">Vill du bli en av oss? 
-                  <Link to="/signup" className="buttonLink">Skapa konto</Link>
-                </p>
-            </form>
-        </div>
-    );
+			<div className="bg-zinc-800 p-5 rounded-xl border">
+				<form
+					className="max-w-sm mx-auto"
+					onSubmit={handleLogin}>
+					<h1 className="text-center text-xl">Log in</h1>
+					<div className="mb-5">
+						<label
+							htmlFor="email"
+							className="block mb-2 text-sm font-medium text-gray-200 dark:text-white">
+							E-mail*
+						</label>
+						<input
+							id="email"
+							className="input-form"
+							type="email"
+							placeholder="fantasy@chass.se"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
+					<div className="mb-5">
+						<label
+							htmlFor="password"
+							className="block mb-2 text-sm font-medium text-white dark:text-white">
+							Password*
+						</label>
+						<input
+							id="password"
+							className="input-form"
+							type="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</div>
+					<div className="flex items-start mb-5">
+						<div className="flex items-center h-5">
+							<ButtonOne
+								buttonText={"Log in"}
+								buttonType="submit"
+							/>
+							{errorMessage && <p className="error">{errorMessage}</p>}
+							<input
+								className="input-checkbox"
+								id="remember"
+								type="checkbox"
+								value=""
+							/>
+						</div>
+						<label
+							for="remember"
+							className="ms-2 text-sm font-medium text-white dark:text-gray-300">
+							Remember me
+						</label>
+				</div>
+				<div
+				className="text-center">
+					<Link
+						to="/signup">
+						<ButtonOne
+							paddingClass={"px-10"}
+							marginClass={"mt-3"}
+							buttonText="Sign up"
+						/>
+					</Link>
+					<Link
+						to={"/error"}>
+						<button className="underline text-xs">* Forgot your Password?</button>
+					</Link>
+
+				</div>
+				</form>
+			</div>
+		);
 }
 
 export default LoginForm;
+
+

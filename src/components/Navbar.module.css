@@ -8,7 +8,6 @@
 nav {
     display: flex;
     align-items: center;
-    background-color: #2489D7;
     position: sticky;
     top: 0;
     height: 100%;
@@ -59,7 +58,8 @@ nav ul li a {
 }
 
 nav ul li a:not(.active,.title):hover {
-    background:linear-gradient(to right, #287ED2, #02DDFB);
+    background: radial-gradient(#F5FBF1, #A5B735);
+    color: black;
 
 
 }
@@ -68,8 +68,8 @@ nav ul li a:not(.active,.title):hover {
 nav .menu {
     display: none;
     position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 1rem;
+    right: 1rem;
     flex-direction: column;
     justify-content: space-between;
     width: 1.5rem;
