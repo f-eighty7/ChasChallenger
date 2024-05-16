@@ -26,7 +26,9 @@ function SignUpForm() {
                 password
             });
             console.log('User signed up:', response.data);
-            // Implement your logic upon successful signup, like redirecting to another page
+            navigate('/login');
+            alert('Grattis! Nu är du en av oss!!! Varken du vill eller inte')
+            
         } catch (error) {
             console.error('There was an error during signup:', error);
             alert('Error signing up, please try again later.');
