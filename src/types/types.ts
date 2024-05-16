@@ -11,21 +11,22 @@ export interface Login {
 export interface Story {
   id: string;
   name: string;
-  summery: string;
+  summary: string;
 }
 
 export interface StoryItemProps {
   story: Story;
-  onSelected: (id: string) => void;
+  onSelected: (name: string, summary: string) => void;
 }
 export interface StoryText {
-  text: string;
+  name: string;
+  summary: string;
 }
 
 export interface ResumeStory {
   id: string;
   name: string;
-  summery: string;
+  summary: string;
 }
 export interface ResumeStoryProps {
   resumeStory: ResumeStory;
@@ -39,19 +40,3 @@ export interface StoryMessageItemProps {
   storyMessages: StoryMessages;
 }
 
-export interface Character {
-  name: string;
-  age: number;
-  gender: string;
-  level: number;
-  healthPoints: number;
-  strength: number;
-  dexterity: number;
-  intelligence: number;
-  wisdom: number;
-  constitution: number;
-  charisma: number;
-  backstory: string;
-  professionName: string;
-  speciesName: string;
-}
