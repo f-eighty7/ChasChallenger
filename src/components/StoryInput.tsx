@@ -31,16 +31,18 @@ export const StoryInput = () => {
   return (
     <div>
       <form className={style.form} onSubmit={handleSubmit}>
-        <label htmlFor="textarea">What kind of story setting would you like?</label>
-{/*         <input
+        <label htmlFor="textarea" className={style["text-label"]}>What kind of story setting would you like?</label>
+{/* {        <input
           placeholder="Name...?????"
           value={inputName}
           onChange={handleChangeName}
-        /> */}
+        />} */}
         <textarea
+        name="textarea"
           placeholder="Type here..."
           value={inputSummery}
           onChange={handleChangeSummery}
+          className={style.textarea}
         />
         <div className={style["button-wrapper"]}>
         <Link to="/characters" ><button
