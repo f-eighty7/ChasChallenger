@@ -19,10 +19,10 @@ export const StoryInput = () => {
     setInputName("");
     setInputSummery("");
   };
-/*   const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeName = (e: React.ChangeEvent<HTMLInputElement>) => {
     const name = e.target.value;
     setInputName(name);
-  }; */
+  };
   const handleChangeSummery = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const summery = e.target.value;
     setInputSummery(summery);
@@ -32,11 +32,11 @@ export const StoryInput = () => {
     <div>
       <form className={style.form} onSubmit={handleSubmit}>
         <label htmlFor="textarea" className={style["text-label"]}>What kind of story setting would you like?</label>
-{/* {        <input
-          placeholder="Name...?????"
+{        <input
+          placeholder="Fix input, vänta på beslut"
           value={inputName}
           onChange={handleChangeName}
-        />} */}
+        />}
         <textarea
         name="textarea"
           placeholder="Type here..."
@@ -51,6 +51,7 @@ export const StoryInput = () => {
         >
           Go Back
         </button></Link>
+        <Link to="/adventure" >
                 <button
                 title="Save"
           className={style["story-button"]}
@@ -58,7 +59,7 @@ export const StoryInput = () => {
           disabled={!inputSummery || !inputName}
         >
           Save
-        </button>
+        </button></Link>
         </div>
       </form>
     </div>
