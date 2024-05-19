@@ -1,10 +1,11 @@
-// @ts-ignore
-import { CarouselDefault } from "../components/Carrousel";
+// // @ts-ignore
 
-export const MastersWelcomeRoute = () => {
-	return (
-		<main>
-      <CarouselDefault />
-		</main>
-	);
-};
+// import { CarouselDefault } from "../components/Carrousel";
+
+// export const MastersWelcomeRoute = () => {
+// 	return (
+// 		<main>
+//       <CarouselDefault />
+// 		</main>
+// 	);
+// };

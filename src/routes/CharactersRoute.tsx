@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Character from "../types/Character";
 import Profession from "../types/Profession";
 import Species from "../types/Species";
-import SimpleSlider from "../components/Carrousel";
+import CharacterCard from "../components/CharacterCard";
 
 const handleDeleteCharacterClicked = (
 	event: React.MouseEvent<HTMLButtonElement>
@@ -44,6 +44,7 @@ export const CharactersRoute = () => {
 			backstory: "Bondafan",
 			profession: Profession.profression1,
 			species: Species.human,
+			image: "src/Images/catA.png",
 		},
 		{
 			name: "Bar",
@@ -61,6 +62,7 @@ export const CharactersRoute = () => {
 			backstory: "Arbetslös",
 			profession: Profession.profression2,
 			species: Species.goblin,
+			image: "src/Images/fada.png",
 		},
 	]; //TODO: get from server
 
@@ -77,38 +79,13 @@ export const CharactersRoute = () => {
 			<ul className={style.charactersList}>
 				{characters.map((character, index) => {
 					return (
-						<li
-							className={style.character}
+						<CharacterCard
 							key={character.name + index}
-							onClick={() => handleCharacterClicked(character)}>
-							<div className={style.characterIdentity}>
-								<img
-									className={style.characterIcon}
-									src="/images/defaultCharacterIcon.png" /*TODO: load actual image and have default as error*/
-									alt={`${character.name}`}
-								/>
-								<h2>{character.name}</h2>
-							</div>
-							<div className={style.characterActions}>
-								<button
-									type="button"
-									title="Delete character"
-									onClick={handleDeleteCharacterClicked}>
-									<i className={"fa fa-trash"} />
-								</button>
-								<button
-									type="button"
-									title="Toggle if character is favorited"
-									onClick={handleFavoriteCharacterClicked}>
-									<i className={"fa fa-star-o"} />
-								</button>
-							</div>
-							<div className={style.characterInformation}>
-								<p>{character.class}</p>
-								<p>lvl {character.level}</p>
-								<p>{character.hitpoints} hp</p>
-							</div>
-						</li>
+							character={character}
+							onDelete={handleDeleteCharacterClicked}
+							onFavorite={handleFavoriteCharacterClicked}
+							onSelect={handleCharacterClicked}
+						/>
 					);
 				})}
 			</ul>
