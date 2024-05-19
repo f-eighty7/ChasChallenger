@@ -1,19 +1,32 @@
 import React, { useState } from "react";
 import ButtonOne from "./ButtonOne";
 import { Link, useNavigate } from "react-router-dom";
+import CharacterStatsContainer from "./CharacterStats";
 
 function CharacterCard({ character, onDelete, onFavorite, onSelect }) {
+	const [showStats, setShowStats] = useState(false);
+
+	const toggleStats = () => {
+		setShowStats(!showStats);
+	};
+
+	const showCharacterStats = (character) => {
+		console.log("Stats:", character);
+		toggleStats();
+	};
+
 	return (
 		<li
-			className="flex flex-col justify-center h-full mb-12 items-center border rounded-xl hover:bg-radial-gradient cursor-pointer"
+			className="flex flex-col justify-center h-full mb-12 items-center border rounded-xl  hover:border-lime-500  hover:border-2 cursor-pointer"
 			onClick={() => onSelect(character)}>
 			<div className="flex justify-center items-center text-center w-[45%] gap-3 py-2">
 				<button
+					className="opacity-60 hover:opacity-100"
 					type="button"
 					title="Delete character"
 					onClick={(e) => {
 						e.stopPropagation();
-						// show stats
+						showCharacterStats(character);
 					}}>
 					<img
 						src="src/Images/info.png"
@@ -22,6 +35,7 @@ function CharacterCard({ character, onDelete, onFavorite, onSelect }) {
 				</button>
 
 				<button
+					className="opacity-60 hover:opacity-100"
 					type="button"
 					title="Toggle if character is favorite"
 					onClick={(e) => {
@@ -35,6 +49,7 @@ function CharacterCard({ character, onDelete, onFavorite, onSelect }) {
 				</button>
 
 				<button
+					className="opacity-60 hover:opacity-100"
 					type="button"
 					title="Delete character"
 					onClick={(e) => {
@@ -49,7 +64,7 @@ function CharacterCard({ character, onDelete, onFavorite, onSelect }) {
 				</button>
 			</div>
 
-			<div className="p-3 pt-0 w-[50%]">
+			<div className="p-3 pt-0 flex flex-col justify-center items-center text-center">
 				<img
 					src={character.image || "/images/defaultCharacterIcon.png"}
 					alt=""
@@ -65,6 +80,7 @@ function CharacterCard({ character, onDelete, onFavorite, onSelect }) {
 					}}>
 					{character.name}
 				</h2>
+				{showStats && <CharacterStatsContainer character={character} />}
 			</div>
 
 			{/* 
