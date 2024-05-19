@@ -29,7 +29,7 @@ export const CharactersRoute = () => {
 
 	const characters: Character[] = [
 		{
-			name: "Foo",
+			name: "FOO",
 			age: 26,
 			gender: "male",
 			class: "Wizard",
@@ -47,7 +47,7 @@ export const CharactersRoute = () => {
 			image: "src/Images/catA.png",
 		},
 		{
-			name: "Bar",
+			name: "BAR",
 			age: 30,
 			gender: "female",
 			class: "Rogue",
