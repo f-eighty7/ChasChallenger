@@ -38,10 +38,10 @@ const router = createBrowserRouter
         path: "/characters/new",
         element: <NewCharacterRoute />,
       },
-      // {
-      //   path: "/welcome",
-      //   element: <MastersWelcomeRoute />,
-      // },
+      {
+        path: "/welcome",
+        element: <MastersWelcomeRoute />,
+      },
       {
         path: "/adventure",
         element: <AdventureRoute />,

@@ -103,7 +103,7 @@ function LoginForm()
 						</div>
 						<label
 							for="remember"
-							className="ms-2 text-sm font-medium text-white dark:text-gray-300">
+							className="ms-2 text-xs font-medium text-white dark:text-gray-300 ">
 							Remember me
 						</label>
 				</div>
