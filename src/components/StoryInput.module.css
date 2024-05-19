@@ -1,0 +1,42 @@
+.form {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.text-label {
+font-size: 0.8rem;
+}
+.textarea {
+width: 250px;
+height: 150px;
+color: rgba(29, 30, 32, 1);
+border: 3px solid rgba(165, 193, 119, 1);
+border-radius: 4px;
+margin-bottom: 5rem;
+font-size: 1rem;
+resize: none;
+}
+.textarea:focus {
+border: 3px solid rgba(165, 193, 119, 1);
+}
+.button-wrapper {
+display: flex;
+gap: 2rem;
+font-weight: 500;
+}
+.back-button {
+width: 120px;
+height: 40px;
+border: solid;
+border-radius: 24px;
+border-color:  rgba(165, 193, 119, 1);
+}
+.story-button {
+width: 120px;
+height: 40px;
+background: linear-gradient( rgba(165, 193, 119, 1), rgba(242, 242, 176, 1),  rgba(165, 193, 119, 1));
+border-radius: 24px;
+border-color: rgba(121, 193, 119, 1);
+color: rgba(29, 30, 32, 1);
+}

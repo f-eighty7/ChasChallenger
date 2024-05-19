@@ -8,7 +8,7 @@ export const StoryItem = ({ story, onSelected }: StoryItemProps) => {
 
   const handleSelected = () => {
     if (!selected) {
-      onSelected(story.summery);
+      onSelected(story.name, story.summary);
     }
     setSelected(!selected);
   };
@@ -24,7 +24,7 @@ export const StoryItem = ({ story, onSelected }: StoryItemProps) => {
             isExpanded ? style["summery-expanded"] : style.summery
           }`}
         >
-          {story.summery}
+          {story.summary}
         </p>
         <div className={style["story-buttons"]}>
           <button

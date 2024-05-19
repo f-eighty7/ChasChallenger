@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./LoginForm.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+/* import { Link } from "react-router-dom"; */
 import ButtonOne from "./ButtonOne";
 
 axios.defaults.withCredentials = true
 
 function LoginForm()
  {
-    
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -29,14 +30,18 @@ function LoginForm()
         const hejsan = await axios.get('http://localhost:5001/user/character')
             console.log("detta är hejsan", hejsan)
             console.log(response);
+            
+
 
            
            if (response.status === 200) {
                 console.log("Login succeeded!");}
+                alert('WOW!!! Du lyckades logga in. Det här kommer att bli en bra dag!')
+                navigate('/characters');
               
                 
                 if (response.headers['set-cookie']) {
-                    console.log("Cookies from Set-Cookie header:", response.headers['set-cookie']);
+                    /* console.log("Cookies from Set-Cookie header:", response.headers['set-cookie']); */
                 
 
                 
