@@ -11,6 +11,7 @@ export function ChatTest() {
     const [response, setResponse] = useState('');
     const [loading, setLoading] = useState(false);
     const [history, setHistory] = useState([]);
+
     const endOfMessagesRef = useRef(null)
 
     const handleInputChange = (e) => {
@@ -60,17 +61,18 @@ export function ChatTest() {
                     {history.map((msg, index) => (
                         <div key={index} className="chat-message">
                             <div className="user-query bubble">
-                                <strong></strong> {msg.query}
+                                {msg.query}
                             </div>
                             <div className="chat-response bubble">
-                                <strong></strong> <TypingText text={msg.response === 'loading' ? (
-                                    <span className="loader">
-                                            <span></span>.<span></span><span></span>
-                                            <span></span><span></span><span></span>
-                                            </span>
-                                            ) : msg.response}/>
+                              {msg.response === 'loading' ? (
+                                <span className="loader"></span>
+                              ): (
+                                <TypingText text={msg.response} />   
                                 
+                              )}   
+                              
                             </div>
+                            
                         </div>
                     ))}
                     <div ref={endOfMessagesRef} />
