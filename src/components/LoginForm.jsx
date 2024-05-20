@@ -58,9 +58,9 @@ function LoginForm()
     };
 
     return (
-			<div className="bg-zinc-800 p-5 rounded-xl border">
+			<div className="bg-gray-900 p-5 rounded-xl border">
 				<form
-					className="max-w-sm mx-auto"
+					className="max-w-sm mx-auto "
 					onSubmit={handleLogin}>
 					<h1 className="text-center text-xl">Log in</h1>
 					<div className="mb-5">
@@ -108,7 +108,7 @@ function LoginForm()
 						</div>
 						<label
 							for="remember"
-							className="ms-2 text-sm font-medium text-white dark:text-gray-300">
+							className="ms-2 text-xs font-medium text-white dark:text-gray-300 ">
 							Remember me
 						</label>
 				</div>

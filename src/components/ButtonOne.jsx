@@ -6,20 +6,12 @@ function ButtonOne({ buttonText, bgColor, hoverBgColor, textColor, buttonType, p
     const text = textColor || "text-gray-900";
     const buttonTxt = buttonText || 'add buttonText';
     const type = buttonType || 'button';
-    const padding = paddingClass || '';
-    const margin = marginClass || ''
 
     return (
         <div>
             <button
             type={type}
-            className={`
-            ${background} 
-            ${hoverBackground} 
-            ${text} 
-            ${padding}
-            ${margin}
-            font-regular py-2 px-4 rounded-full font-medium text-sm text-center me-2 mb-2`}
+            className={`_story-button_plvvd_35`}
             >
                 {buttonTxt}
             </button>
