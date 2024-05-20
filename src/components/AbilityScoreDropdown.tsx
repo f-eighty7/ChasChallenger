@@ -1,5 +1,9 @@
 import { useState, ChangeEvent } from "react";
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import {
+  FieldErrors,
+  UseFormGetValues,
+  UseFormRegister,
+} from "react-hook-form";
 import AbilityAttribute from "../types/AbilityAttributes";
 import AbilityScoreOption from "../types/AbilityScoreOption";
 import Character from "../types/Character";
@@ -11,6 +15,7 @@ interface Props {
     React.SetStateAction<AbilityScoreOption[]>
   >;
   register: UseFormRegister<Character>;
+  getValues: UseFormGetValues<Character>;
   errors: FieldErrors<Character>;
 }
 
@@ -19,9 +24,10 @@ export const AbilityScoreDropdown = ({
   abilityScoreAllocations,
   setAbilityScoreAllocations,
   register,
+  getValues,
   errors,
 }: Props) => {
-  const [attributeAbilityScore, setAttributeAbilityScore] = useState(0);
+  const [attributeAbilityScore, setAttributeAbilityScore] = useState(0); //Keeps track of previous value to set it avalible to select.
 
   return (
     <div id={`${abilityScoreAttribute}-ability-score`}>
@@ -31,7 +37,10 @@ export const AbilityScoreDropdown = ({
 
       <select
         id={`${abilityScoreAttribute}`}
-        value={attributeAbilityScore}
+        onFocus={() => {
+          //Sync state for if value got changed externally
+          setAttributeAbilityScore(getValues()[`${abilityScoreAttribute}`]);
+        }}
         {...register(`${abilityScoreAttribute}`, {
           required: `${abilityScoreAttribute} is required!`,
           min: {
@@ -54,6 +63,7 @@ export const AbilityScoreDropdown = ({
               const previousSelected = newArray.find(
                 (abilityScore) => abilityScore.value == attributeAbilityScore
               );
+
               if (previousSelected) previousSelected.avalible = true;
 
               //Return modified array to setState

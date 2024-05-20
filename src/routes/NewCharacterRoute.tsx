@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm, UseFormGetValues, UseFormSetValue } from "react-hook-form";
 import style from "./NewCharacterRoute.module.css";
@@ -33,15 +33,81 @@ const handleGenerateBackstoryButtonClicked = (
 const handleGenerateAvatarButtonClicked = (
   getValues: UseFormGetValues<Character>,
   setValue: UseFormSetValue<Character>,
-  setAvatarIconUrl: React.Dispatch<React.SetStateAction<string>>
+  setAvatarIconPreviewUrl: React.Dispatch<React.SetStateAction<string>>
 ) => {
   console.warn("Not yet implemented");
 
   const formValues = getValues();
   //TODO: send prompt with other character information (formValues) to generate a representative avatar icon
   const tempResonese = "https://avatars.githubusercontent.com/u/72140147?v=4";
-  setAvatarIconUrl(tempResonese); //Preview
+  setAvatarIconPreviewUrl(tempResonese); //Preview
   setValue("imageUrl", tempResonese); //Form data
+};
+
+const handleGenerateCharacterButtonClicked = (
+  characterPrompt: string,
+  setValue: UseFormSetValue<Character>,
+  setAbilityScoreAllocations: React.Dispatch<
+    React.SetStateAction<AbilityScoreOption[]>
+  >,
+  setAvatarIconPreviewUrl: React.Dispatch<React.SetStateAction<string>>
+) => {
+  console.warn("Not yet implemented");
+  //TODO: send prompt (characterPrompt) and recieve a response with character data
+
+  setValue("name", "Genorator Blawg");
+  setValue("age", 999);
+  setValue("gender", "female");
+  setValue("level", 666);
+
+  //TODO: Extra, setting like this does not change from "error field is required state".
+  setValue("strength", 15);
+  setValue("dexterity", 8);
+  setValue("intelligence", 10);
+  setValue("wisdom", 12);
+  setValue("constitution", 13);
+  setValue("charisma", 14);
+  //All values will be set so this works
+  setAbilityScoreAllocations([
+    {
+      value: 15,
+      avalible: false,
+    },
+    {
+      value: 14,
+      avalible: false,
+    },
+    {
+      value: 13,
+      avalible: false,
+    },
+    {
+      value: 12,
+      avalible: false,
+    },
+    {
+      value: 10,
+      avalible: false,
+    },
+    {
+      value: 8,
+      avalible: false,
+    },
+  ]);
+
+  setValue(
+    "backstory",
+    "Hello full character generated with this epic backstory! Wowzers"
+  );
+  setValue("profession", Profession.profession3);
+  setValue("species", Species.elf);
+  setValue(
+    "imageUrl",
+    "https://images.panda.org/assets/images/pages/welcome/orangutan_1600x1000_279157.jpg"
+  );
+  setAvatarIconPreviewUrl(
+    "https://images.panda.org/assets/images/pages/welcome/orangutan_1600x1000_279157.jpg"
+  );
 };
 
 export const NewCharacterRoute = () => {
@@ -80,6 +146,9 @@ export const NewCharacterRoute = () => {
     },
   });
 
+  const [generateCharacterPrompt, setGenerateCharacterPrompt] =
+    useState<string>("");
+
   const [abilityScoreAllocations, setAbilityScoreAllocations] = useState<
     AbilityScoreOption[]
   >([
@@ -109,13 +178,36 @@ export const NewCharacterRoute = () => {
     },
   ]);
 
-  const [avatarIconUrl, setAvatarIconUrl] = useState<string>(
+  const [avatarIconPreviewUrl, setAvatarIconPreviewUrl] = useState<string>(
     "/src/assets/images/defaultCharacterIcon.png"
   );
 
   return (
     <main>
       <h1>New Character</h1>
+      <div>
+        <h2>Generate With Prompt</h2>
+        <input
+          type="text"
+          value={generateCharacterPrompt}
+          onChange={(event: ChangeEvent<HTMLInputElement>) =>
+            setGenerateCharacterPrompt(event.target.value)
+          }
+        />
+        <button
+          type="button"
+          onClick={() =>
+            handleGenerateCharacterButtonClicked(
+              generateCharacterPrompt,
+              setValue,
+              setAbilityScoreAllocations,
+              setAvatarIconPreviewUrl
+            )
+          }
+        >
+          Generate All
+        </button>
+      </div>
       <form
         className={style.newCharacterForm}
         onSubmit={handleSubmit(formSubmit)}
@@ -215,6 +307,7 @@ export const NewCharacterRoute = () => {
                 abilityScoreAllocations={abilityScoreAllocations}
                 setAbilityScoreAllocations={setAbilityScoreAllocations}
                 register={register}
+                getValues={getValues}
                 errors={errors}
               />
             );
@@ -291,14 +384,14 @@ export const NewCharacterRoute = () => {
           <label htmlFor="">
             <h2>Avatar</h2>
           </label>
-          <img src={avatarIconUrl} alt="Your Avatar" />
+          <img src={avatarIconPreviewUrl} alt="Your Avatar" />
           <button
             type="button"
             onClick={() =>
               handleGenerateAvatarButtonClicked(
                 getValues,
                 setValue,
-                setAvatarIconUrl
+                setAvatarIconPreviewUrl
               )
             }
           >
