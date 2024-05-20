@@ -77,15 +77,15 @@ select option {
   color: black;
 }
 
-main {
+/* main {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
   justify-content: center;
-}
+} */
 
-.container {
+/* .container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,7 +94,7 @@ main {
   padding-left: 0.5rem;
   margin-right: auto;
   margin-left: auto;
-}
+} */
 
 .capitalize::first-letter {
   text-transform: capitalize;

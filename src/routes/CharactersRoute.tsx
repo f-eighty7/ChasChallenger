@@ -44,7 +44,7 @@ export const CharactersRoute = () => {
 			backstory: "Bondafan",
 			profession: Profession.profression1,
 			species: Species.human,
-			image: "src/Images/catA.png",
+			image: "src/Images/goblin.png",
 		},
 		{
 			name: "BAR",
@@ -74,9 +74,9 @@ export const CharactersRoute = () => {
 	};
 
 	return (
-		<main className={style.page}>
+		<main >
 			<h1>Your Characters</h1>
-			<ul className={style.charactersList}>
+			<ul>
 				{characters.map((character, index) => {
 					return (
 						<CharacterCard
