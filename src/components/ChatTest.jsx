@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './ChatTest.css'
+import TypingText from './TypingText'
 
 axios.defaults.withCredentials = true
 
@@ -10,7 +11,6 @@ export function ChatTest() {
     const [response, setResponse] = useState('');
     const [loading, setLoading] = useState(false);
     const [history, setHistory] = useState([]);
-
     const endOfMessagesRef = useRef(null)
 
     const handleInputChange = (e) => {
@@ -63,12 +63,12 @@ export function ChatTest() {
                                 <strong></strong> {msg.query}
                             </div>
                             <div className="chat-response bubble">
-                                <strong></strong> {msg.response === 'loading' ? (
+                                <strong></strong> <TypingText text={msg.response === 'loading' ? (
                                     <span className="loader">
                                             <span></span>.<span></span><span></span>
                                             <span></span><span></span><span></span>
                                             </span>
-                                            ) : msg.response}
+                                            ) : msg.response}/>
                                 
                             </div>
                         </div>
