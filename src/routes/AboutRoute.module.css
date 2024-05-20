@@ -1,0 +1,21 @@
+
+.about-title {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+font-size: 1.75rem;
+margin-top: 5rem;
+}
+.title {
+    font-size: 1.75rem;
+    padding: 1rem;
+}
+p {
+    padding: 1rem;
+}
+
+ul {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
