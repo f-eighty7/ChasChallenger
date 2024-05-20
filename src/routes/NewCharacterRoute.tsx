@@ -110,6 +110,47 @@ const handleGenerateCharacterButtonClicked = (
   );
 };
 
+const handleResetAllAbilityScoreButtonClicked = (
+  setValue: UseFormSetValue<Character>,
+  setAbilityScoreAllocations: React.Dispatch<
+    React.SetStateAction<AbilityScoreOption[]>
+  >
+) => {
+  setValue("strength", 0);
+  setValue("dexterity", 0);
+  setValue("intelligence", 0);
+  setValue("wisdom", 0);
+  setValue("constitution", 0);
+  setValue("charisma", 0);
+  //All values will be set so this works
+  setAbilityScoreAllocations([
+    {
+      value: 15,
+      avalible: true,
+    },
+    {
+      value: 14,
+      avalible: true,
+    },
+    {
+      value: 13,
+      avalible: true,
+    },
+    {
+      value: 12,
+      avalible: true,
+    },
+    {
+      value: 10,
+      avalible: true,
+    },
+    {
+      value: 8,
+      avalible: true,
+    },
+  ]);
+};
+
 export const NewCharacterRoute = () => {
   const navigate = useNavigate();
 
@@ -308,10 +349,22 @@ export const NewCharacterRoute = () => {
                 setAbilityScoreAllocations={setAbilityScoreAllocations}
                 register={register}
                 getValues={getValues}
+                setValue={setValue}
                 errors={errors}
               />
             );
           })}
+          <button
+            type="button"
+            onClick={() =>
+              handleResetAllAbilityScoreButtonClicked(
+                setValue,
+                setAbilityScoreAllocations
+              )
+            }
+          >
+            Reset All
+          </button>
         </div>
 
         <div>

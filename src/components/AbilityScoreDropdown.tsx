@@ -3,6 +3,7 @@ import {
   FieldErrors,
   UseFormGetValues,
   UseFormRegister,
+  UseFormSetValue,
 } from "react-hook-form";
 import AbilityAttribute from "../types/AbilityAttributes";
 import AbilityScoreOption from "../types/AbilityScoreOption";
@@ -16,6 +17,7 @@ interface Props {
   >;
   register: UseFormRegister<Character>;
   getValues: UseFormGetValues<Character>;
+  setValue: UseFormSetValue<Character>;
   errors: FieldErrors<Character>;
 }
 
@@ -25,6 +27,7 @@ export const AbilityScoreDropdown = ({
   setAbilityScoreAllocations,
   register,
   getValues,
+  setValue,
   errors,
 }: Props) => {
   const [attributeAbilityScore, setAttributeAbilityScore] = useState(0); //Keeps track of previous value to set it avalible to select.
@@ -38,7 +41,7 @@ export const AbilityScoreDropdown = ({
       <select
         id={`${abilityScoreAttribute}`}
         onFocus={() => {
-          //Sync state for if value got changed externally
+          //Sync state in case value got changed externally
           setAttributeAbilityScore(getValues()[`${abilityScoreAttribute}`]);
         }}
         {...register(`${abilityScoreAttribute}`, {
@@ -97,18 +100,20 @@ export const AbilityScoreDropdown = ({
           {errors[`${abilityScoreAttribute}`]?.message}
         </p>
       )}
-      {/* 
-      TODO: reset buttons, moving on for now as reset does not set <select> value, leads to validation not working and its wasting time
+
       <button
         type="button"
         onClick={() => {
+          //Get previous value to set it availible in dropdowns
+          const previousAbilityScore = getValues()[`${abilityScoreAttribute}`];
+
           setAbilityScoreAllocations(() => {
             //Copy array
             const newArray = [...abilityScoreAllocations];
 
             //Enable option for selected value
             const selected = newArray.find(
-              (abilityScore) => abilityScore.value == attributeAbilityScore
+              (abilityScore) => abilityScore.value == previousAbilityScore
             );
             if (selected) selected.avalible = true;
 
@@ -116,12 +121,12 @@ export const AbilityScoreDropdown = ({
             return newArray;
           });
 
-          //BUG: does not set <select> value, leads to validation not working
+          setValue(`${abilityScoreAttribute}`, 0);
           setAttributeAbilityScore(0);
         }}
       >
         Reset
-      </button> */}
+      </button>
     </div>
   );
 };
