@@ -44,7 +44,7 @@ export const CharactersRoute = () => {
 			backstory: "Bondafan",
 			profession: Profession.profression1,
 			species: Species.human,
-			image: "src/Images/goblin.png",
+			image: "src/Images/catA.png",
 		},
 		{
 			name: "BAR",
