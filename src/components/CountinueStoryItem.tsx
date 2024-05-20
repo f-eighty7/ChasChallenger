@@ -6,7 +6,7 @@ export const CountinueStoryItem = ({ resumeStory }: ResumeStoryProps) => {
     <>
       <li className={style["story-resume-item"]}>
         <p className={style.name}>{resumeStory.name}</p>
-        <p className={style.summery}>{resumeStory.summery}</p>
+        <p className={style.summery}>{resumeStory.summary}</p>
       </li>
     </>
   );

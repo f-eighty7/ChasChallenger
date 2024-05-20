@@ -57,7 +57,7 @@ const router = createBrowserRouter
       },
       {
         path: "/countinuestory",
-        element: <CountinueStoryRoute />,
+        element: <CountinueStoryRoute />, //continue
       },
       {
         path: "/stories",
