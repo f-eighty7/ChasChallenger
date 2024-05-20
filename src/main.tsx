@@ -12,10 +12,11 @@ import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import { LoginRoute } from "./routes/LoginRoute.tsx";
 import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
 import { StoriesRoute } from "./routes/StoriesRoute.tsx";
-// import { MastersWelcomeRoute } from "./routes/MastersWelcomeRoute.tsx";
+//import { MastersWelcomeRoute } from "./routes/MastersWelcomeRoute.tsx";
 import { SignupRoute } from "./routes/SignupRoute.tsx";
 import "./index.css";
 import { AuthProvider} from "./context/AuthContext.jsx"
+import { AboutRoute } from "./routes/AboutRoute.tsx";
 
 
 const router = createBrowserRouter
@@ -61,6 +62,10 @@ const router = createBrowserRouter
       {
         path: "/stories",
         element: <StoriesRoute />,
+      },
+            {
+        path: "/about",
+        element: <AboutRoute />,
       },
     ],
   },

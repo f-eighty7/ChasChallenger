@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -13,10 +14,15 @@
   } 
 }
 
-@import url("https://fonts.googleapis.om/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap");
 
 :root {
-  --text-color: white;
+  --button-color: rgba(175, 209, 130, 1);
+  --button-yellow-color: rgba(242, 242, 176, 1);
+  --button-green-color: rgba(165, 183, 53, 1);
+  --border-color: rgba(165, 193, 119, 1);
+  --button-gray-color: rgba(255, 255, 255, 1);
+  --black-color: rgba(28, 25, 25, 1);
+  --text-color: rgba(245, 251, 241, 1);
 }
 
 * {
@@ -41,27 +47,20 @@ body {
   overflow-x: hidden;
 }
 
-/* button {
-  padding: 0.5rem 3rem 0.5rem 3rem;
-  background: #457595;
-  cursor: pointer;
-  border-radius: 20px;
-}
-
 button {
   padding: 0.5rem;
   border: 2px solid white;
   border-radius: 0.8rem;
   background-color: #303030;
-} */
+} 
 
-/* button:hover {
+button:hover {
   background-color: #404040;
 }
 
 button:active {
   background-color: #202020;
-} */
+}
 
 /* input,
 textarea {
