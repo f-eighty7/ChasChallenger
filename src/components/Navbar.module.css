@@ -16,7 +16,6 @@ nav {
     justify-content: space-between;
     padding: 0 3rem;
     
-
 }
 
 nav .title {
@@ -34,14 +33,14 @@ nav ul {
     display: flex;
     align-items: center;
     height: 100%;
-
-
 }
 
 nav ul li {
 
     list-style: none;
     height: 100%;
+    position: relative;
+    z-index: 1000;
 
 }
 
