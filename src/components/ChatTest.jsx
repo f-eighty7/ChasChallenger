@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './ChatTest.css'
 import TypingText from './TypingText'
+import { GameSettingsPopup } from './GameSettingsPopup'
+import { Link } from 'react-router-dom';
 
 axios.defaults.withCredentials = true
 
@@ -12,6 +14,7 @@ export function ChatTest() {
     const [loading, setLoading] = useState(false);
     const [history, setHistory] = useState([]);
     const endOfMessagesRef = useRef(null)
+    const [buttonPopup, setButtonPopup] = useState(false)
 
     const handleInputChange = (e) => {
         setQuery(e.target.value);
@@ -54,41 +57,67 @@ export function ChatTest() {
     },[history])
 
     return (
+      <>
+        <button onClick={() => setButtonPopup(true)}>Settings</button>
         <div className="chat-container">
-            <div className="chat-box">
-                <div className="chat-history">
-                    {history.map((msg, index) => (
-                        <div key={index} className="chat-message">
-                            <div className="user-query bubble">
-                                <strong></strong> {msg.query}
-                            </div>
-                            <div className="chat-response bubble">
-                                <strong></strong> <TypingText text={msg.response === 'loading' ? (
-                                    <span className="loader">
-                                            <span></span>.<span></span><span></span>
-                                            <span></span><span></span><span></span>
-                                            </span>
-                                            ) : msg.response}/>
-                                
-                            </div>
-                        </div>
-                    ))}
-                    <div ref={endOfMessagesRef} />
-                </div>
-        </div>
-                <div className="chat-input">
-                    <input
-                        type="text"
-                        value={query}
-                        onChange={handleInputChange}
-                        placeholder="skriv nåt för fan..."
+          <div className="chat-box">
+            <div className="chat-history">
+              {history.map((msg, index) => (
+                <div key={index} className="chat-message">
+                  <div className="user-query bubble">
+                    <strong></strong> {msg.query}
+                  </div>
+                  <div className="chat-response bubble">
+                    <strong></strong>{" "}
+                    <TypingText
+                      text={
+                        msg.response === "loading" ? (
+                          <span className="loader">
+                            <span></span>.<span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                          </span>
+                        ) : (
+                          msg.response
+                        )
+                      }
                     />
-                    <button onClick={handleSend} disabled={!query.trim() || loading}>
-                        {loading ? 'Sending...' : 'Send'}
-                    </button>
+                  </div>
                 </div>
-                {/* {response && <div className="chat-response">{response}</div>} */}
+              ))}
+              <div ref={endOfMessagesRef} />
             </div>
-        
+          </div>
+          <div className="chat-input">
+            <input
+              type="text"
+              value={query}
+              onChange={handleInputChange}
+              placeholder="skriv nåt för fan..."
+            />
+            <button onClick={handleSend} disabled={!query.trim() || loading}>
+              {loading ? "Sending..." : "Send"}
+            </button>
+          </div>
+          {/* {response && <div className="chat-response">{response}</div>} */}
+        </div>
+        <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup}>
+          <div className="settings-card">
+            <p className="text">NOW PLAYING</p>
+            <p className="text">Character</p>
+          </div>
+          <div className="settings-card">
+            <p className="text">You</p>
+            <p className="text">Name</p>
+          </div>
+          <div className="settings-buttons">
+            <button className="settings-button">History</button>
+            <button className="settings-button">Save Game</button>
+            <button className="settings-button">Exit Game</button>
+          </div>
+        </GameSettingsPopup>
+      </>
     );
 }

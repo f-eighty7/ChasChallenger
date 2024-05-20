@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface Register {
   email: string;
   password: string;
@@ -40,3 +42,8 @@ export interface StoryMessageItemProps {
   storyMessages: StoryMessages;
 }
 
+export interface GameSettingsPopupProps {
+  trigger: boolean;
+  setTrigger: (value: boolean) => void;
+  children: React.ReactNode;
+}
