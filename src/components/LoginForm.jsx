@@ -1,138 +1,122 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./LoginForm.css";
+import style from "../components/LoginForm.module.css";
 import { Link, useNavigate } from "react-router-dom";
-/* import { Link } from "react-router-dom"; */
 import ButtonOne from "./ButtonOne";
 
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 
-function LoginForm()
- {
-    const navigate = useNavigate();
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+function LoginForm() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-    
-    const handleLogin = async (event) => {
-        event.preventDefault();
-        setErrorMessage(''); 
+  const handleLogin = async (event) => {
+    event.preventDefault();
+    setErrorMessage("");
 
-        try {
-            
-            const response = await axios.post('https://chasfantasy.azurewebsites.net/login?useCookies=true', {
-                email,
-                password
+    try {
+      const response = await axios.post(
+        "https://chasfantasy.azurewebsites.net/login?useCookies=true",
+        { email, password });
 
-        })
-                
-        /* const hejsan = await axios.get('http://localhost:5001/user/character')
+      /* const hejsan = await axios.get('http://localhost:5001/user/character')
             console.log("detta är hejsan", hejsan)
             console.log(response); */
-            
 
+      if (response.status === 200) {
+        console.log("Login succeeded!");
+      }
+      alert("WOW!!! Du lyckades logga in. Det här kommer att bli en bra dag!");
+      navigate("/characters");
 
-           
-           if (response.status === 200) {
-                console.log("Login succeeded!");}
-                alert('WOW!!! Du lyckades logga in. Det här kommer att bli en bra dag!')
-                navigate('/characters');
-              
-                
-                if (response.headers['set-cookie']) {
-                    /* console.log("Cookies from Set-Cookie header:", response.headers['set-cookie']); */
-                
+      if (response.headers["set-cookie"]) {
+        /* console.log("Cookies from Set-Cookie header:", response.headers['set-cookie']); */
+      } else {
+        console.log("Login failed:", response.data.message);
+        setErrorMessage(response.data.message);
+      }
+    } catch (error) {
+      console.error(
+        "Login error:",
+        error.response ? error.response.data : "Server error"
+      );
+      setErrorMessage(error.response ? error.response.data : "Server error");
+    }
+  };
 
-                
-            } else {
-                console.log("Login failed:", response.data.message);
-                setErrorMessage(response.data.message);
-            }
-        } catch (error) {
-            console.error("Login error:", error.response ? error.response.data : 'Server error');
-            setErrorMessage(error.response ? error.response.data : 'Server error');
-        }
+  return (
+    <div className={style.container}>
+      <form className={style.form} onSubmit={handleLogin}>
+        <h2 className={style.title}>Log in</h2>
+        <div className={style["inputs"]}>
+          <label className={style["label-name"]} htmlFor="email">
+            E-mail*
+          </label>
+          <input
+            id="email"
+            className={style["input-form"]}
+            type="email"
+            placeholder="fantasy@chass.se"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className={style["inputs"]}>
+          <label className={style["label-name"]} htmlFor="password">
+            Password*
+          </label>
+          <input
+            id="password"
+            className={style["input-form"]}
+            placeholder=""
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+        <div className={style["login-checkbox-wrapper"]}>
+          <button
+            title="Log in"
+            className={style["login-button"]}
+            buttonType="submit"
+          >
+            Log in
+          </button>
+          {errorMessage && <p className="error">{errorMessage}</p>}
+          <input
+            className={style["input-checkbox"]}
+            id="remember"
+            type="checkbox"
+            value=""
+          />
+          <label className={style["remember-text"]} htmlFor="remember">
+            Remember me
+          </label>
+        </div>
+        <div className={style["forgot-password"]}>
+          <Link title="Forgot password" to={"/error"}>
+            Did you forget your password?
+          </Link>
+        </div>
+      </form>
+      <div className={style.or}>OR</div>
+      <div className={style["signup-back-wrapper"]}>
+        <Link to="/signup">
+          <button title="Sign up" className={style["signup-button"]}>
+            Sign Up
+          </button>
+        </Link>
+      </div>
 
-        
-    };
-
-    return (
-			<div className="bg-gray-900 p-5 rounded-xl border">
-				<form
-					className="max-w-sm mx-auto "
-					onSubmit={handleLogin}>
-					<h1 className="text-center text-xl">Log in</h1>
-					<div className="mb-5">
-						<label
-							htmlFor="email"
-							className="block mb-2 text-sm font-medium text-gray-200 dark:text-white">
-							E-mail*
-						</label>
-						<input
-							id="email"
-							className="input-form"
-							type="email"
-							placeholder="fantasy@chass.se"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-						/>
-					</div>
-					<div className="mb-5">
-						<label
-							htmlFor="password"
-							className="block mb-2 text-sm font-medium text-white dark:text-white">
-							Password*
-						</label>
-						<input
-							id="password"
-							className="input-form"
-							type="password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-						/>
-					</div>
-					<div className="flex items-start mb-5">
-						<div className="flex items-center h-5">
-							<ButtonOne
-								buttonText={"Log in"}
-								buttonType="submit"
-							/>
-							{errorMessage && <p className="error">{errorMessage}</p>}
-							<input
-								className="input-checkbox"
-								id="remember"
-								type="checkbox"
-								value=""
-							/>
-						</div>
-						<label
-							for="remember"
-							className="ms-2 text-xs font-medium text-white dark:text-gray-300 ">
-							Remember me
-						</label>
-				</div>
-				<div
-				className="text-center">
-					<Link
-						to="/signup">
-						<ButtonOne
-							paddingClass={"px-10"}
-							marginClass={"mt-3"}
-							buttonText="Sign up"
-						/>
-					</Link>
-					<Link
-						to={"/error"}>
-						<button className="underline text-xs">* Forgot your Password?</button>
-					</Link>
-
-				</div>
-				</form>
-			</div>
-		);
+      <div className={style.goback}>
+        <Link title="Go Back" to="/">
+          Go Back
+        </Link>
+      </div>
+    </div>
+  );
 }
 
 export default LoginForm;
-
-
