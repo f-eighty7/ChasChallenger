@@ -1,48 +1,31 @@
+.story-wrapper {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
 .card {
-  width: 300px;
+  max-width: 50rem;
   padding: 1rem;
-  border-radius: 20px;
-  background: #ebebeb;
-  color: black;
-  cursor: pointer;
-  transition: all 0.3 ease;
-  margin-top: 2rem;
-  margin-bottom: 3rem;
+  border-radius: 30px;
+  border: 6px solid rgba(112, 132, 73, 1);
+  background: radial-gradient( rgba(245, 251, 241, 1), rgba(112, 132, 73, 1));
+  color: var(--black-color);
+  margin-bottom: 1rem;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
   list-style: none;
 }
-.card:hover {
-  transform: scale(1.05);
-  transition: 0.5s ease;
-}
-.name {
-  text-align: center;
-  color: black;
+.summary {
+  color: var(--black-color);
+  font-size: 18px;
   padding: 1rem;
+font-weight: 600;
 }
-.summery {
-  height: 200px;
-  overflow: hidden;
-  line-height: 150%;
-  color: black;
-  padding: 0.5rem;
-}
-.summery-expanded {
-  height: auto;
-  color: black;
-  padding: 0.5;
-}
-.story-buttons {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-.read-more-button,
-.select-story-button {
-  padding: 0.5rem 2rem;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-.selected-story-button {
-  background: rgb(1, 149, 1);
+.next-button {
+  background: rgba(29, 30, 32, 1);
+  border: 3px solid rgba(112, 132, 73, 1);
+  border-radius: 40px;
+  font-size: 1.25rem;
+  margin: 0.5rem;
+  width: 256px;
 }

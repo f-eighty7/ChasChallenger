@@ -1,9 +1,9 @@
 import { StoryItemProps } from "../types/types";
 import style from "./StoryItem.module.css";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const StoryItem = ({ story, onSelected }: StoryItemProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
   const [selected, setSelected] = useState(false);
 
   const handleSelected = () => {
@@ -12,37 +12,18 @@ export const StoryItem = ({ story, onSelected }: StoryItemProps) => {
     }
     setSelected(!selected);
   };
-  const handleToggleCard = () => {
-    setIsExpanded(!isExpanded);
-  };
   return (
     <>
-      <li className={style.card}>
-        <h4 className={style.name}>{story.name}</h4>
-        <p
-          className={`${
-            isExpanded ? style["summery-expanded"] : style.summery
-          }`}
-        >
-          {story.summary}
-        </p>
-        <div className={style["story-buttons"]}>
-          <button
-            className={style["read-more-button"]}
-            onClick={handleToggleCard}
-          >
-            {isExpanded ? "Read less" : "Read more"}
+      <ul className={style["story-wrapper"]}>
+        <li className={style.card}>
+          <p className={style.summary}>{story.summary}</p>
+        </li>
+        <Link to="/adventure">
+          <button title="Next" className={style["next-button"]} onClick={handleSelected}>
+            Next
           </button>
-          <button
-            className={`${style["select-story-button"]} ${
-              selected ? style["selected-story-button"] : ""
-            }`}
-            onClick={handleSelected}
-          >
-            {selected ? "Selected" : "Select"}
-          </button>
-        </div>
-      </li>
+        </Link>
+      </ul>
     </>
   );
 };
