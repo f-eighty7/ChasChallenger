@@ -15,18 +15,18 @@ export const HomeRoute = () => {
       </div>
       <p className={style["intro-text"]}>Lorem ipsum dolor sit consectetur adipisicing elit. Neque ipsum tempora et maiores blanditiis vitae.</p>
       <Link to={"/login"}>
-        <button className={style["play-button"]}>PLAY</button>
+        <button title="Play" className={style["play-button"]}>PLAY</button>
       </Link>
       <article className={style["card"]}>
         <img src={back} alt="Bild" className={style["read-more-image"]}/>
         <p className={style["read-more-text"]}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure nihil magni. Rem voluptatem repellendus.</p>
         
-        <Link to="about"><button className={style["read-more-button"]}>Read more</button></Link>
+        <Link to="about"><button title="Read more" className={style["read-more-button"]}>Read more</button></Link>
       </article>
             <article className={style["card"]}>
         <img src={back} alt="Bild" className={style["read-more-image"]}/>
         <p className={style["read-more-text"]}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure nihil magni. Rem voluptatem repellendus.</p>
-        <button className={style["read-more-button"]}>Read more</button>
+        <button title="Read more" className={style["read-more-button"]}>Read more</button>
       </article>
     </main>
   );

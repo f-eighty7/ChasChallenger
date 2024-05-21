@@ -1,53 +1,60 @@
-import React, { useState, useEffect, useRef } from 'react';
-import axios from 'axios';
-import './ChatTest.css';
+import React, { useState, useContext, useEffect, useRef } from "react";
+import axios from "axios";
+import "./ChatTest.css";
+import TypingText from "./TypingText";
+import { GameSettingsPopup } from "./GameSettingsPopup";
+
 
 axios.defaults.withCredentials = true;
 
 export function ChatTest() {
-    const [query, setQuery] = useState('');
-    const [loading, setLoading] = useState(false);
-    const [history, setHistory] = useState([]);
-    const endOfMessagesRef = useRef(null);
+  const [query, setQuery] = useState("");
+  const [response, setResponse] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [history, setHistory] = useState([]);
+  const endOfMessagesRef = useRef(null);
+  const [buttonPopup, setButtonPopup] = useState(false);
 
-    const handleInputChange = (e) => {
-        setQuery(e.target.value);
-    };
+  const handleInputChange = (e) => {
+    setQuery(e.target.value);
+  };
 
-    const handleSend = async () => {
-        if (!query.trim()) return;
+  const handleSend = async () => {
+    if (!query.trim()) return;
 
-        setHistory([...history, { query, response: 'Loading...' }]);
-        setQuery('');
-        setLoading(true);
+    const newHistory = [...history, { query, response: "loading" }];
+    setHistory(newHistory);
+    setQuery("");
+    setLoading(true);
 
-        try {
-            const result = await axios.post('https://chasfantasy.azurewebsites.net/Chat/Message/', {
-                message: query,
-                characterId: 0
-            });
+    try {
+      const result = await axios.post(
+        `http://localhost:5001/getAnswerFromChatGPT?query=${query}`
+      );
+      if (result.status === 200) {
+        console.log("Svar:", result.data);
+        setResponse(result.data);
 
-            if (result.status === 200 && result.data) {
-                setHistory(currentHistory => [...currentHistory.slice(0, -1), { query, response: result.data.message }]);
-            } else {
-                setHistory(currentHistory => [...currentHistory.slice(0, -1), { query, response: 'Failed to get response from the server.' }]);
-            }
-        } catch (error) {
-            setHistory(currentHistory => [...currentHistory.slice(0, -1), {
-                query,
-                response: 'Failed to get response due to an error.'
-                
-            }]);
-        } finally {
-            setLoading(false);
-        }
-    };
+        setHistory([...history, { query, response: result.data }]);
+      } else {
+        setResponse("Failed to get response from the server.");
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setResponse(
+        error.response?.data?.message ||
+          "Failed to get response due to an error."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
 
     useEffect(() => {
-        if (endOfMessagesRef.current) {
-            endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth' });
+        if (endOfMessagesRef.current){
+            endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth'})
         }
-    }, [history]);
+    },[history])
 
     return (
         <div className="chat-container">
@@ -55,28 +62,37 @@ export function ChatTest() {
                 <div className="chat-history">
                     {history.map((msg, index) => (
                         <div key={index} className="chat-message">
-                            <div className="user-query">
+                            <div className="user-query bubble">
                                 {msg.query}
                             </div>
-                            <div className="chat-response">
-                                {msg.response}
+                            <div className="chat-response bubble">
+                              {msg.response === 'loading' ? (
+                                <span className="loader"></span>
+                              ): (
+                                <TypingText text={msg.response} />   
+                                
+                              )}   
+                              
                             </div>
+                            
                         </div>
                     ))}
                     <div ref={endOfMessagesRef} />
                 </div>
-            </div>
-            <div className="chat-input">
-                <input
-                    type="text"
-                    value={query}
-                    onChange={handleInputChange}
-                    placeholder="Type a message..."
-                />
-                <button onClick={handleSend} disabled={!query.trim() || loading}>
-                    {loading ? 'Sending...' : 'Send'}
-                </button>
-            </div>
         </div>
+                <div className="chat-input">
+                    <input
+                        type="text"
+                        value={query}
+                        onChange={handleInputChange}
+                        placeholder="skriv nåt för fan..."
+                    />
+                    <button onClick={handleSend} disabled={!query.trim() || loading}>
+                        {loading ? 'Sending...' : 'Send'}
+                    </button>
+                </div>
+                {/* {response && <div className="chat-response">{response}</div>} */}
+            </div>
+        
     );
 }
