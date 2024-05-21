@@ -7,6 +7,9 @@ align-items: center;
 .text-label {
 font-size: 0.8rem;
 }
+.name {
+    color: var(--black-color);
+}
 .textarea {
 width: 250px;
 height: 150px;

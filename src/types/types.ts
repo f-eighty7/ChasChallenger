@@ -1,4 +1,3 @@
-import React from "react";
 
 export interface Register {
   email: string;
@@ -45,5 +44,4 @@ export interface StoryMessageItemProps {
 export interface GameSettingsPopupProps {
   trigger: boolean;
   setTrigger: (value: boolean) => void;
-  children: React.ReactNode;
 }
