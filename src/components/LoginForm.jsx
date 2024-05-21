@@ -21,15 +21,15 @@ function LoginForm()
 
         try {
             
-            const response = await axios.post('http://localhost:5001/login?useCookies=true', {
+            const response = await axios.post('https://chasfantasy.azurewebsites.net/login?useCookies=true', {
                 email,
                 password
 
         })
                 
-        const hejsan = await axios.get('http://localhost:5001/user/character')
+        /* const hejsan = await axios.get('http://localhost:5001/user/character')
             console.log("detta är hejsan", hejsan)
-            console.log(response);
+            console.log(response); */
             
 
 

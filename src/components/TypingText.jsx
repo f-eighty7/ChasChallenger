@@ -4,19 +4,19 @@ const TypingText = ({ text }) => {
   const [displayedText, setDisplayedText] = useState('');
 
   useEffect(() => {
-    let currentIndex = 0;
-    setDisplayedText('')
+    if (!text) return; 
 
+    let currentIndex = -2;
+    setDisplayedText('');
     
-
     const intervalId = setInterval(() => {
       setDisplayedText(prev => prev + text[currentIndex]);
       currentIndex += 1;
-      
-      if (currentIndex === text.length) {
+
+      if (currentIndex >= text.length) {
         clearInterval(intervalId);
       }
-    }, 30); // Adjust the speed of typing here (lower is faster)
+    }, 30); // speed (lower is faster)
 
     return () => clearInterval(intervalId);
   }, [text]);
