@@ -8,6 +8,8 @@ import { ErrorRoute } from "./routes/ErrorRoute.tsx";
 import { HomeRoute } from "./routes/HomeRoute.tsx";
 import { CharactersRoute } from "./routes/CharactersRoute.tsx";
 import { NewCharacterRoute } from "./routes/NewCharacterRoute.tsx";
+import { NewCustomCharacterRoute } from "./routes/NewCustomCharacterRoute.tsx";
+import { NewPremadeCharacterRoute } from "./routes/NewPremadeCharacterRoute.tsx";
 import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import { LoginRoute } from "./routes/LoginRoute.tsx";
 import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
@@ -33,6 +35,14 @@ const router = createBrowserRouter([
       {
         path: "/characters/new",
         element: <NewCharacterRoute />,
+      },
+      {
+        path: "/characters/new/custom",
+        element: <NewCustomCharacterRoute />,
+      },
+      {
+        path: "/characters/new/premade",
+        element: <NewPremadeCharacterRoute />,
       },
       {
         path: "/welcome",
