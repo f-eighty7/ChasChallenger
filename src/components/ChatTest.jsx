@@ -50,60 +50,49 @@ export function ChatTest() {
     }
   };
 
-  useEffect(() => {
-    if (endOfMessagesRef.current) {
-      endOfMessagesRef.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [history]);
+    useEffect(() => {
+        if (endOfMessagesRef.current){
+            endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth'})
+        }
+    },[history])
 
-  return (
-    <>
-      <button title="Settings" onClick={() => setButtonPopup(true)}>Settings</button>
-      <div className="chat-container">
-        <div className="chat-box">
-          <div className="chat-history">
-            {history.map((msg, index) => (
-              <div key={index} className="chat-message">
-                <div className="user-query bubble">
-                  <strong></strong> {msg.query}
+    return (
+        <div className="chat-container">
+            <div className="chat-box">
+                <div className="chat-history">
+                    {history.map((msg, index) => (
+                        <div key={index} className="chat-message">
+                            <div className="user-query bubble">
+                                {msg.query}
+                            </div>
+                            <div className="chat-response bubble">
+                              {msg.response === 'loading' ? (
+                                <span className="loader"></span>
+                              ): (
+                                <TypingText text={msg.response} />   
+                                
+                              )}   
+                              
+                            </div>
+                            
+                        </div>
+                    ))}
+                    <div ref={endOfMessagesRef} />
                 </div>
-                <div className="chat-response bubble">
-                  <strong></strong>{" "}
-                  <TypingText
-                    text={
-                      msg.response === "loading" ? (
-                        <span className="loader">
-                          <span></span>.<span></span>
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                          <span></span>
-                        </span>
-                      ) : (
-                        msg.response
-                      )
-                    }
-                  />
+        </div>
+                <div className="chat-input">
+                    <input
+                        type="text"
+                        value={query}
+                        onChange={handleInputChange}
+                        placeholder="skriv nåt för fan..."
+                    />
+                    <button onClick={handleSend} disabled={!query.trim() || loading}>
+                        {loading ? 'Sending...' : 'Send'}
+                    </button>
                 </div>
-              </div>
-            ))}
-            <div ref={endOfMessagesRef} />
-          </div>
-        </div>
-        <div className="chat-input">
-          <input
-            type="text"
-            value={query}
-            onChange={handleInputChange}
-            placeholder="skriv nåt för fan..."
-          />
-          <button onClick={handleSend} disabled={!query.trim() || loading}>
-            {loading ? "Sending..." : "Send"}
-          </button>
-        </div>
-        {/* {response && <div className="chat-response">{response}</div>} */}
-      </div>
-      <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
-    </>
-  );
+                {/* {response && <div className="chat-response">{response}</div>} */}
+            </div>
+        
+    );
 }
