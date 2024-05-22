@@ -26,7 +26,9 @@ function LoginForm()
                 password
 
         })
-                
+             
+		
+		console.log("Response Headers:", response.headers);
         /* const hejsan = await axios.get('http://localhost:5001/user/character')
             console.log("detta är hejsan", hejsan)
             console.log(response); */
@@ -41,7 +43,7 @@ function LoginForm()
               
                 
                 if (response.headers['set-cookie']) {
-                    /* console.log("Cookies from Set-Cookie header:", response.headers['set-cookie']); */
+                    console.log("Cookies from Set-Cookie header:", response.headers['set-cookie']);
                 
 
                 
