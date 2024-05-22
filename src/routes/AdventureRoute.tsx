@@ -9,8 +9,8 @@ export const AdventureRoute = () => {
        Master Chat 
       </h1> */}
       {/* <DungeonMasterChat /> */}
-      {/* <ChatTest /> */}
-      <ChatTestNy />
+      <ChatTest />
+      {/* <ChatTestNy /> */}
     </main>
   );
 };
