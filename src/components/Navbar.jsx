@@ -10,6 +10,7 @@ function Navbar() {
 
     const handleItemClicked = (item) => {
         setActiveItem(item === activeItem ? null : item);
+        setMenuOpen(false)
     }
     // const classNameFunction = ({ isActive }) => (isActive ? "active_link" : "");
     
