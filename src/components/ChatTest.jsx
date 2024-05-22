@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './ChatTest.css';
 import TypingText from './TypingText';
+import { GameSettingsPopup } from "./GameSettingsPopup";
 
 axios.defaults.withCredentials = true;
 
@@ -84,9 +85,12 @@ export function ChatTest() {
                     onChange={handleInputChange}
                     placeholder="skriv nåt för fan..."
                 />
-                <button onClick={handleSend} disabled={!query.trim() || loading}>
+                 <button onClick={handleSend} disabled={!query.trim() || loading}>
                     {loading ? 'Sending...' : 'Send'}
                 </button>
+                <button title="Settings" onClick={() => setButtonPopup(true)}>Settings</button>
+                    <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
+               
             </div>
         </div>
     );
