@@ -3,6 +3,9 @@ import axios from 'axios';
 import './ChatTest.css';
 import TypingText from './TypingText';
 import { GameSettingsPopup } from "./GameSettingsPopup";
+import { IoSend } from "react-icons/io5";
+import { MdScheduleSend } from "react-icons/md";
+import { IoMdSettings } from "react-icons/io";
 
 axios.defaults.withCredentials = true;
 
@@ -17,7 +20,7 @@ export function ChatTest() {
   const handleInputChange = (e) => {
     setQuery(e.target.value);
   };
-
+  
   const handleSend = async () => {
     if (!query.trim()) return;
 
@@ -28,7 +31,7 @@ export function ChatTest() {
 
         try {
             const result = await axios.post(`https://chasfantasy.azurewebsites.net/api/chat/message/`, {
-                message: "query",
+                message: query,
                 characterId: 10
             });
 
@@ -49,6 +52,12 @@ export function ChatTest() {
         }
     };
 
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter'){
+            handleSend(e)
+        }
+    }
+   
     useEffect(() => {
         if (endOfMessagesRef.current) {
             endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth' });
@@ -77,21 +86,32 @@ export function ChatTest() {
                     ))}
                     <div ref={endOfMessagesRef} />
                 </div>
+                
             </div>
-            <div className="chat-input">
-                <input
-                    type="text"
-                    value={query}
-                    onChange={handleInputChange}
-                    placeholder="skriv nåt för fan..."
-                />
-                 <button onClick={handleSend} disabled={!query.trim() || loading}>
-                    {loading ? 'Sending...' : 'Send'}
-                </button>
-                <button title="Settings" onClick={() => setButtonPopup(true)}>Settings</button>
+            
+            <form className="chat-input" onSubmit={handleSend}> 
+                
+            <button title="Settings" onClick={() => setButtonPopup(true)}>
+                        <IoMdSettings />
+                    </button>
+                <div className="input-container">
+                    <input
+                        type="text"
+                        value={query}
+                        onChange={handleInputChange}
+                        onKeyDown={handleKeyDown}
+                        placeholder="skriv nåt för fan..."
+                        
+                    />
+                    <button  onClick={handleSend} disabled={!query.trim() || loading}>
+                        {loading ? <MdScheduleSend /> : <IoSend />}
+                    </button>
+                </div>
+                
                     <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
                
-            </div>
+            </form>
+                   
         </div>
     );
 }

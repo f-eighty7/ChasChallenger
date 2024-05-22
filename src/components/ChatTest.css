@@ -54,29 +54,43 @@
   align-items: center;
   position: fixed;
   bottom: 1.2rem;
+ 
 }
+
+
+
+
+
+
 
 .chat-input input {
   flex: 1;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 30px;
   margin-right: 10px;
   color: black;
+  width: 200px;
 }
 
 .chat-input button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #007bff;
+  background-color: #30474869;
   color: white;
   cursor: pointer;
-}
+} 
 
-.chat-input button:disabled {
+/* .chat-input button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+} */
+
+.input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
 }
 
 .loader {
@@ -101,3 +115,5 @@
     box-shadow: 0 -70px inset;
   }
 }
+
+
