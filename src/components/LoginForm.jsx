@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import style from "../components/LoginForm.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import ButtonOne from "./ButtonOne";
 
 axios.defaults.withCredentials = true;
 
@@ -19,7 +18,8 @@ function LoginForm() {
     try {
       const response = await axios.post(
         "https://chasfantasy.azurewebsites.net/login?useCookies=true",
-        { email, password });
+        { email, password }
+      );
 
       /* const hejsan = await axios.get('http://localhost:5001/user/character')
             console.log("detta är hejsan", hejsan)
@@ -80,13 +80,14 @@ function LoginForm() {
           <button
             title="Log in"
             className={style["login-button"]}
-            buttonType="submit"
+            type="submit"
           >
             Log in
           </button>
           {errorMessage && <p className="error">{errorMessage}</p>}
           <input
             className={style["input-checkbox"]}
+            title="Remember me"
             id="remember"
             type="checkbox"
             value=""
@@ -109,7 +110,6 @@ function LoginForm() {
           </button>
         </Link>
       </div>
-
       <div className={style.goback}>
         <Link title="Go Back" to="/">
           Go Back
