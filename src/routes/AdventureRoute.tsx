@@ -1,6 +1,6 @@
 /* import { DungeonMasterChat } from "../components/DungeonMasterChat"; */
 import { ChatTest } from '../components/ChatTest'
-import { ChatTestNy } from '../components/ChatTestNy'
+/* import { ChatTestNy } from '../components/ChatTestNy' */
 
 export const AdventureRoute = () => {
   return (
