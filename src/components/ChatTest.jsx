@@ -1,9 +1,7 @@
-import React, { useState, useContext, useEffect, useRef } from "react";
-import axios from "axios";
-import "./ChatTest.css";
-import TypingText from "./TypingText";
-import { GameSettingsPopup } from "./GameSettingsPopup";
-
+import React, { useState, useEffect, useRef } from 'react';
+import axios from 'axios';
+import './ChatTest.css';
+import TypingText from './TypingText';
 
 axios.defaults.withCredentials = true;
 
@@ -27,34 +25,34 @@ export function ChatTest() {
     setQuery("");
     setLoading(true);
 
-    try {
-      const result = await axios.post(
-        `http://localhost:5001/getAnswerFromChatGPT?query=${query}`
-      );
-      if (result.status === 200) {
-        console.log("Svar:", result.data);
-        setResponse(result.data);
+        try {
+            const result = await axios.post(`https://chasfantasy.azurewebsites.net/api/chat/message/`, {
+                message: "query",
+                characterId: 10
+            });
 
-        setHistory([...history, { query, response: result.data }]);
-      } else {
-        setResponse("Failed to get response from the server.");
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-      setResponse(
-        error.response?.data?.message ||
-          "Failed to get response due to an error."
-      );
-    } finally {
-      setLoading(false);
-    }
-  };
+            if (result.status === 200 && result.data) {
+                console.log("Svar:", result.data.message);
+                setHistory(currentHistory => [...currentHistory.slice(0, -1), { query, response: result.data.message }]);
+            } else {
+                setHistory(currentHistory => [...currentHistory.slice(0, -1), { query, response: 'Failed to get response from the server.' }]);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error);
+            setHistory(currentHistory => [...currentHistory.slice(0, -1), {
+                query,
+                response: error.response?.data?.message || 'Failed to get response due to an error.'
+            }]);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     useEffect(() => {
-        if (endOfMessagesRef.current){
-            endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth'})
+        if (endOfMessagesRef.current) {
+            endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth' });
         }
-    },[history])
+    }, [history]);
 
     return (
         <div className="chat-container">
@@ -74,25 +72,23 @@ export function ChatTest() {
                               )}   
                               
                             </div>
-                            
                         </div>
                     ))}
                     <div ref={endOfMessagesRef} />
                 </div>
-        </div>
-                <div className="chat-input">
-                    <input
-                        type="text"
-                        value={query}
-                        onChange={handleInputChange}
-                        placeholder="skriv nåt för fan..."
-                    />
-                    <button onClick={handleSend} disabled={!query.trim() || loading}>
-                        {loading ? 'Sending...' : 'Send'}
-                    </button>
-                </div>
-                {/* {response && <div className="chat-response">{response}</div>} */}
             </div>
-        
+            <div className="chat-input">
+                <input
+                    type="text"
+                    value={query}
+                    onChange={handleInputChange}
+                    placeholder="skriv nåt för fan..."
+                />
+                <button onClick={handleSend} disabled={!query.trim() || loading}>
+                    {loading ? 'Sending...' : 'Send'}
+                </button>
+            </div>
+        </div>
     );
 }
+
