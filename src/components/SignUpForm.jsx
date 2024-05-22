@@ -1,76 +1,107 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './SignUpForm.css';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import axios from "axios";
+import style from "../components/SignUpForm.module.css";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUpForm() {
-    
-    const navigate = useNavigate()
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-    
-    const handleSubmit = async (event) => {
-        event.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
 
-       
-        if (password !== confirmPassword) {
-            alert("Passwords don't match!");
-            return;
+    if (password !== confirmPassword) {
+      alert("Passwords don't match!");
+      return;
+    }
+    try {
+      const response = await axios.post(
+        "https://chasfantasy.azurewebsites.net/register",
+        {
+          email,
+          password,
         }
+      );
+      console.log("User signed up:", response.data);
+      navigate("/login");
+      alert("Grattis! Nu är du en av oss!!! Varken du vill eller inte");
+    } catch (error) {
+      console.error("There was an error during signup:", error);
+      alert("Error signing up, please try again later.");
+    }
+  };
 
-        try {
-            const response = await axios.post('https://chasfantasy.azurewebsites.net/register', {
-                email,
-                password
-            });
-            console.log('User signed up:', response.data);
-            navigate('/login');
-            alert('Grattis! Nu är du en av oss!!! Varken du vill eller inte')
-            
-        } catch (error) {
-            console.error('There was an error during signup:', error);
-            alert('Error signing up, please try again later.');
-        }
-    };
-
-    return (
-        <div className="signup-form-container">
-            
-        <form onSubmit={handleSubmit} className="signup-form">
-        <div className="skapaKonto">Skapa konto</div> 
-        <div>
-            <label>E-post:</label>
-            <input 
-                type="email" 
-                value={email} 
-                onChange={(e) => setEmail(e.target.value)} 
-                required
-            />
+  return (
+    <div className={style.container}>
+      <form className={style.form} onSubmit={handleSubmit}>
+        <div className={style.title}>Sign Up</div>
+        <div className={style.inputs}>
+          <label className={style["label-name"]} htmlFor="email">
+            E-mail
+          </label>
+          <input
+            className={style["input-form"]}
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
         </div>
-        <div>
-            <label>Lösenord:</label>
-            <input 
-                type="password" 
-                value={password} 
-                onChange={(e) => setPassword(e.target.value)} 
-                required
-            />
+        <div className={style.inputs}>
+          <label className={style["label-name"]} htmlFor="password">
+            Set up a password
+          </label>
+          <input
+            className={style["input-form"]}
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
         </div>
-        <div>
-            <label>Bekräfta lösenord:</label>
-            <input 
-                type="password" 
-                value={confirmPassword} 
-                onChange={(e) => setConfirmPassword(e.target.value)} 
-                required
-            />
+        <div className={style.inputs}>
+          <label className={style["label-name"]} htmlFor="password">
+            Confirm your password
+          </label>
+          <input
+            className={style["input-form"]}
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
         </div>
-        <button type="submit">Sign Up</button>
-    </form>
+        <div className={style["agree-checkbox-wrapper"]}>
+          <input
+            className={style["input-checkbox"]}
+            title="Agree terms"
+            type="checkbox"
+            value=""
+            required
+          />
+          <label className={style["agree-text"]} htmlFor="checkbox">
+            I have read and agree to the terms of use.
+          </label>
+        </div>
+        <div className={style["signup-button-wrapper"]}>
+          <button
+            className={style["signup-button"]}
+            title="Sign Up"
+            type="submit"
+          >
+            Sign Up
+          </button>
+        </div>
+      </form>
+      <div className={style.goback}>
+        <Link title="Go Back" to="/login">
+          Go Back
+        </Link>
+      </div>
     </div>
-    );
+  );
 }
 
 export default SignUpForm;
