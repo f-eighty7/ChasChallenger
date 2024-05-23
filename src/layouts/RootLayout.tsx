@@ -5,7 +5,7 @@ import Navbar from "../components/Navbar"
 export const RootLayout = () => {
   return (
     <>
-      <Navbar isLoggedIn={false}/>
+      <Navbar isLoggedIn={true}/>
       <Outlet />
     </>
   );

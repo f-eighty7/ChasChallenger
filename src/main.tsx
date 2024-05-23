@@ -19,10 +19,7 @@ import { AuthProvider} from "./context/AuthContext.jsx"
 import { AboutRoute } from "./routes/AboutRoute.tsx";
 import { HowToPlay } from "./routes/HowToPlayRoute.tsx";
 
-// const privateRouter = createBrowserRouter([
-//   {
-//   }
-// ])
+
 
 const router = createBrowserRouter
 ([

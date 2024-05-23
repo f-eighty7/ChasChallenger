@@ -42,10 +42,10 @@ function LoggedInNav({ handleItemClicked, activeItem, menuOpen }) {
 					className={`${activeItem === "stories" ? style["active"] : ""}`}>
 					Stories
 				</NavLink>
-			</li>
+            </li>
 			<li>
-				<Link to={"/stories"}>
-					<ButtonOne buttonText={"Play Now!"} />
+                <Link to={"/"}>
+                    <ButtonOne buttonText={"Log out"} secondary/>
 				</Link>
 			</li>
 		</ul>
@@ -63,14 +63,14 @@ function LoggedOutNav({ handleItemClicked, activeItem, menuOpen }) {
 					How to Play
 				</NavLink>
 			</li>
-			 <li>
+			 {/* <li>
 				<NavLink
 					to={"/"}
 					onClick={() => handleItemClicked("news")}
 					className={`${activeItem === "news" ? style["active"] : ""}`}>
 					News
 				</NavLink>
-			</li>
+			</li> */}
 			<li>
 				<NavLink
 					to={"/about"}
