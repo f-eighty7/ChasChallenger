@@ -57,7 +57,7 @@ function LoggedOutNav({ handleItemClicked, activeItem, menuOpen }) {
 		<ul className={` ${menuOpen ? style.open : ""}`}>
 			<li>
 				<NavLink
-					to={"/"}
+					to={"/howtoplay"}
 					onClick={() => handleItemClicked("howToPlay")}
 					className={`${activeItem === "howToPlay" ? style["active"] : ""}`}>
 					How to Play
