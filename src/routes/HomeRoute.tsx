@@ -1,41 +1,33 @@
 import { Link } from "react-router-dom";
-import ButtonGradientBlue from "../components/ButtonGradientBlue";
+import style from "./HomeRoute.module.css"
+import back from "../Images/back.png"
 
 export const HomeRoute = () => {
   return (
     <main>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          textAlign: "center",
-        }}
-      >
-        <h2
-          style={{
-            fontFamily: '"Cinzel Decorative", serif',
-            fontSize: "3.4rem",
-            padding: "0",
-            margin: "0",
-            textShadow: "4px 4px 6px rgba(0, 0, 0, 0.8)",
-          }}
-        >
-          MasteR
+      <div className={style["container-header"]}>
+        <h2 className={style["title-one"]}>
+          Fantasy
         </h2>
-        <h1
-          style={{
-            fontFamily: '"Cinzel Decorative", serif',
-            fontSize: "5rem",
-            lineHeight: "80%",
-            textShadow: "4px 4px 6px rgba(0, 0, 0, 0.8)",
-          }}
-        >
-          ChasS
+        <h1 className={style["title-two"]}>
+          Chass
         </h1>
       </div>
-      <Link to={"/welcome"}>
-        <ButtonGradientBlue buttonText={"Start"} />
+      <p className={style["intro-text"]}>Lorem ipsum dolor sit consectetur adipisicing elit. Neque ipsum tempora et maiores blanditiis vitae.</p>
+      <Link to={"/login"}>
+        <button title="Play" className={style["play-button"]}>PLAY</button>
       </Link>
+      <article className={style["card"]}>
+        <img src={back} alt="Bild" className={style["read-more-image"]}/>
+        <p className={style["read-more-text"]}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure nihil magni. Rem voluptatem repellendus.</p>
+        
+        <Link to="about"><button title="Read more" className={style["read-more-button"]}>Read more</button></Link>
+      </article>
+            <article className={style["card"]}>
+        <img src={back} alt="Bild" className={style["read-more-image"]}/>
+        <p className={style["read-more-text"]}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure nihil magni. Rem voluptatem repellendus.</p>
+        <button title="Read more" className={style["read-more-button"]}>Read more</button>
+      </article>
     </main>
   );
 };

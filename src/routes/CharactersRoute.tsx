@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import Character from "../types/Character";
 import Profession from "../types/Profession";
 import Species from "../types/Species";
+import CharacterCard from "../components/CharacterCard";
 
 const handleDeleteCharacterClicked = (
   event: React.MouseEvent<HTMLButtonElement>
@@ -42,7 +43,7 @@ export const CharactersRoute = () => {
       backstory: "Bondafan",
       profession: Profession.profession1,
       species: Species.human,
-      imageUrl: "",
+      imageUrl: "src/Images/catA.png",
       isFavorite: false,
     },
     {
@@ -60,7 +61,7 @@ export const CharactersRoute = () => {
       backstory: "Arbetslös",
       profession: Profession.profession2,
       species: Species.human,
-      imageUrl: "",
+      imageUrl: "src/Images/fada.png",
       isFavorite: false,
     },
   ]; //TODO: get from server
@@ -73,50 +74,18 @@ export const CharactersRoute = () => {
   };
 
   return (
-    <main className={style.page}>
+    <main>
       <h1>Your Characters</h1>
-      <ul className={style.charactersList}>
+      <ul>
         {characters.map((character, index) => {
           return (
-            <li
-              className={style.character}
+            <CharacterCard
               key={character.name + index}
-              onClick={() => handleCharacterClicked(character)}
-            >
-              <div className={style.characterIdentity}>
-                <img
-                  className={style.characterIcon}
-                  src={character.imageUrl}
-                  alt={`${character.name}'s icon`}
-                  loading="lazy"
-                  onError={(error) =>
-                    ((error.target as HTMLImageElement).src =
-                      "src/assets/images/defaultCharacterIcon.png")
-                  }
-                />
-                <h2>{character.name}</h2>
-              </div>
-              <div className={style.characterActions}>
-                <button
-                  type="button"
-                  title="Delete character"
-                  onClick={handleDeleteCharacterClicked}
-                >
-                  <i className={"fa fa-trash"} />
-                </button>
-                <button
-                  type="button"
-                  title="Toggle if character is favorited"
-                  onClick={handleFavoriteCharacterClicked}
-                >
-                  <i className={"fa fa-star-o"} />
-                </button>
-              </div>
-              <div className={style.characterInformation}>
-                <p>lvl {character.level}</p>
-                <p>{character.healthpoints} hp</p>
-              </div>
-            </li>
+              character={character}
+              onDelete={handleDeleteCharacterClicked}
+              onFavorite={handleFavoriteCharacterClicked}
+              onSelect={handleCharacterClicked}
+            />
           );
         })}
       </ul>

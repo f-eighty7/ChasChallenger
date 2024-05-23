@@ -1,0 +1,65 @@
+.form {
+  border: 1px solid var(--text-color);
+  border-radius: 20px;
+  margin: 3rem 1rem 3rem 1rem;
+  background-color: rgba(29, 30, 32, 1);
+  padding: 1rem;
+}
+.title {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+.label-name {
+  text-align: left;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 3rem;
+}
+.input-form {
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  background-color: rgba(29, 30, 32, 1);
+  padding: 0.5rem;
+}
+.agree-checkbox-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 1rem;
+  padding: 1rem;
+}
+.signup-button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.signup-button {
+  padding: 0.5rem 2rem;
+  border: 3px solid var(--border-color);
+  border-radius: 2rem;
+  background: radial-gradient(
+    var(--button-yellow-color),
+    var(--button-green-color)
+  );
+  font-size: 1.25rem;
+  color: var(--black-color);
+  margin-top: 1rem;
+  margin-right: 1rem;
+  margin: 1.5rem 1rem 1.5rem 0rem;
+}
+.input-checkbox {
+  width: 1rem;
+  height: 1rem;
+  cursor: pointer;
+}
+.agree-text {
+  padding-left: 0.5rem;
+}
+.goback {
+  padding: 1rem;
+  margin: 3rem 1rem;
+}

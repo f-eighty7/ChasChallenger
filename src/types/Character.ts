@@ -19,6 +19,7 @@ type Character = {
     species: Species;
     imageUrl: string;
     isFavorite: boolean;
+    // id
   };
 
   export default Character;

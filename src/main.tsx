@@ -14,9 +14,11 @@ import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import { LoginRoute } from "./routes/LoginRoute.tsx";
 import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
 import { StoriesRoute } from "./routes/StoriesRoute.tsx";
-import { MastersWelcomeRoute } from "./routes/MastersWelcomeRoute.tsx";
+//import { MastersWelcomeRoute } from "./routes/MastersWelcomeRoute.tsx";
 import { SignupRoute } from "./routes/SignupRoute.tsx";
 import "./index.css";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import { AboutRoute } from "./routes/AboutRoute.tsx";
 
 const router = createBrowserRouter([
   {
@@ -44,10 +46,10 @@ const router = createBrowserRouter([
         path: "/characters/new/premade",
         element: <NewPremadeCharacterRoute />,
       },
-      {
-        path: "/welcome",
-        element: <MastersWelcomeRoute />,
-      },
+      // {
+      //   path: "/welcome",
+      //   element: <MastersWelcomeRoute />,
+      // },
       {
         path: "/adventure",
         element: <AdventureRoute />,
@@ -62,11 +64,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/countinuestory",
-        element: <CountinueStoryRoute />,
+        element: <CountinueStoryRoute />, //continue
       },
       {
         path: "/stories",
         element: <StoriesRoute />,
+      },
+      {
+        path: "/about",
+        element: <AboutRoute />,
       },
     ],
   },
@@ -74,8 +80,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <AuthProvider>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </AuthProvider>
   </React.StrictMode>
 );

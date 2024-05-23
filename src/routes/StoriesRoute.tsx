@@ -1,15 +1,10 @@
 import { Stories } from "../components/Stories";
-import { Link } from "react-router-dom";
+import style from "./StoriesRoute.module.css";
 
 export const StoriesRoute = () => {
   return (
     <main>
-      <h1 style={{ padding: "1rem", margin: "1rem"}}>
-        Stories
-      </h1>
-      <Link to="/adventure">
-        <button>Play Game</button>
-      </Link>
+      <h2 className={style.heading}>STAYIN ALIVE</h2>
       <Stories />
     </main>
   );

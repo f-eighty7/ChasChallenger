@@ -1,0 +1,47 @@
+.form {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+.text-label {
+font-size: 0.8rem;
+}
+.name {
+    color: var(--black-color);
+}
+.textarea {
+width: 250px;
+height: 150px;
+color: var(--black-color);
+border: 3px solid var(--border-color);
+border-radius: 4px;
+margin-bottom: 5rem;
+font-size: 1rem;
+resize: none;
+}
+.textarea:focus {
+border: 3px solid var(--border-color);
+}
+.button-wrapper {
+display: flex;
+gap: 2rem;
+font-weight: 500;
+}
+.back-button {
+padding: 0.5rem 2rem;
+border: 3px solid var(--border-color);
+border-radius: 2rem;
+background: var(--black-color);
+font-size: 1.25rem;
+color: var(--text-color);
+font-weight: normal;
+}
+.story-button {
+padding: 0.5rem 2rem;
+border: 3px solid var(--border-color);
+border-radius: 2rem;
+background: radial-gradient(var(--button-yellow-color), var(--button-green-color));
+font-size: 1.25rem;
+color: var(--black-color);
+}

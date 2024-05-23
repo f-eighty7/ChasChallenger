@@ -1,10 +1,10 @@
+//@ts-nocheck
 import axios from "axios";
-import type { Character } from "../types/types";
 
-const BASE_URL = "http://localhost:3000/addCharacter";
+const BASE_URL = "http://localhost:8000/addCharacter";
 
 // CREATE
-export const createCharacter = async (character: Character) => {
+export const createCharacter = async (character) => {
   const response = await axios.post(BASE_URL, character);
   return response.data;
 };
@@ -16,7 +16,7 @@ export const getAllCharacters = async () => {
 };
 
 //UPDATE
-export const updateCharacter = async (character: Character) => {
+export const updateCharacter = async (character) => {
   const response = await axios.put(`${BASE_URL}/${character.name}`, character);
   return response.data;
 };

@@ -4,9 +4,10 @@ import { StoryItem } from "./StoryItem";
 import premadeStories from "../api/stories.json";
 
 export const Stories = () => {
-  const onSelected = (story: string) => {
+  const onSelected = (name: string, story: string) => {
     const storyText: StoryText = {
-      text: story,
+      name: name,
+      summary: story,
     };
     //promptStoryText(storyText);
     console.log(storyText);
@@ -14,7 +15,6 @@ export const Stories = () => {
 
   return (
     <>
-      <button style={{margin: "1rem"}}>Make your own story</button>
       <div>
         <ul>
           {premadeStories.map((story: Story) => {
