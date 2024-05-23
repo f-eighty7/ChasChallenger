@@ -8,7 +8,7 @@ function ButtonOne({ buttonText, bgColor, hoverBgColor, textColor, buttonType, p
     const buttonTxt = buttonText || 'add buttonText';
     const type = buttonType || 'button';
     const padding = paddingClass || 'px-4 py-2';
-    const margin = marginClass || 'm-2';
+    const margin = marginClass || 'm-0';
 
     return (
         <div className={margin}>

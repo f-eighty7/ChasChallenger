@@ -5,6 +5,8 @@ import { Link, NavLink } from 'react-router-dom';
 import style from "./Navbar.module.css";
 import ButtonOne from './ButtonOne';
 import { Button } from '@material-tailwind/react';
+import { FaUser } from "react-icons/fa";
+
 
 function Navbar() {
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -37,13 +39,29 @@ function Navbar() {
 			<ul className={` ${menuOpen ? style.open : ""}`}>
 				<li>
 					<NavLink
+						to={"/"}
+						onClick={() => handleItemClicked("howToPlay")}
+						className={`${activeItem === "howToPlay" ? style["active"] : ""}`}>
+						How to Play
+					</NavLink>
+				</li>
+				<li>
+					<NavLink
+						to={"/"}
+						onClick={() => handleItemClicked("news")}
+						className={`${activeItem === "news" ? style["active"] : ""}`}>
+						News
+					</NavLink>
+				</li>
+				<li>
+					<NavLink
 						to={"/about"}
 						onClick={() => handleItemClicked("about")}
 						className={`${activeItem === "about" ? style["active"] : ""}`}>
 						About
 					</NavLink>
 				</li>
-				<li>
+				{/* <li>
 					<NavLink
 						to={"/characters"}
 						onClick={() => handleItemClicked("characters")}
@@ -58,20 +76,20 @@ function Navbar() {
 						className={`${activeItem === "stories" ? style["active"] : ""}`}>
 						Stories
 					</NavLink>
-				</li>
+				</li> */}
 				<li>
 					<NavLink
 						to={"/login"}
 						onClick={() => handleItemClicked("login")}
 						className={`${activeItem === "login" ? style["active"] : ""}`}>
-						Sign in
-                    </NavLink>
-                </li>
-                <li>
-                    <ButtonOne buttonText={'Play Now!'}/>
-                </li>
-
-
+						Log in
+					</NavLink>
+				</li>
+				<li>
+                    <ButtonOne
+                        marginClass={'ml-4'}
+                        buttonText={"Play Now!"} />
+				</li>
 			</ul>
 		</nav>
 	);
