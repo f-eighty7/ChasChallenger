@@ -19,6 +19,11 @@ import { AuthProvider} from "./context/AuthContext.jsx"
 import { AboutRoute } from "./routes/AboutRoute.tsx";
 
 
+// const privateRouter = createBrowserRouter([
+//   {
+//   }
+// ])
+
 const router = createBrowserRouter
 ([
   

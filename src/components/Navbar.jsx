@@ -8,18 +8,109 @@ import { Button } from '@material-tailwind/react';
 import { FaUser } from "react-icons/fa";
 
 
-function Navbar() {
+function LoggedInNav({ handleItemClicked, activeItem, menuOpen }) {
+	return (
+		<ul className={` ${menuOpen ? style.open : ""}`}>
+			{/* <li>
+				<NavLink
+					to={"/"}
+					onClick={() => handleItemClicked("news")}
+					className={`${activeItem === "news" ? style["active"] : ""}`}>
+					News
+				</NavLink>
+			</li> */}
+			<li>
+				<NavLink
+					to={"/about"}
+					onClick={() => handleItemClicked("about")}
+					className={`${activeItem === "about" ? style["active"] : ""}`}>
+					About
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					to={"/characters"}
+					onClick={() => handleItemClicked("characters")}
+					className={`${activeItem === "characters" ? style["active"] : ""}`}>
+					Characters
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					to={"/stories"}
+					onClick={() => handleItemClicked("stories")}
+					className={`${activeItem === "stories" ? style["active"] : ""}`}>
+					Stories
+				</NavLink>
+			</li>
+			<li>
+				<Link to={"/stories"}>
+					<ButtonOne buttonText={"Play Now!"} />
+				</Link>
+			</li>
+		</ul>
+	);
+}
+
+function LoggedOutNav({ handleItemClicked, activeItem, menuOpen }) {
+	return (
+		<ul className={` ${menuOpen ? style.open : ""}`}>
+			<li>
+				<NavLink
+					to={"/"}
+					onClick={() => handleItemClicked("howToPlay")}
+					className={`${activeItem === "howToPlay" ? style["active"] : ""}`}>
+					How to Play
+				</NavLink>
+			</li>
+			 <li>
+				<NavLink
+					to={"/"}
+					onClick={() => handleItemClicked("news")}
+					className={`${activeItem === "news" ? style["active"] : ""}`}>
+					News
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					to={"/about"}
+					onClick={() => handleItemClicked("about")}
+					className={`${activeItem === "about" ? style["active"] : ""}`}>
+					About
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					to={"/login"}
+					onClick={() => handleItemClicked("login")}
+					className={`${activeItem === "login" ? style["active"] : ""}`}>
+					Log in
+				</NavLink>
+            </li>
+			<li>
+				<Link to={"/signup"}>
+					<ButtonOne buttonText={"Play Now!"} />
+				</Link>
+			</li>
+		</ul>
+	);
+}
+
+function Navbar({ isLoggedIn }) {
+	console.log("isLoggedIn:", isLoggedIn);
+
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [activeItem, setActiveItem] = useState(null);
 
-    const handleItemClicked = (item) => {
-        
-        if (item === activeItem) {
-            return;
-        }
+	const handleItemClicked = (item) => {
+		if (item === activeItem) {
+			return;
+		}
 		setActiveItem(item === activeItem ? null : item);
 		setMenuOpen(false);
-	};
+    };
+    
+
 	return (
 		<nav>
 			<Link
@@ -36,60 +127,21 @@ function Navbar() {
 				<span></span>
 				<span></span>
 			</div>
-			<ul className={` ${menuOpen ? style.open : ""}`}>
-				<li>
-					<NavLink
-						to={"/"}
-						onClick={() => handleItemClicked("howToPlay")}
-						className={`${activeItem === "howToPlay" ? style["active"] : ""}`}>
-						How to Play
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						to={"/"}
-						onClick={() => handleItemClicked("news")}
-						className={`${activeItem === "news" ? style["active"] : ""}`}>
-						News
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						to={"/about"}
-						onClick={() => handleItemClicked("about")}
-						className={`${activeItem === "about" ? style["active"] : ""}`}>
-						About
-					</NavLink>
-				</li>
-				{/* <li>
-					<NavLink
-						to={"/characters"}
-						onClick={() => handleItemClicked("characters")}
-						className={`${activeItem === "characters" ? style["active"] : ""}`}>
-						Characters
-					</NavLink>
-				</li>
-				<li>
-					<NavLink
-						to={"/stories"}
-						onClick={() => handleItemClicked("stories")}
-						className={`${activeItem === "stories" ? style["active"] : ""}`}>
-						Stories
-					</NavLink>
-				</li> */}
-				<li>
-					<NavLink
-						to={"/login"}
-						onClick={() => handleItemClicked("login")}
-						className={`${activeItem === "login" ? style["active"] : ""}`}>
-						Log in
-					</NavLink>
-				</li>
-				<li>
-                    <ButtonOne
-                        buttonText={"Play Now!"} />
-				</li>
-			</ul>
+
+			{isLoggedIn ? (
+				<LoggedInNav
+					handleItemClicked={handleItemClicked}
+                    activeItem={activeItem}
+                    menuOpen={menuOpen}
+
+				/>
+			) : (
+				<LoggedOutNav
+					handleItemClicked={handleItemClicked}
+                        activeItem={activeItem}
+                        menuOpen={menuOpen}
+				/>
+			)}
 		</nav>
 	);
 }
