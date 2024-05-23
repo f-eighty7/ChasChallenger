@@ -100,7 +100,7 @@ const handleGenerateCharacterButtonClicked = (
     "Hello full character generated with this epic backstory! Wowzers"
   );
   setValue("profession", Profession.profession3);
-  setValue("species", Species.elf);
+  setValue("species", Species.human);
   setValue(
     "imageUrl",
     "https://images.panda.org/assets/images/pages/welcome/orangutan_1600x1000_279157.jpg"
@@ -157,7 +157,7 @@ export const NewCustomCharacterRoute = () => {
   const formSubmit = (data: Character) => {
     // data.hitpoints = data.constitution * xyz; TODO: hitpoints calculation
     console.log(data); //TODO: send data to backend to create character
-    navigate("..", { relative: "path", replace: true });
+    navigate("../..", { relative: "path", replace: true });
   };
 
   const {
@@ -225,6 +225,7 @@ export const NewCustomCharacterRoute = () => {
 
   return (
     <main>
+      <h1>Custom Character</h1>
       <div>
         <h2>Generate With Prompt</h2>
         <input

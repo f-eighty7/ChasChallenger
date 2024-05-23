@@ -4,9 +4,9 @@ import Species from "./Species";
 type Character = {
     name: string;
     age: number;
-    gender: string;
+    gender: string; //TODO: refactor to enum like Species.ts
     // class: string; //enum
-    level: number;
+    level?: number; //TODO: remove/comment out
     healthpoints: number;
     strength: number;
     dexterity: number;

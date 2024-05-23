@@ -59,7 +59,7 @@ export const CharactersRoute = () => {
       charisma: 10,
       backstory: "Arbetslös",
       profession: Profession.profession2,
-      species: Species.goblin,
+      species: Species.human,
       imageUrl: "",
       isFavorite: false,
     },
