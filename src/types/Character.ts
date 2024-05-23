@@ -6,7 +6,7 @@ type Character = {
     age: number;
     gender: string; //TODO: refactor to enum like Species.ts
     // class: string; //enum
-    level?: number; //TODO: remove/comment out
+    // level: number;
     healthpoints: number;
     strength: number;
     dexterity: number;

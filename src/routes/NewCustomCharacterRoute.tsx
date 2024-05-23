@@ -58,7 +58,6 @@ const handleGenerateCharacterButtonClicked = (
   setValue("name", "Genorator Blawg");
   setValue("age", 999);
   setValue("gender", "female");
-  setValue("level", 666);
 
   //TODO: Extra, setting like this does not change from "error field is required state".
   setValue("strength", 15);
@@ -171,7 +170,6 @@ export const NewCustomCharacterRoute = () => {
       name: "",
       age: 0,
       gender: "male", //TODO: refactor to enum like Species.ts
-      level: 1,
       healthpoints: 1,
       strength: 0,
       dexterity: 0,
