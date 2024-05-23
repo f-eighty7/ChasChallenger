@@ -31,7 +31,8 @@ nav .title {
 nav ul {
 
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    padding: 0 1rem;
     height: 100%;
 }
 
@@ -104,16 +105,31 @@ nav .menu span {
     
     nav ul.open {
         display: flex;
+
+        position: absolute;
+        height: fit-content;
+        top: 3rem;
+        left: 0;
+        width: 100vw;
+        margin: 0;
+        padding-top: 1rem;
+        background-color: #464646;
+
+    }
+
+    nav ul li a:not(.active,.title):hover {
+        border-radius: 4rem;
+    
     }
 
     nav ul li {
-        width: 100%;
         text-align: center;
 
     }
 
     nav ul li a {
         margin: .2rem .5rem;
+
     }
 
 }

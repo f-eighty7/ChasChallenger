@@ -17,8 +17,8 @@ function Navbar() {
     return (
         <nav
         className='bg-zinc-800/70 p-2'>
-                    <Link to={'/'}
-                    className={style.title}>fantasy ChasS</Link>
+                    <Link to={'/'} 
+                    className={style.title}>fantasy ChaS</Link>
                 <div
                 className={style.menu}
                 onClick={() => {
@@ -30,7 +30,7 @@ function Navbar() {
                 <span></span>
                 </div>
             <ul 
-            className={`${menuOpen ? style.open : ''}`}
+            className={` ${menuOpen ? style.open : ''}`}
            >
                 {/* <li>
                     <NavLink 
