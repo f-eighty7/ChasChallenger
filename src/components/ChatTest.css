@@ -55,13 +55,23 @@
   position: fixed;
   bottom: 1.2rem;
   background-color: white;
-  border-radius: 60px;
+  border-radius: 30px
   
- 
 }
+
+.chat-input :focus{
+  outline: none;
+}
+
 
 .knapp{
   position: relative;
+ 
+  
+   /* filter: invert(1); */
+ 
+  
+  
   
 }
 
@@ -71,7 +81,11 @@
   padding: 10px;
 }
 
+.icon{
+  background-color: #000000;
+  size: 60px;
 
+}
 
 
 /* .chat-input input {
@@ -103,6 +117,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  
 }
 
 .loader {

@@ -63,6 +63,7 @@ export function ChatTest() {
             endOfMessagesRef.current.scrollIntoView({ behavior: 'smooth' });
         }
     }, [history]);
+    /* const style = { background: '', fontSize: "1.4em" } */
 
     return (
         <div className="chat-container">
@@ -88,12 +89,13 @@ export function ChatTest() {
                 </div>
                 
             </div>
-            
-            <form className="chat-input" onSubmit={handleSend}> 
-                
             <button title="Settings" onClick={() => setButtonPopup(true)}>
                         <IoMdSettings />
                     </button>
+                    <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
+            <form className="chat-input" onSubmit={handleSend}> 
+                
+            
                 <div className="input-container">
                     <input
                         type="text" className='inputruta'
@@ -104,12 +106,13 @@ export function ChatTest() {
                         
                         
                     />
-                    <button  onClick={handleSend} disabled={!query.trim() || loading}className="knapp">
-                        {loading ? <MdScheduleSend /> : <IoSend />}
+                    <button  onClick={handleSend} disabled={!query.trim() || loading}className="sendButton">
+                        {loading ? <MdScheduleSend /> : <IoSend className="icon"/>}
+                        
                     </button>
                 </div>
-                
-                    <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
+               
+                    
                
             </form>
                    
