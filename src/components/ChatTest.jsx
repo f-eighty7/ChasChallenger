@@ -96,14 +96,15 @@ export function ChatTest() {
                     </button>
                 <div className="input-container">
                     <input
-                        type="text"
+                        type="text" className='inputruta'
                         value={query}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
                         placeholder="skriv nåt för fan..."
                         
+                        
                     />
-                    <button  onClick={handleSend} disabled={!query.trim() || loading}>
+                    <button  onClick={handleSend} disabled={!query.trim() || loading}className="knapp">
                         {loading ? <MdScheduleSend /> : <IoSend />}
                     </button>
                 </div>
