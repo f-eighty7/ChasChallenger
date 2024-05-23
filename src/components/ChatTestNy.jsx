@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './ChatTest.css';
+import { GameSettingsPopup } from "./GameSettingsPopup";
 
 axios.defaults.withCredentials = true;
 
@@ -8,9 +9,10 @@ export function ChatTestNy() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const messagesEndRef = useRef(null);
+  const [buttonPopup, setButtonPopup] = useState(false);
 
   useEffect(() => {
-    // Scroll to the bottom of the messages when new messages are added
+    
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
@@ -54,7 +56,8 @@ export function ChatTestNy() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type a message..."
         />
-        <button type="submit" className="chat-button">Send</button>
+        <button title="Settings" onClick={() => setButtonPopup(true)}>Settings</button>
+        <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
       </form>
     </div>
   );
