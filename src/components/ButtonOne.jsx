@@ -1,27 +1,27 @@
-import React, { useState } from "react";
+import React from "react";
 
 function ButtonOne({ buttonText, bgColor, hoverBgColor, textColor, buttonType, paddingClass, marginClass }) {
-    const background = bgColor || "bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500";
-    const hoverBackground = hoverBgColor || "hover:bg-gradient-to-b";
+    // Define as classes padrão
+    const background = bgColor || "bg-radial-gradient from-custom-yellow to-custom-green";
+    const hoverBackground = hoverBgColor || "hover:bg-radial-gradient";
     const text = textColor || "text-gray-900";
     const buttonTxt = buttonText || 'add buttonText';
     const type = buttonType || 'button';
+    const padding = paddingClass || 'px-4 py-2';
+    const margin = marginClass || 'm-2';
 
     return (
-        <div>
+        <div className={margin}>
             <button
-            type={type}
-            className={`_story-button_plvvd_35`}
+                type={type}
+                className={`${background} ${hoverBackground} ${text} ${padding} border-0 transition-all duration-300 ease-in-out transform rounded-full hover:scale-105 hover:shadow-lg hover:brightness-125 active:brightness-100`}
             >
                 {buttonTxt}
             </button>
-
         </div>
-    )
+    );
 }
 
-
-export default ButtonOne;  
-
+export default ButtonOne;
 
 
