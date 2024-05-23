@@ -87,7 +87,6 @@ function Navbar() {
 				</li>
 				<li>
                     <ButtonOne
-                        marginClass={'ml-4'}
                         buttonText={"Play Now!"} />
 				</li>
 			</ul>
