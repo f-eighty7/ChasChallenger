@@ -1,9 +1,9 @@
 import style from "./CharactersRoute.module.css";
-import { Link, useNavigate } from "react-router-dom";
 import Character from "../types/Character";
-import Profession from "../types/Profession";
-import Species from "../types/Species";
 import CharacterCard from "../components/CharacterCard";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const handleDeleteCharacterClicked = (
   event: React.MouseEvent<HTMLButtonElement>
@@ -24,45 +24,29 @@ const handleFavoriteCharacterClicked = (
   console.warn("Not yet implemented");
 };
 
+const getCharacters = async (): Promise<Character[] | undefined> => {
+  try {
+    const response = await axios.get(
+      "https://chasfantasy.azurewebsites.net/api/Character/GetCharacters"
+    );
+
+    return await response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
+};
+
 export const CharactersRoute = () => {
   const navigate = useNavigate();
 
-  const characters: Character[] = [
-    {
-      name: "Foo",
-      age: 26,
-      gender: "male",
-      healthpoints: 10,
-      strength: 10,
-      dexterity: 10,
-      intelligence: 10,
-      wisdom: 10,
-      constitution: 10,
-      charisma: 10,
-      backstory: "Bondafan",
-      profession: Profession.profession1,
-      species: Species.human,
-      imageUrl: "src/Images/catA.png",
-      isFavorite: false,
-    },
-    {
-      name: "Bar",
-      age: 30,
-      gender: "female",
-      healthpoints: 10,
-      strength: 10,
-      dexterity: 10,
-      intelligence: 10,
-      wisdom: 10,
-      constitution: 10,
-      charisma: 10,
-      backstory: "Arbetslös",
-      profession: Profession.profession2,
-      species: Species.human,
-      imageUrl: "src/Images/fada.png",
-      isFavorite: false,
-    },
-  ]; //TODO: get from server
+  const [characters, setCharacters] = useState<Character[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      setCharacters((await getCharacters()) as Character[]);
+    })();
+  }, []);
 
   const handleCharacterClicked = (character: Character) => {
     //TODO: set selected character and move on to next route in flow

@@ -6,8 +6,7 @@ type Character = {
     age: number;
     gender: string; //TODO: refactor to enum like Species.ts
     // class: string; //enum
-    // level: number;
-    healthpoints: number;
+    healthPoints: number;
     strength: number;
     dexterity: number;
     intelligence: number;
@@ -17,10 +16,29 @@ type Character = {
     backstory: string;
     profession: Profession;
     species: Species;
-    imageUrl: string;
-    isFavorite: boolean;
+    imageURL: string;
+    favourite: boolean;
     // id
   };
+
+/*
+        name: "string",
+        age: 0,
+        gender: "string",
+        level: 0,
+        healthPoints: 0,
+        strength: 0,
+        dexterity: 0,
+        intelligence: 0,
+        wisdom: 0,
+        constitution: 0,
+        charisma: 0,
+        favourite: true,
+        imageURL: "http// någonting string",
+        backstory: "string",
+        profession: "string",
+        species: "string",
+*/
 
   export default Character;
   

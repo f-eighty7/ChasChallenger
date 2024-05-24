@@ -8,6 +8,7 @@ import AbilityScoreOption from "../types/AbilityScoreOption";
 import { AbilityScoreDropdown } from "../components/AbilityScoreDropdown";
 import Profession, { ProfessionsArray } from "../types/Profession";
 import Species, { SpeciesArray } from "../types/Species";
+import axios from "axios";
 
 const abilityAttributes: AbilityAttribute[] = [
   //TODO: refactor to enum like Species.ts
@@ -41,7 +42,7 @@ const handleGenerateAvatarButtonClicked = (
   //TODO: send prompt with other character information (formValues) to generate a representative avatar icon
   const tempResonese = "https://avatars.githubusercontent.com/u/72140147?v=4";
   setAvatarIconPreviewUrl(tempResonese); //Preview
-  setValue("imageUrl", tempResonese); //Form data
+  setValue("imageURL", tempResonese); //Form data
 };
 
 const handleGenerateCharacterButtonClicked = (
@@ -101,7 +102,7 @@ const handleGenerateCharacterButtonClicked = (
   setValue("profession", Profession.profession3);
   setValue("species", Species.human);
   setValue(
-    "imageUrl",
+    "imageURL",
     "https://images.panda.org/assets/images/pages/welcome/orangutan_1600x1000_279157.jpg"
   );
   setAvatarIconPreviewUrl(
@@ -153,9 +154,12 @@ const handleResetAllAbilityScoreButtonClicked = (
 export const NewCustomCharacterRoute = () => {
   const navigate = useNavigate();
 
-  const formSubmit = (data: Character) => {
-    // data.hitpoints = data.constitution * xyz; TODO: hitpoints calculation
-    console.log(data); //TODO: send data to backend to create character
+  const formSubmit = async (data: Character) => {
+    await axios.post(
+      "https://chasfantasy.azurewebsites.net/api/Character/AddCharacter",
+      { ...data, level: 0 }
+    );
+
     navigate("../..", { relative: "path", replace: true });
   };
 
@@ -170,7 +174,7 @@ export const NewCustomCharacterRoute = () => {
       name: "",
       age: 0,
       gender: "male", //TODO: refactor to enum like Species.ts
-      healthpoints: 1,
+      healthPoints: 1,
       strength: 0,
       dexterity: 0,
       intelligence: 0,
@@ -180,8 +184,8 @@ export const NewCustomCharacterRoute = () => {
       backstory: "",
       profession: Profession.profession1,
       species: Species.human,
-      imageUrl: "",
-      isFavorite: false,
+      imageURL: "",
+      favourite: false,
     },
   });
 

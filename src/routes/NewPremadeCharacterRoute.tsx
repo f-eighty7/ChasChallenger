@@ -1,3 +1,4 @@
+import axios from "axios";
 import Character from "../types/Character";
 import Profession from "../types/Profession";
 import Species from "../types/Species";
@@ -9,7 +10,7 @@ const premades: Character[] = [
     name: "Abc",
     age: 20,
     gender: "male",
-    healthpoints: 10,
+    healthPoints: 10,
     strength: 15,
     dexterity: 14,
     intelligence: 13,
@@ -20,14 +21,14 @@ const premades: Character[] = [
       "My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory My backstory",
     profession: Profession.profession1,
     species: Species.human,
-    imageUrl: "https://avatars.githubusercontent.com/u/72140147?v=4",
-    isFavorite: false,
+    imageURL: "https://avatars.githubusercontent.com/u/72140147?v=4",
+    favourite: false,
   },
   {
     name: "123",
     age: 30,
     gender: "female",
-    healthpoints: 10,
+    healthPoints: 10,
     strength: 15,
     dexterity: 14,
     intelligence: 13,
@@ -37,14 +38,14 @@ const premades: Character[] = [
     backstory: "My backstory",
     profession: Profession.profession2,
     species: Species.human,
-    imageUrl: "",
-    isFavorite: false,
+    imageURL: "",
+    favourite: false,
   },
   {
     name: "Abc123",
     age: 40,
     gender: "non-binary",
-    healthpoints: 10,
+    healthPoints: 10,
     strength: 15,
     dexterity: 14,
     intelligence: 13,
@@ -54,18 +55,19 @@ const premades: Character[] = [
     backstory: "My backstory",
     profession: Profession.profession3,
     species: Species.human,
-    imageUrl: "",
-    isFavorite: false,
+    imageURL: "",
+    favourite: false,
   },
 ];
 
-const handleCharacterClicked = (
+const handleCharacterClicked = async (
   character: Character,
   navigate: NavigateFunction
 ) => {
-  console.log(character);
-  //TODO: POST new character to server
-  console.warn("Not yet implemented");
+  await axios.post(
+    "https://chasfantasy.azurewebsites.net/api/Character/AddCharacter",
+    { ...character, level: 0 }
+  );
   navigate("../..", { relative: "path", replace: true });
 };
 
@@ -85,7 +87,7 @@ export const NewPremadeCharacterRoute = () => {
             >
               <h2>{character.name}</h2>
               <img
-                src={character.imageUrl}
+                src={character.imageURL}
                 alt={`${character.name}'s icon`}
                 loading="lazy"
                 onError={(error) =>
@@ -114,7 +116,7 @@ export const NewPremadeCharacterRoute = () => {
                 </div>
                 <div className={style.numbered}>
                   <h3>HP</h3>
-                  <p>{character.healthpoints}</p>
+                  <p>{character.healthPoints}</p>
                 </div>
               </div>
               <div className={style.attributes}>
