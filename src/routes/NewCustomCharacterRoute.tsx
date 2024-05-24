@@ -1,5 +1,5 @@
 import { ChangeEvent, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavigateFunction, useNavigate } from "react-router-dom";
 import { useForm, UseFormGetValues, UseFormSetValue } from "react-hook-form";
 import style from "./NewCustomCharacterRoute.module.css";
 import Character from "../types/Character";
@@ -157,17 +157,17 @@ const handleResetAllAbilityScoreButtonClicked = (
   ]);
 };
 
+const formSubmit = async (character: Character, navigate: NavigateFunction) => {
+  await axios.post(
+    "https://chasfantasy.azurewebsites.net/api/Character/AddCharacter",
+    { ...character, level: 0 }
+  );
+
+  navigate("../..", { relative: "path", replace: true });
+};
+
 export const NewCustomCharacterRoute = () => {
   const navigate = useNavigate();
-
-  const formSubmit = async (data: Character) => {
-    await axios.post(
-      "https://chasfantasy.azurewebsites.net/api/Character/AddCharacter",
-      { ...data, level: 0 }
-    );
-
-    navigate("../..", { relative: "path", replace: true });
-  };
 
   const {
     register,
@@ -259,7 +259,9 @@ export const NewCustomCharacterRoute = () => {
       </div>
       <form
         className={style.newCharacterForm}
-        onSubmit={handleSubmit(formSubmit)}
+        onSubmit={handleSubmit((character: Character) =>
+          formSubmit(character, navigate)
+        )}
       >
         <div>
           <label htmlFor="name">
