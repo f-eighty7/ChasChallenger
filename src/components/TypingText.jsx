@@ -6,7 +6,7 @@ const TypingText = ({ text }) => {
   useEffect(() => {
     if (!text) return; 
 
-    let currentIndex = -2;
+    let currentIndex = -1;
     setDisplayedText('');
     
     const intervalId = setInterval(() => {
