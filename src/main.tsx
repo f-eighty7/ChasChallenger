@@ -19,6 +19,7 @@ import { SignupRoute } from "./routes/SignupRoute.tsx";
 import "./index.css";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { AboutRoute } from "./routes/AboutRoute.tsx";
+import { HowToPlay } from "./routes/HowToPlayRoute.tsx";
 
 const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
       //   path: "/welcome",
       //   element: <MastersWelcomeRoute />,
       // },
+      {
+        path: "/howtoplay",
+        element: <HowToPlay />,
+      },
       {
         path: "/adventure",
         element: <AdventureRoute />,
