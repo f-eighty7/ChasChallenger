@@ -8,6 +8,8 @@ import { ErrorRoute } from "./routes/ErrorRoute.tsx";
 import { HomeRoute } from "./routes/HomeRoute.tsx";
 import { CharactersRoute } from "./routes/CharactersRoute.tsx";
 import { NewCharacterRoute } from "./routes/NewCharacterRoute.tsx";
+import { NewCustomCharacterRoute } from "./routes/NewCustomCharacterRoute.tsx";
+import { NewPremadeCharacterRoute } from "./routes/NewPremadeCharacterRoute.tsx";
 import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import { LoginRoute } from "./routes/LoginRoute.tsx";
 //import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
@@ -15,13 +17,11 @@ import { StoriesRoute } from "./routes/StoriesRoute.tsx";
 //import { MastersWelcomeRoute } from "./routes/MastersWelcomeRoute.tsx";
 import { SignupRoute } from "./routes/SignupRoute.tsx";
 import "./index.css";
-import { AuthProvider} from "./context/AuthContext.jsx"
+import { AuthProvider } from "./context/AuthContext.jsx";
 import { AboutRoute } from "./routes/AboutRoute.tsx";
+import { HowToPlay } from "./routes/HowToPlayRoute.tsx";
 
-
-const router = createBrowserRouter
-([
-  
+const router = createBrowserRouter([
   {
     path: "/",
     element: <RootLayout />,
@@ -39,10 +39,22 @@ const router = createBrowserRouter
         path: "/characters/new",
         element: <NewCharacterRoute />,
       },
+      {
+        path: "/characters/new/custom",
+        element: <NewCustomCharacterRoute />,
+      },
+      {
+        path: "/characters/new/premade",
+        element: <NewPremadeCharacterRoute />,
+      },
       // {
       //   path: "/welcome",
       //   element: <MastersWelcomeRoute />,
       // },
+      {
+        path: "/howtoplay",
+        element: <HowToPlay />,
+      },
       {
         path: "/adventure",
         element: <AdventureRoute />,
@@ -63,7 +75,7 @@ const router = createBrowserRouter
         path: "/stories",
         element: <StoriesRoute />,
       },
-            {
+      {
         path: "/about",
         element: <AboutRoute />,
       },
@@ -72,14 +84,11 @@ const router = createBrowserRouter
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  
   <React.StrictMode>
-    <AuthProvider >
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <AuthProvider>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
     </AuthProvider>
   </React.StrictMode>
-  
 );
-

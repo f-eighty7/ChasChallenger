@@ -1,124 +1,79 @@
 import style from "./CharactersRoute.module.css";
-import { Link, useNavigate } from "react-router-dom";
 import Character from "../types/Character";
-import Profession from "../types/Profession";
-import Species from "../types/Species";
 import CharacterCard from "../components/CharacterCard";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const handleDeleteCharacterClicked = (
-	event: React.MouseEvent<HTMLButtonElement>
+  event: React.MouseEvent<HTMLButtonElement>
 ) => {
-	event.stopPropagation();
+  event.stopPropagation();
 
-	//maybe disable on favorited characters
-	//have some sort of confirmation
+  //maybe disable on favorited characters
+  //have some sort of confirmation
 
-	console.warn("Not yet implemented");
+  console.warn("Not yet implemented");
 };
 
 const handleFavoriteCharacterClicked = (
-	event: React.MouseEvent<HTMLButtonElement>
+  event: React.MouseEvent<HTMLButtonElement>
 ) => {
-	event.stopPropagation();
+  event.stopPropagation();
 
-	console.warn("Not yet implemented");
+  console.warn("Not yet implemented");
+};
+
+const getCharacters = async (): Promise<Character[] | undefined> => {
+  try {
+    const response = await axios.get(
+      "https://chasfantasy.azurewebsites.net/api/Character/GetCharacters"
+    );
+
+    return await response.data;
+  } catch (error) {
+    console.error(error);
+    return [];
+  }
 };
 
 export const CharactersRoute = () => {
-	const navigate = useNavigate();
+  const navigate = useNavigate();
 
-	const characters: Character[] = [
-		{
-			name: "FOO",
-			age: 26,
-			gender: "male",
-			class: "Wizard",
-			level: 1,
-			hitpoints: 10,
-			strength: 10,
-			dexterity: 10,
-			intelligence: 10,
-			wisdom: 10,
-			constitution: 10,
-			charisma: 10,
-			backstory: "Bondafan",
-			profession: Profession.profression1,
-			species: Species.human,
-			image: "src/Images/catA.png",
-		},
-		{
-			name: "BAR",
-			age: 30,
-			gender: "female",
-			class: "Rogue",
-			level: 5,
-			hitpoints: 10,
-			strength: 10,
-			dexterity: 10,
-			intelligence: 10,
-			wisdom: 10,
-			constitution: 10,
-			charisma: 10,
-			backstory: "Arbetslös",
-			profession: Profession.profression2,
-			species: Species.goblin,
-			image: "src/Images/fada.png",
-		},
-	]; //TODO: get from server
+  const [characters, setCharacters] = useState<Character[]>([]);
 
-	const handleCharacterClicked = (character: Character) => {
-		//TODO: set selected character and move on to next route in flow
-		console.log(character.name, "selected!");
+  useEffect(() => {
+    (async () => {
+      setCharacters((await getCharacters()) as Character[]);
+    })();
+  }, []);
 
-		navigate("/adventure", { replace: true });
-	};
+  const handleCharacterClicked = (character: Character) => {
+    //TODO: set selected character and move on to next route in flow
+    console.log(character.name, "selected!");
 
-	return (
-		<main >
-			<h1>Your Characters</h1>
-			<ul>
-				{characters.map((character, index) => {
-					return (
-						<CharacterCard
-							key={character.name + index}
-							character={character}
-							onDelete={handleDeleteCharacterClicked}
-							onFavorite={handleFavoriteCharacterClicked}
-							onSelect={handleCharacterClicked}
-						/>
-					);
-				})}
-			</ul>
-			<Link
-				className={style.link}
-				relative="path"
-				to="new">
-				New
-			</Link>
-		</main>
-	);
-};
+    navigate("/adventure", { replace: true });
+  };
 
-/*
-import { Link } from "react-router-dom";
-
-export const CharactersRoute = () => {
   return (
     <main>
-      <h1 style={{ padding: "1rem", marginTop: "5rem", marginBottom: "3rem" }}>
-        Characters
-      </h1>
-      <Link to="/createcharacter">
-        <button>Create character</button>
-      </Link>{" "}
-      <br />
-      <Link to="/selectcharacter">
-        <button>Select character</button>
-      </Link>
-      <Link to="/login" style={{ padding: "0.5rem", margin: "1rem" }}>
-        Back
+      <h1>Your Characters</h1>
+      <ul>
+        {characters.map((character, index) => {
+          return (
+            <CharacterCard
+              key={character.name + index}
+              character={character}
+              onDelete={handleDeleteCharacterClicked}
+              onFavorite={handleFavoriteCharacterClicked}
+              onSelect={handleCharacterClicked}
+            />
+          );
+        })}
+      </ul>
+      <Link className={style.link} relative="path" to="new">
+        New
       </Link>
     </main>
   );
 };
-*/

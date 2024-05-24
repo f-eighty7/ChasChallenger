@@ -1,5 +1,10 @@
 import { useState, ChangeEvent } from "react";
-import { FieldErrors, UseFormRegister } from "react-hook-form";
+import {
+  FieldErrors,
+  UseFormGetValues,
+  UseFormRegister,
+  UseFormSetValue,
+} from "react-hook-form";
 import AbilityAttribute from "../types/AbilityAttributes";
 import AbilityScoreOption from "../types/AbilityScoreOption";
 import Character from "../types/Character";
@@ -11,6 +16,8 @@ interface Props {
     React.SetStateAction<AbilityScoreOption[]>
   >;
   register: UseFormRegister<Character>;
+  getValues: UseFormGetValues<Character>;
+  setValue: UseFormSetValue<Character>;
   errors: FieldErrors<Character>;
 }
 
@@ -19,9 +26,11 @@ export const AbilityScoreDropdown = ({
   abilityScoreAllocations,
   setAbilityScoreAllocations,
   register,
+  getValues,
+  setValue,
   errors,
 }: Props) => {
-  const [attributeAbilityScore, setAttributeAbilityScore] = useState(0);
+  const [attributeAbilityScore, setAttributeAbilityScore] = useState(0); //Keeps track of previous value to set it avalible to select.
 
   return (
     <div id={`${abilityScoreAttribute}-ability-score`}>
@@ -31,12 +40,15 @@ export const AbilityScoreDropdown = ({
 
       <select
         id={`${abilityScoreAttribute}`}
-        value={attributeAbilityScore}
+        onFocus={() => {
+          //Sync state in case value got changed externally
+          setAttributeAbilityScore(getValues()[`${abilityScoreAttribute}`]);
+        }}
         {...register(`${abilityScoreAttribute}`, {
           required: `${abilityScoreAttribute} is required!`,
           min: {
             value: 8,
-            message: `${abilityScoreAttribute} is required!`,
+            message: `You need to choose a value for ${abilityScoreAttribute}!`,
           },
           onChange: (event: ChangeEvent<HTMLSelectElement>) => {
             setAbilityScoreAllocations(() => {
@@ -54,6 +66,7 @@ export const AbilityScoreDropdown = ({
               const previousSelected = newArray.find(
                 (abilityScore) => abilityScore.value == attributeAbilityScore
               );
+
               if (previousSelected) previousSelected.avalible = true;
 
               //Return modified array to setState
@@ -67,7 +80,7 @@ export const AbilityScoreDropdown = ({
       >
         {[
           <option key={`default${abilityScoreAttribute}`} value={0}>
-            0
+            Choose
           </option>,
           ...abilityScoreAllocations.map((abiliyScore) => {
             return (
@@ -87,6 +100,33 @@ export const AbilityScoreDropdown = ({
           {errors[`${abilityScoreAttribute}`]?.message}
         </p>
       )}
+
+      <button
+        type="button"
+        onClick={() => {
+          //Get previous value to set it availible in dropdowns
+          const previousAbilityScore = getValues()[`${abilityScoreAttribute}`];
+
+          setAbilityScoreAllocations(() => {
+            //Copy array
+            const newArray = [...abilityScoreAllocations];
+
+            //Enable option for selected value
+            const selected = newArray.find(
+              (abilityScore) => abilityScore.value == previousAbilityScore
+            );
+            if (selected) selected.avalible = true;
+
+            //Return modified array to setState
+            return newArray;
+          });
+
+          setValue(`${abilityScoreAttribute}`, 0);
+          setAttributeAbilityScore(0);
+        }}
+      >
+        Reset
+      </button>
     </div>
   );
 };

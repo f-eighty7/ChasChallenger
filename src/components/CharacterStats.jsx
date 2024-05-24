@@ -27,7 +27,6 @@ function CharacterStatsContainer({ character }) {
 				<div className="">
 					<p>Age: {character.age}</p>
 					<p>Gender: {character.gender}</p>
-					<p>Class: {character.class}</p>
 					<p>Strength: {character.strength}</p>
 					<p>Dexterity: {character.dexterity}</p>
 					<p>Intelligence: {character.intelligence}</p>

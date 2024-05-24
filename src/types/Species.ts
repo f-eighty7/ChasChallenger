@@ -1,7 +1,7 @@
 enum Species {
     human = "human",
-    elf = "elf",
-    goblin = "goblin",
+    // elf = "elf",
+    // goblin = "goblin",
   }
 
 export const SpeciesArray = (): Species[] => {

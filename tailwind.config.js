@@ -18,6 +18,7 @@ module.exports = withMT({
                     green: "#AFD182",
                     border: "#cccccc",
                     black: "#000000",
+                    darkestGreen: "#3A4013",
                 },
             },
         },

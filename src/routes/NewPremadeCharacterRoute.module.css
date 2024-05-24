@@ -1,0 +1,95 @@
+.charactersList {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 1rem;
+  padding: 1.5rem 0.25rem;
+}
+
+.character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  border: 2px solid #ffffff;
+  border-radius: 1rem;
+  background-color: #385063;
+  cursor: pointer;
+}
+
+.character div.strings {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.character div.numbered {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.character img {
+  width: 80%;
+  aspect-ratio: 1/1;
+  border-radius: 1rem;
+  object-fit: contain;
+}
+
+.traits {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+.attributes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.attributes > div {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+.backButton {
+  padding-bottom: 1.5rem;
+}
+
+@media (min-width: 425px) {
+}
+
+@media (min-width: 768px) {
+  .charactersList {
+    max-width: 60%;
+  }
+
+  .character img {
+    width: 70%;
+  }
+}
+
+@media (min-width: 1024px) {
+  .charactersList {
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 1440px) {
+  .charactersList {
+    max-width: 40%;
+  }
+
+  .character img {
+    width: 65%;
+  }
+}
+
+@media (min-width: 1920px) {
+  .charactersList {
+    max-width: calc(1920px * 0.3);
+  }
+}

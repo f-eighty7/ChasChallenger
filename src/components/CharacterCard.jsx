@@ -66,7 +66,7 @@ function CharacterCard({ character, onDelete, onFavorite, onSelect }) {
 
 			<div className="p-3 pt-0 flex flex-col justify-center items-center text-center">
 				<img
-					src={character.image || "/images/defaultCharacterIcon.png"}
+					src={character.image || "/src/assets/images/defaultCharacterIcon.png"}
 					alt=""
 					className="w-52 mt-2 p-0"
 				/>
