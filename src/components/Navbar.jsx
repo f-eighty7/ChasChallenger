@@ -25,7 +25,7 @@ function Navbar() {
 			<Link
 				to={"/"}
 				className={style.title}>
-				fantasy ChasS
+				fantasy Chas
 			</Link>
 			<div
 				className={style.menu}

@@ -77,6 +77,22 @@
   width: 256px;
 }
 .goback {
+  display: flex;
+  align-items: center;
   padding: 1rem;
   margin: 3rem 1rem;
+}
+.back-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+.goback-link {
+  display: flex;
+}
+.goback-button {
+  border: none;
+  background: none;
+}
+.goback-button:hover {
+  background: none;
 }

@@ -2,6 +2,8 @@ import style from "./GameSettingsPopup.module.css";
 import { GameSettingsPopupProps } from "../types/types";
 import { Link } from "react-router-dom";
 //import { createResumeStory } from "../api/resumeStoryApi";
+// import { FaRegCircleXmark } from "react-icons/fa6";
+import { IoIosCloseCircleOutline } from "react-icons/io";
 
 export function GameSettingsPopup(props: GameSettingsPopupProps) {
   const handleHistory = () => {
@@ -9,20 +11,18 @@ export function GameSettingsPopup(props: GameSettingsPopupProps) {
   };
 
   const handleSaveGame = () => {
-    const save = "Snälla spara mitt roliga spel";
+    const save = "Allt finns redan:)";
     console.log(save);
     //createResumeStory(save);
   };
   return props.trigger ? (
     <div className={style.popup}>
       <div className={style["popup-inner"]}>
-        <button
+        <IoIosCloseCircleOutline
           title="Close"
           className={style["close-button"]}
           onClick={() => props.setTrigger(false)}
-        >
-          Close
-        </button>
+        />
         <div className={style["settings-card"]}>
           <p className={style.text}>NOW PLAYING</p>
           <p className={style.text}>Character</p>

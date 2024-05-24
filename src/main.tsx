@@ -10,7 +10,7 @@ import { CharactersRoute } from "./routes/CharactersRoute.tsx";
 import { NewCharacterRoute } from "./routes/NewCharacterRoute.tsx";
 import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import { LoginRoute } from "./routes/LoginRoute.tsx";
-import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
+//import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
 import { StoriesRoute } from "./routes/StoriesRoute.tsx";
 //import { MastersWelcomeRoute } from "./routes/MastersWelcomeRoute.tsx";
 import { SignupRoute } from "./routes/SignupRoute.tsx";
@@ -55,10 +55,10 @@ const router = createBrowserRouter
         path: "/signup",
         element: <SignupRoute />,
       },
-      {
-        path: "/countinuestory",
-        element: <CountinueStoryRoute />, //continue
-      },
+      // {
+      //   path: "/countinuestory",
+      //   element: <CountinueStoryRoute />, //continue
+      // },
       {
         path: "/stories",
         element: <StoriesRoute />,

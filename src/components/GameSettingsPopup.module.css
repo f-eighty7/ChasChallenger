@@ -39,8 +39,11 @@
 }
 .popup-inner .close-button {
   position: absolute;
-  top: 1rem;
+  top: 0.7rem;
   right: 1rem;
+  font-size: 2rem;
+  color: var(--text-color);
+  cursor: pointer;
 }
 
 .settings-card {
