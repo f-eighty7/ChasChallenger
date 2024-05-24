@@ -5,22 +5,32 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const handleDeleteCharacterClicked = (
-  event: React.MouseEvent<HTMLButtonElement>
+const handleDeleteCharacterClicked = async (
+  element: HTMLUListElement,
+  id?: number
 ) => {
-  event.stopPropagation();
+  //TODO: maybe disable on favorited characters
+  //TODO: some sort of confirmation
 
-  //maybe disable on favorited characters
-  //have some sort of confirmation
+  try {
+    if (!id) throw "Character ID is undefined";
 
-  console.warn("Not yet implemented");
+    // const response = await axios.delete(
+    //   "https://chasfantasy.azurewebsites.net/api/Character/DeleteCharacter"
+    //   // { headers: {}, params: { id: id },  data: { id: id } }
+    //   // { headers: {}, params: { id: id } }
+    // );
+
+    // console.log(response);
+
+    //Remove visually
+    element.parentElement?.removeChild(element);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-const handleFavoriteCharacterClicked = (
-  event: React.MouseEvent<HTMLButtonElement>
-) => {
-  event.stopPropagation();
-
+const handleFavoriteCharacterClicked = () => {
   console.warn("Not yet implemented");
 };
 
@@ -64,7 +74,9 @@ export const CharactersRoute = () => {
             <CharacterCard
               key={character.name + index}
               character={character}
-              onDelete={handleDeleteCharacterClicked}
+              onDelete={(element: HTMLUListElement) =>
+                handleDeleteCharacterClicked(element, character.id)
+              }
               onFavorite={handleFavoriteCharacterClicked}
               onSelect={handleCharacterClicked}
             />
