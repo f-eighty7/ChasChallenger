@@ -2,12 +2,18 @@
 import { Story, StoryText } from "../types/types";
 import { StoryItem } from "./StoryItem";
 import premadeStories from "../api/stories.json";
+import { useSelector } from "react-redux";
+import { RootState } from "../Store/Store";
 
 export const Stories = () => {
+  const { id } = useSelector((state: RootState) => state.character);
+  console.log(id);
+
   const onSelected = (name: string, story: string) => {
     const storyText: StoryText = {
+      characterId: id,
       name: name,
-      summary: story,
+      basePrompt: story,
     };
     //promptStoryText(storyText);
     console.log(storyText);

@@ -18,7 +18,7 @@ export function ChatTest() {
   const endOfMessagesRef = useRef(null);
   const [buttonPopup, setButtonPopup] = useState(false);
   const { id } = useSelector((state) => state.character);
-  console.log(id);
+
   const handleInputChange = (e) => {
     setQuery(e.target.value);
   };
@@ -31,13 +31,15 @@ export function ChatTest() {
     setQuery("");
     setLoading(true);
 
+    const message = {
+      message: query,
+      characterId: id,
+    };
+    console.log(message);
     try {
       const result = await axios.post(
         `https://chasfantasy.azurewebsites.net/api/chat/message/`,
-        {
-          message: query,
-          characterId: id,
-        }
+        message
       );
 
       if (result.status === 200 && result.data) {

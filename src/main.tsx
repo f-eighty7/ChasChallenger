@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import store from "./Store/Store.js";
+import store from "./Store/Store.ts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootLayout } from "./layouts/RootLayout.tsx";
 import { ErrorRoute } from "./routes/ErrorRoute.tsx";

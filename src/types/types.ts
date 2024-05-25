@@ -1,4 +1,3 @@
-
 export interface Register {
   email: string;
   password: string;
@@ -20,8 +19,9 @@ export interface StoryItemProps {
   onSelected: (name: string, summary: string) => void;
 }
 export interface StoryText {
+  characterId: number | undefined;
   name: string;
-  summary: string;
+  basePrompt: string;
 }
 
 export interface ResumeStory {
