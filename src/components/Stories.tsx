@@ -1,4 +1,4 @@
-//import { promptStoryText } from "../api/storiesApi";
+import { promptStoryText } from "../api/storiesApi";
 import { Story, StoryText } from "../types/types";
 import { StoryItem } from "./StoryItem";
 import premadeStories from "../api/stories.json";
@@ -7,7 +7,6 @@ import { RootState } from "../Store/Store";
 
 export const Stories = () => {
   const { id } = useSelector((state: RootState) => state.character);
-  console.log(id);
 
   const onSelected = (name: string, story: string) => {
     const storyText: StoryText = {
@@ -15,8 +14,7 @@ export const Stories = () => {
       name: name,
       basePrompt: story,
     };
-    //promptStoryText(storyText);
-    console.log(storyText);
+    promptStoryText(storyText);
   };
 
   return (

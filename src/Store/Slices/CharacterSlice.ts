@@ -12,8 +12,6 @@ export const characterSlice = createSlice({
   reducers: {
     selectedCharacterId: (state, action: PayloadAction<number | undefined>) => {
       state.id = action.payload;
-      console.log(state.id);
-      
     },
   },
 });
