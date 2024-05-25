@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import style from "../components/SignUpForm.module.css";
 import { Link, useNavigate } from "react-router-dom";
+import { FaArrowLeftLong } from "react-icons/fa6";
 
 function SignUpForm() {
   const navigate = useNavigate();
@@ -34,7 +35,7 @@ function SignUpForm() {
   };
 
   return (
-    <div className={style.container}>
+    <div>
       <form className={style.form} onSubmit={handleSubmit}>
         <div className={style.title}>Sign Up</div>
         <div className={style.inputs}>
@@ -96,8 +97,11 @@ function SignUpForm() {
         </div>
       </form>
       <div className={style.goback}>
-        <Link title="Go Back" to="/login">
-          Go Back
+        <Link className={style["goback-link"]} title="Go Back" to="/login">
+          <FaArrowLeftLong className={style["back-icon"]} />
+          <button className={style["goback-button"]} title="Go Back">
+            Go back
+          </button>
         </Link>
       </div>
     </div>
