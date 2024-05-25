@@ -3,6 +3,8 @@ import Character from "../types/Character";
 import CharacterCard from "../components/CharacterCard";
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { selectedCharacterId } from "../Store/Slices/CharacterSlice";
 import axios from "axios";
 
 const handleDeleteCharacterClicked = (
@@ -41,6 +43,7 @@ export const CharactersRoute = () => {
   const navigate = useNavigate();
 
   const [characters, setCharacters] = useState<Character[]>([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     (async () => {
@@ -50,7 +53,9 @@ export const CharactersRoute = () => {
 
   const handleCharacterClicked = (character: Character) => {
     //TODO: set selected character and move on to next route in flow
-    console.log(character.name, "selected!");
+    console.log(character.id, "selected!");
+    const id = character.id;
+    dispatch(selectedCharacterId(id));
 
     navigate("/adventure", { replace: true });
   };
