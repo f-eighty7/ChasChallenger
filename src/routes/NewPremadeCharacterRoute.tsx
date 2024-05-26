@@ -65,7 +65,7 @@ const handleCharacterClicked = async (
   navigate: NavigateFunction
 ) => {
   await axios.post(
-    "https://chasfantasy.azurewebsites.net/api/Character/AddCharacter",
+    "http://localhost:5106/api/Character/AddCharacter",
     { ...character, level: 0 }
   );
   navigate("../..", { relative: "path", replace: true });

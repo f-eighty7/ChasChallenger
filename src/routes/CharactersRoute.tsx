@@ -29,7 +29,7 @@ const handleFavoriteCharacterClicked = (
 const getCharacters = async (): Promise<Character[] | undefined> => {
   try {
     const response = await axios.get(
-      "https://chasfantasy.azurewebsites.net/api/Character/GetCharacters"
+      "http://localhost:5106/api/Character/GetCharacters"
     );
 
     return await response.data;

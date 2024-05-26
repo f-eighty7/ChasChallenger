@@ -18,7 +18,7 @@ function LoginForm() {
 
     try {
       const response = await axios.post(
-        "https://chasfantasy.azurewebsites.net/login?useCookies=true",
+        "http://localhost:5106/login?useCookies=true",
         {
           email,
           password,

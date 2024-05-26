@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+/* import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './ChatTest.css';
-import { GameSettingsPopup } from "./GameSettingsPopup";
+import { GameSettingsPopup } from "./GameSettingsPopup"; */
 
-axios.defaults.withCredentials = true;
+/* axios.defaults.withCredentials = true; */
 
 export function ChatTestNy() {
   const [messages, setMessages] = useState([]);
@@ -18,7 +18,7 @@ export function ChatTestNy() {
 
   const sendMessage = async (message) => {
     try {
-      const response = await axios.post('https://chasfantasy.azurewebsites.net/api/chat/message/', {
+      const response = await axios.post('http://localhost:5106/api/chat/message/', {
         message: "message",
         characterId: 10,
       });
