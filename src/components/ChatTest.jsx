@@ -7,6 +7,7 @@ import { IoSend } from "react-icons/io5";
 import { MdScheduleSend } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import { useSelector } from "react-redux";
+import { ChatHistory } from "../components/ChatHistory";
 
 axios.defaults.withCredentials = true;
 
@@ -85,47 +86,50 @@ export function ChatTest() {
   /* const style = { background: '', fontSize: "1.4em" } */
 
   return (
-    <div className="chat-container">
-      <div className="chat-box">
-        <div className="chat-history">
-          {history.map((msg, index) => (
-            <div key={index} className="chat-message">
-              <div className="user-query bubble">{msg.query}</div>
-              <div className="chat-response bubble">
-                {msg.response === "loading" ? (
-                  <span className="loader"></span>
-                ) : (
-                  <TypingText text={msg.response} />
-                )}
+    <>
+      <ChatHistory />
+      <div className="chat-container">
+        <div className="chat-box">
+          <section className="chat-history">
+            {history.map((msg, index) => (
+              <div key={index} className="chat-message">
+                <div className="user-query bubble">{msg.query}</div>
+                <div className="chat-response bubble">
+                  {msg.response === "loading" ? (
+                    <span className="loader"></span>
+                  ) : (
+                    <TypingText text={msg.response} />
+                  )}
+                </div>
               </div>
-            </div>
-          ))}
-          <div ref={endOfMessagesRef} />
+            ))}
+            <div ref={endOfMessagesRef} />
+          </section>
         </div>
+        <button title="Settings" onClick={() => setButtonPopup(true)}>
+          <IoMdSettings />
+        </button>
+        <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
+        <form className="chat-input" onSubmit={handleSend}>
+          <div className="input-container">
+            <input
+              type="text"
+              className="inputruta"
+              value={query}
+              onChange={handleInputChange}
+              onKeyDown={handleKeyDown}
+              placeholder="skriv nåt för fan..."
+            />
+            <button
+              onClick={handleSend}
+              disabled={!query.trim() || loading}
+              className="sendButton"
+            >
+              {loading ? <MdScheduleSend /> : <IoSend className="icon" />}
+            </button>
+          </div>
+        </form>
       </div>
-      <button title="Settings" onClick={() => setButtonPopup(true)}>
-        <IoMdSettings />
-      </button>
-      <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
-      <form className="chat-input" onSubmit={handleSend}>
-        <div className="input-container">
-          <input
-            type="text"
-            className="inputruta"
-            value={query}
-            onChange={handleInputChange}
-            onKeyDown={handleKeyDown}
-            placeholder="skriv nåt för fan..."
-          />
-          <button
-            onClick={handleSend}
-            disabled={!query.trim() || loading}
-            className="sendButton"
-          >
-            {loading ? <MdScheduleSend /> : <IoSend className="icon" />}
-          </button>
-        </div>
-      </form>
-    </div>
+    </>
   );
 }

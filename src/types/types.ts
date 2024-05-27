@@ -34,8 +34,10 @@ export interface ResumeStoryProps {
 }
 
 export interface StoryMessages {
-  text: string;
-  sender: string;
+  id: number;
+  message: string;
+  characterName: number | null;
+  timestamp: string;
 }
 export interface StoryMessageItemProps {
   storyMessages: StoryMessages;
