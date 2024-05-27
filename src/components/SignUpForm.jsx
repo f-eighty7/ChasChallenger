@@ -20,7 +20,7 @@ function SignUpForm() {
     try {
       const response = await axios.post(
        /*  "http://localhost:5106/register", */
-        `https://localhost:7110/register`,
+        `http://localhost:7110/register`,
         {
           email,
           password,
