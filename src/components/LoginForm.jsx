@@ -19,7 +19,7 @@ function LoginForm() {
     try {
       const response = await axios.post(
         /* "http://localhost:5106/login?useCookies=true", */
-          "https://localhost:7110/login?useCookies=true",
+          "http://localhost:7110/login?useCookies=true",
 
         {
           email,
@@ -27,7 +27,7 @@ function LoginForm() {
         }
       );
 
-      console.log("Response Headers:", response.headers);
+      /* console.log("Response Headers:", response.headers); */
       /* const hejsan = await axios.get('http://localhost:5001/user/character')
 function LoginForm() {
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ function LoginForm() {
       if (response.status === 200) {
         console.log("Login succeeded!");
       }
-      alert("WOW!!! Du lyckades logga in. Det här kommer att bli en bra dag!");
+      alert("Välkommen in i värmen!");
       navigate("/characters");
 
       if (response.headers["set-cookie"]) {
@@ -85,7 +85,7 @@ function LoginForm() {
             id="email"
             className={style["input-form"]}
             type="email"
-            placeholder="fantasy@chass.se"
+            placeholder="Mejladress"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -97,7 +97,7 @@ function LoginForm() {
           <input
             id="password"
             className={style["input-form"]}
-            placeholder=""
+            placeholder="Lösenord"
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
