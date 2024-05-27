@@ -7,7 +7,7 @@ const TypingText = ({ text }) => {
     if (!text) return;
 
     let currentIndex = -1;
-    setDisplayedText("");
+    setDisplayedText(" ");
 
     const intervalId = setInterval(() => {
       setDisplayedText((prev) => prev + text[currentIndex]);

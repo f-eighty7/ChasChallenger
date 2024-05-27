@@ -16,7 +16,7 @@ export const ChatHistory = () => {
 
   return (
     <>
-      <section>
+      <section style={{ margin: "1rem"}}>
         {messages.map((storyMessages: StoryMessages) => (
           <ChatHistoryItem
             key={storyMessages.message}

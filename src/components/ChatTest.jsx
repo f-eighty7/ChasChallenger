@@ -45,7 +45,6 @@ export function ChatTest() {
       );
 
       if (result.status === 200 && result.data) {
-        console.log("Svar:", result.data.message);
         setHistory((currentHistory) => [
           ...currentHistory.slice(0, -1),
           { query, response: result.data.message },
@@ -88,7 +87,7 @@ export function ChatTest() {
   return (
     <>
       <ChatHistory />
-      <div className="chat-container">
+      <section className="chat-container">
         <div className="chat-box">
           <section className="chat-history">
             {history.map((msg, index) => (
@@ -106,10 +105,11 @@ export function ChatTest() {
             <div ref={endOfMessagesRef} />
           </section>
         </div>
-        <button title="Settings" onClick={() => setButtonPopup(true)}>
-          <IoMdSettings />
-        </button>
-        <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
+        <IoMdSettings
+          title="Game Settings"
+          className="game-settings-icon"
+          onClick={() => setButtonPopup(true)}
+        />
         <form className="chat-input" onSubmit={handleSend}>
           <div className="input-container">
             <input
@@ -125,11 +125,20 @@ export function ChatTest() {
               disabled={!query.trim() || loading}
               className="sendButton"
             >
-              {loading ? <MdScheduleSend /> : <IoSend className="icon" />}
+              {loading ? (
+                <MdScheduleSend
+                  onClick={handleSend}
+                  disabled={!query.trim() || loading}
+                  className="sendButton"
+                />
+              ) : (
+                <IoSend className="icon" />
+              )}
             </button>
           </div>
         </form>
-      </div>
+      </section>
+      <GameSettingsPopup trigger={buttonPopup} setTrigger={setButtonPopup} />
     </>
   );
 }
