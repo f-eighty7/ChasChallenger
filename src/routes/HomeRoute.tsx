@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import style from "./HomeRoute.module.css"
-import back from "../Images/back.png"
+/* import back from "../Images/back.png" */
 
 export const HomeRoute = () => {
   return (
