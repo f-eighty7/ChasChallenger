@@ -29,7 +29,8 @@ const handleFavoriteCharacterClicked = (
 const getCharacters = async (): Promise<Character[] | undefined> => {
   try {
     const response = await axios.get(
-      "http://localhost:5106/api/Character/GetCharacters"
+      /* "http://localhost:5106/api/Character/GetCharacters" */
+      `https://localhost:7110/api/Character/GetCharacters` 
     );
 
     return await response.data;

@@ -65,7 +65,8 @@ const handleCharacterClicked = async (
   navigate: NavigateFunction
 ) => {
   await axios.post(
-    "http://localhost:5106/api/Character/AddCharacter",
+    /* "http://localhost:5106/api/Character/AddCharacter", */
+    `https://localhost:7110/api/Character/AddCharacter`,
     { ...character, level: 0 }
   );
   navigate("../..", { relative: "path", replace: true });
