@@ -40,7 +40,7 @@ export function ChatTest() {
     try {
       const result = await axios.post(
         /* `https://chasfantasy.azurewebsites.net/api/chat/message/` */
-        `http://localhost:7110/api/chat/message/`,
+        `https://localhost:7110/api/chat/message/`,
         message
       );
 
