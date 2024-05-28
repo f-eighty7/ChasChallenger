@@ -66,7 +66,8 @@ const handleCharacterClicked = async (
 ) => {
   await axios.post(
     /* "http://localhost:5106/api/Character/AddCharacter", */
-    `https://localhost:7110/api/Character/AddCharacter`,
+    /* `https://localhost:7110/api/Character/AddCharacter`, */
+    `52.149.227.5:8081/api/Character/AddCharacter`,
     { ...character, level: 0 }
   );
   navigate("../..", { relative: "path", replace: true });

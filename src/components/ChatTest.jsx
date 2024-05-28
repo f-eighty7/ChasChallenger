@@ -40,7 +40,8 @@ export function ChatTest() {
     try {
       const result = await axios.post(
         /* `https://chasfantasy.azurewebsites.net/api/chat/message/` */
-        `https://localhost:7110/api/chat/message/`,
+       /*  `https://localhost:7110/api/chat/message/`, */
+        `52.149.227.5:8081/api/chat/message/`,
         message
       );
 
@@ -105,13 +106,15 @@ export function ChatTest() {
             <div ref={endOfMessagesRef} />
           </section>
         </div>
-        <IoMdSettings
+       
+        <form className="chat-input" onSubmit={handleSend}>
+        
+          <div className="input-container">
+          <IoMdSettings
           title="Game Settings"
           className="game-settings-icon"
           onClick={() => setButtonPopup(true)}
         />
-        <form className="chat-input" onSubmit={handleSend}>
-          <div className="input-container">
             <input
               type="text"
               className="inputruta"
@@ -130,7 +133,9 @@ export function ChatTest() {
                   onClick={handleSend}
                   disabled={!query.trim() || loading}
                   className="sendButton"
+                  
                 />
+                
               ) : (
                 <IoSend className="icon" />
               )}

@@ -163,7 +163,8 @@ export const NewCustomCharacterRoute = () => {
   const formSubmit = async (data: Character) => {
     await axios.post(
       /* "https://chasfantasy.azurewebsites.net/api/Character/AddCharacter", */
-      `https://localhost:7110/api/Character/AddCharacter`,
+      /* `https://localhost:7110/api/Character/AddCharacter`, */
+      `52.149.227.5:8081/api/Character/AddCharacter`,
       { ...data, level: 0 }
     );
 
