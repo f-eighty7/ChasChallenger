@@ -11,7 +11,7 @@ import { ChatHistory } from "./ChatHistory";
 
 axios.defaults.withCredentials = true;
 
-export function ChatTest() {
+export function Chat() {
   const [query, setQuery] = useState("");
   const [response, setResponse] = useState("");
   const [loading, setLoading] = useState(false);

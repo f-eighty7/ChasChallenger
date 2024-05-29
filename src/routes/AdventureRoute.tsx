@@ -1,5 +1,5 @@
 /* import { DungeonMasterChat } from "../components/DungeonMasterChat"; */
-import { ChatTest } from '../components/Chat'
+import { Chat } from '../components/Chat'
 
 
 export const AdventureRoute = () => {
@@ -9,7 +9,7 @@ export const AdventureRoute = () => {
        Master Chat 
       </h1> */}
       {/* <DungeonMasterChat /> */}
-      <ChatTest />
+      <Chat/>
       {/* <ChatTestNy /> */}
     </main>
   );
