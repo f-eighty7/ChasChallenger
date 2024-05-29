@@ -7,6 +7,8 @@ import axios from "axios";
 
 const handleDeleteCharacterClicked = async (
   element: HTMLUListElement,
+  characters: Character[],
+  setCharacters: React.Dispatch<React.SetStateAction<Character[]>>,
   id?: number
 ) => {
   //TODO: maybe disable on favorited characters
@@ -15,16 +17,17 @@ const handleDeleteCharacterClicked = async (
   try {
     if (!id) throw "Character ID is undefined";
 
-    // const response = await axios.delete(
-    //   "https://chasfantasy.azurewebsites.net/api/Character/DeleteCharacter"
-    //   // { headers: {}, params: { id: id },  data: { id: id } }
-    //   // { headers: {}, params: { id: id } }
-    // );
-
-    // console.log(response);
+    /*const response =*/ await axios.delete(
+      "https://chasfantasy.azurewebsites.net/api/Character/DeleteCharacter",
+      {
+        data: {
+          id: id,
+        },
+      }
+    );
 
     //Remove visually
-    element.parentElement?.removeChild(element);
+    setCharacters([...characters.filter((character) => character.id != id)]);
   } catch (error) {
     console.error(error);
   }
@@ -75,7 +78,12 @@ export const CharactersRoute = () => {
               key={character.name + index}
               character={character}
               onDelete={(element: HTMLUListElement) =>
-                handleDeleteCharacterClicked(element, character.id)
+                handleDeleteCharacterClicked(
+                  element,
+                  characters,
+                  setCharacters,
+                  character.id
+                )
               }
               onFavorite={handleFavoriteCharacterClicked}
               onSelect={handleCharacterClicked}
