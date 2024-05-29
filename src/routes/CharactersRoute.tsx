@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const handleDeleteCharacterClicked = async (
-  element: HTMLUListElement,
   characters: Character[],
   setCharacters: React.Dispatch<React.SetStateAction<Character[]>>,
   id?: number
@@ -77,9 +76,8 @@ export const CharactersRoute = () => {
             <CharacterCard
               key={character.name + index}
               character={character}
-              onDelete={(element: HTMLUListElement) =>
+              onDelete={() =>
                 handleDeleteCharacterClicked(
-                  element,
                   characters,
                   setCharacters,
                   character.id
