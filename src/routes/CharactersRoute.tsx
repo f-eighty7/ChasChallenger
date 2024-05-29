@@ -31,7 +31,8 @@ const getCharacters = async (): Promise<Character[] | undefined> => {
     const response = await axios.get(
       /* "http://localhost:5106/api/Character/GetCharacters" */
       /* `https://localhost:7110/api/Character/GetCharacters`  */
-      `52.149.227.5:8081/api/Character/GetCharacters`,
+      /* `52.149.227.5:8081/api/Character/GetCharacters`, */
+      `https://chasfantasy.azurewebsites.net/l/api/Character/GetCharacters`,
     );
 
     return await response.data;
