@@ -1,6 +1,6 @@
 import style from "./ChatHistoryItem.module.css"
 import { StoryMessageItemProps } from "../types/types";
-import "./ChatTest.css";
+import "./Chat.css";
 
 export const ChatHistoryItem = ({ storyMessages }: StoryMessageItemProps) => {
   return (

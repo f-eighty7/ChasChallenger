@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import "./ChatTest.css";
+import "./Chat.css";
 import TypingText from "./TypingText";
 import { GameSettingsPopup } from "./GameSettingsPopup";
 import { IoSend } from "react-icons/io5";
 import { MdScheduleSend } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import { useSelector } from "react-redux";
-import { ChatHistory } from "../components/ChatHistory";
+import { ChatHistory } from "./ChatHistory";
 
 axios.defaults.withCredentials = true;
 
@@ -39,7 +39,7 @@ export function ChatTest() {
     console.log(message);
     try {
       const result = await axios.post(
-        `https://chasfantasy.azurewebsites.net/api/chat/message/`,
+        `https://chasfantasy.azurewebsites.net/api/chat/message` ,
        /*  `https://localhost:7110/api/chat/message/`, */
        /*  `52.149.227.5:8081/api/chat/message/`, */
        

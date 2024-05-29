@@ -2,7 +2,9 @@ import axios from "axios";
 // import type { StoryMessages } from "../types/types";
 
 const BASE_URL =
-  "https://localhost:7110/api/Chat/Chathistory?activeStoryId=5&amountPerPage=20&pageNumber=1";
+ /*  "https://localhost:7110/api/Chat/Chathistory?activeStoryId=5&amountPerPage=20&pageNumber=1"; */
+  `https://chasfantasy.azurewebsites.net/api/Chat/Chathistory?activeStoryId=5&amountPerPage=20&pageNumber=1`
+  
 
 //ADD
 // export const addStoryMessage = async (message: StoryMessages) => {
