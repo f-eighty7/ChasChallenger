@@ -7,10 +7,10 @@ export const HomeRoute = () => {
     <main>
       <div className={style["container-header"]}>
         <h2 className={style["title-one"]}>
-          Fantasy
+          Chas
         </h2>
         <h1 className={style["title-two"]}>
-          Chass
+          Fantasy
         </h1>
       </div>
       <p className={style["intro-text"]}>Lorem ipsum dolor sit consectetur adipisicing elit. Neque ipsum tempora et maiores blanditiis vitae.</p>

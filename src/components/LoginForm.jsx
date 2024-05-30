@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import style from "../components/LoginForm.module.css";
+import style from "./LoginForm.module.css"
 import { Link, useNavigate } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
