@@ -4,6 +4,9 @@
   margin: 3rem 1rem 3rem 1rem;
   background-color: rgba(29, 30, 32, 1);
   padding: 1rem;
+  width: 45vh;
+  height: 72vh;
+  
 }
 .title {
   text-align: center;
@@ -28,21 +31,24 @@
 .login-checkbox-wrapper {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  justify-content: center;
+  
+  
 }
 .login-button {
-  padding: 0.5rem 2rem;
+  padding: 0.1rem 1.4rem;
   border: 3px solid var(--border-color);
   border-radius: 2rem;
   background: radial-gradient(
     var(--button-yellow-color),
     var(--button-green-color)
   );
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   color: var(--black-color);
   margin-top: 1rem;
   margin-right: 1rem;
   margin: 1.5rem 1rem 1.5rem 0rem;
+  height: 8vh;
 }
 .input-checkbox {
   width: 1rem;
@@ -75,6 +81,7 @@
   font-size: 1.25rem;
   margin: 0.5rem;
   width: 256px;
+
 }
 .goback {
   display: flex;
@@ -95,4 +102,35 @@
 }
 .goback-button:hover {
   background: none;
+}
+
+@media (min-width: 400px) {
+  .form {
+    border: 1px solid var(--text-color);
+    border-radius: 20px;
+    margin: 3rem 1rem 3rem 1rem;
+    background-color: rgba(29, 30, 32, 1);
+    padding: 1rem;
+    width: 36vh;
+    height: 50vh;
+  } 
+
+  .login-button {
+    padding: 0.5rem 1rem;
+    border: 3px solid var(--border-color);
+    border-radius: 2rem;
+    background: radial-gradient(
+      var(--button-yellow-color),
+      var(--button-green-color)
+    );
+    font-size: 1.3rem;
+    color: var(--black-color);
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin: 1.5rem 1rem 1.5rem 0rem;
+    height: 6vh;
+    width: 14vh;
+    
+  }
+
 }

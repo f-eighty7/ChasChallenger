@@ -6,6 +6,7 @@ import style from "./Navbar.module.css";
 import ButtonOne from './ButtonOne';
 import { Button } from '@material-tailwind/react';
 import { FaUser } from "react-icons/fa";
+import { HowToPlay } from '../routes/HowToPlayRoute';
 
 
 function LoggedInNav({ handleItemClicked, activeItem, menuOpen }) {
@@ -24,7 +25,15 @@ function LoggedInNav({ handleItemClicked, activeItem, menuOpen }) {
 					to={"/about"}
 					onClick={() => handleItemClicked("about")}
 					className={`${activeItem === "about" ? style["active"] : ""}`}>
-					About
+					Om
+				</NavLink>
+			</li>
+			<li>
+				<NavLink
+					to={"/howtoplay"}
+					onClick={() => handleItemClicked("characters")}
+					className={`${activeItem === "characters" ? style["active"] : ""}`}>
+					Spelinstruktioner
 				</NavLink>
 			</li>
 			<li>
@@ -32,7 +41,7 @@ function LoggedInNav({ handleItemClicked, activeItem, menuOpen }) {
 					to={"/characters"}
 					onClick={() => handleItemClicked("characters")}
 					className={`${activeItem === "characters" ? style["active"] : ""}`}>
-					Characters
+					Spelkaraktärer
 				</NavLink>
 			</li>
 			<li>
@@ -116,7 +125,7 @@ function Navbar({ isLoggedIn }) {
 			<Link
 				to={"/"}
 				className={style.title}>
-				fantasy Chas
+				Chas Fantasy
 			</Link>
 			<div
 				className={style.menu}

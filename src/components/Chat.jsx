@@ -116,7 +116,7 @@ export function Chat() {
           className="game-settings-icon"
           onClick={() => setButtonPopup(true)}
         />
-            <input
+            <textarea
               type="text"
               className="inputruta"
               value={query}

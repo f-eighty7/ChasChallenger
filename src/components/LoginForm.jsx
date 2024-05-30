@@ -20,8 +20,8 @@ function LoginForm() {
       const response = await axios.post(
         /* "http://localhost:5106/login?useCookies=true", */
           /* "https://localhost:7110/login?useCookies=true", */
-          'http://52.149.227.5:8081login?useCookies=true',
-         /* `https://chasfantasy.azurewebsites.net/login?useCookies=true`, */
+          /* 'http://52.149.227.5:8081login?useCookies=true', */
+         `https://chasfantasy.azurewebsites.net/login?useCookies=true`,
 
         {
           email,
@@ -69,7 +69,8 @@ function LoginForm() {
     } catch (error) {
       console.error(
         "Login error:",
-        error.response ? error.response.data : "Server error"
+        /* error.response ? error.response.data : "Server error" */
+        alert("Server error. Nån har inte gjort sitt jobb!")
       );
       setErrorMessage(error.response ? error.response.data : "Server error");
     }
@@ -78,10 +79,10 @@ function LoginForm() {
   return (
     <div >
       <form className={style.form} onSubmit={handleLogin}>
-        <h2 className={style.title}>Log in</h2>
+        <h2 className={style.title}>Logga in</h2>
         <div className={style["inputs"]}>
           <label className={style["label-name"]} htmlFor="email">
-            E-mail*
+            E-post*
           </label>
           <input
             id="email"
@@ -94,7 +95,7 @@ function LoginForm() {
         </div>
         <div className={style["inputs"]}>
           <label className={style["label-name"]} htmlFor="password">
-            Password*
+            Lösenord*
           </label>
           <input
             id="password"
@@ -111,31 +112,23 @@ function LoginForm() {
             className={style["login-button"]}
             type="submit"
           >
-            Log in
+            Logga in
           </button>
           {errorMessage && <p className="error">{errorMessage}</p>}
-          <input
-            className={style["input-checkbox"]}
-            title="Remember me"
-            id="remember"
-            type="checkbox"
-            value=""
-          />
-          <label className={style["remember-text"]} htmlFor="remember">
-            Remember me
-          </label>
+       
+          
         </div>
         <div className={style["forgot-password"]}>
-          <Link title="Forgot password" to={"/error"}>
-            Did you forget your password?
+          <Link title="Har du supit bort ditt lösenord?" to={"/error"}>
+            Har du supit bort ditt lösenord?
           </Link>
         </div>
       </form>
-      <div className={style.or}>OR</div>
+      <div className={style.or}></div>
       <div className={style["signup-back-wrapper"]}>
         <Link to="/signup">
           <button title="Sign up" className={style["signup-button"]}>
-            Sign Up
+            Bli medlem
           </button>
         </Link>
       </div>
@@ -143,7 +136,7 @@ function LoginForm() {
         <Link className={style["goback-link"]} title="Go Back" to="/">
           <FaArrowLeftLong className={style["back-icon"]} />
           <button className={style["goback-button"]} title="Go Back">
-            Go back
+            Bakåt
           </button>
         </Link>
       </div>
