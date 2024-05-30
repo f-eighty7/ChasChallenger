@@ -41,7 +41,7 @@ export function Chat() {
       const result = await axios.post(
         `https://chasfantasy.azurewebsites.net/api/chat/message` ,
        /*  `https://localhost:7110/api/chat/message/`, */
-       /*  `52.149.227.5:8081/api/chat/message/`, */
+       /*  `http://52.149.227.5:8081/api/chat/message/`, */
        
         message
       );

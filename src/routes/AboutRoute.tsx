@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import style from "./AboutRoute.module.css";
+import Footer from "../components/Footer"
 
 export const AboutRoute = () => {
   return (
+    <>
     <main>
       <section>
         <h2 className={style["about-title"]}>What is Fantasy Chass?</h2>
@@ -27,5 +29,7 @@ export const AboutRoute = () => {
       </section>
       <Link to="/">Go back</Link>
     </main>
+    <Footer />
+    </>
   );
 };

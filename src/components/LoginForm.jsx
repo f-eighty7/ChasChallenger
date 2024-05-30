@@ -20,8 +20,8 @@ function LoginForm() {
       const response = await axios.post(
         /* "http://localhost:5106/login?useCookies=true", */
           /* "https://localhost:7110/login?useCookies=true", */
-          /* '/52.149.227.5:8081login?useCookies=true', */
-         `https://chasfantasy.azurewebsites.net/login?useCookies=true`,
+          'http:/52.149.227.5:8081login?useCookies=true',
+         /* `https://chasfantasy.azurewebsites.net/login?useCookies=true`, */
 
         {
           email,
