@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { selectedCharacterId } from "../Store/Slices/CharacterSlice";
 import axios from "axios";
+import Footer from "../components/Footer"
 
 const handleDeleteCharacterClicked = (
   event: React.MouseEvent<HTMLButtonElement>
@@ -82,6 +83,7 @@ export const CharactersRoute = () => {
       <Link className={style.link} relative="path" to="new">
         New
       </Link>
+      < Footer />
     </main>
   );
 };

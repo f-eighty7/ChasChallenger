@@ -12,12 +12,9 @@ import { NewCustomCharacterRoute } from "./routes/NewCustomCharacterRoute.tsx";
 import { NewPremadeCharacterRoute } from "./routes/NewPremadeCharacterRoute.tsx";
 import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import { LoginRoute } from "./routes/LoginRoute.tsx";
-
-import { StoriesRoute } from "./routes/StoriesRoute.tsx";
-  
+import { StoriesRoute } from "./routes/StoriesRoute.tsx";  
 import { SignupRoute } from "./routes/SignupRoute.tsx";
 import "./index.css";
-
 import { AboutRoute } from "./routes/AboutRoute.tsx";
 import { HowToPlay } from "./routes/HowToPlayRoute.tsx";
 
