@@ -12,7 +12,7 @@ import "./Footer.css"
 
 export default function Footer() {
 	return (
-		<footer className="w-[100vw] pt-4 mt-auto">
+		<footer className="footer">
 			<div className="bg-custom-darkestGreen mx-auto grid grid-cols-3 items-start py-9">
 				<Link
 					to={"/"}

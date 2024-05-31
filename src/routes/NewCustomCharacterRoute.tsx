@@ -186,8 +186,8 @@ const handleResetAllAbilityScoreButtonClicked = (
 const formSubmit = async (character: Character, navigate: NavigateFunction) => {
   try {
     await axios.post(
-      "/api/Character/AddCharacter",
-      /* "https://chasfantasy.azurewebsites.net/api/Character/AddCharacter", */
+      /* "/api/Character/AddCharacter", */
+      "https://chasfantasy.azurewebsites.net/api/Character/AddCharacter",
       /* `https://localhost:7110/api/Character/AddCharacter`, */
       /* `52.149.227.5:8081/api/Character/AddCharacter`, */
       { ...character, level: 0 }
