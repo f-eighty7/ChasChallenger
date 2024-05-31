@@ -1,18 +1,26 @@
 .form {
   border: 1px solid var(--text-color);
-  border-radius: 20px;
+  border-radius: 40px;
+  border-color: solid rgb(254, 255, 255);
   margin: 3rem 1rem 3rem 1rem;
   background-color: rgba(29, 30, 32, 1);
   padding: 1rem;
   width: 45vh;
-  height: 72vh;
+  height: 48vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
   
 }
 .title {
+  margin-top: 2vh;
   text-align: center;
   font-size: 1.75rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1vh; */
 }
+
+
 .label-name {
   text-align: left;
 }
@@ -21,13 +29,21 @@
   flex-direction: column;
   justify-content: center;
   margin-top: 3rem;
+  
 }
+
+
 .input-form {
-  border: 1px solid var(--text-color);
+  border: 1px solid rgba(245, 251, 241, 1);
   border-radius: 4px;
-  background-color: rgba(29, 30, 32, 1);
+  background-color: rgba(255, 252, 197);
   padding: 0.5rem;
+  width: 30vh;
+  border-radius: 10px;
+  color: black;
 }
+
+
 .login-checkbox-wrapper {
   display: flex;
   flex-direction: row;
@@ -36,33 +52,30 @@
 
 .login-button {
   padding: 0.1rem 1.4rem;
-  border: 3px solid rgba(165, 193, 119, 1);
+  border: 1px solid rgba(165, 193, 119, 1);
   border-radius: 2rem;
- 
-  background-color:rgba(242, 242, 176, 1);
-  background-color: rgba(165, 183, 53, 1);
+  background: radial-gradient( rgba(242, 242, 176, 1), rgba(165, 183, 53, 1));
+ /*  background-color:rgba(242, 242, 176, 1);
+  background-color: rgba(165, 183, 53, 1); */
+  font-size: 1.25rem;
   color: rgba(28, 25, 25, 1);
-  
-  font-size: 1.1rem;
-  
   margin-top: 1rem;
   margin-right: 1rem;
   margin: 1.5rem 1rem 1.5rem 0rem;
-  height: 8vh;
+  height: 5vh;
 }
 
 .login-button:hover {
  
-  background-color: #cb2323;
+  background: radial-gradient( rgba(255, 255, 224, 1), rgba(192, 220, 70, 1));
   cursor: pointer; 
   
   
 }
 
 
-
-
 .forgot-password {
+
   padding: 1rem;
   text-decoration: underline;
   margin-bottom: 1rem;
@@ -87,6 +100,11 @@
   font-size: 1.25rem;
   margin: 0.5rem;
   width: 256px;
+
+}
+
+.signup-button:hover{
+  background: rgba(142, 162, 103, 1);
 
 }
 .goback {

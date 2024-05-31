@@ -52,6 +52,8 @@ nav ul li {
 
 }
 
+
+
 nav ul li a {
 
     display: block;
@@ -67,6 +69,12 @@ nav ul li a {
 
 }
 
+nav ul li a:hover {
+    background-color: #2a2a2a75; 
+    color: #A5C177; 
+    font-weight: bold; 
+    border-radius: 4px; 
+}
 
 nav .menu {
     display: none;
@@ -94,17 +102,16 @@ nav .menu span {
     cursor: pointer;
 }
 
+.logout:hover{
+    background: white;
+}
+
+.logout{
+    cursor: pointer;
+}
 
 
 
-/* nav ul li a:not(.active, .title):hover {
-    color: #A5C177;
-    background-color: #2a2a2a;  
-    font-weight: bold;           
-    
-    border-radius: 5px;          
-    transition: all 0.3s ease;   
-} */
 
 
 
@@ -134,8 +141,13 @@ nav .menu span {
     }
 
     
+    .logout:hover{
+        background: white;
+    }
 
-
+    .logout{
+        cursor: pointer;
+    }
 }
 
 @media (max-width: 635px) {
@@ -180,9 +192,15 @@ nav .menu span {
 
     }
 
+   
+    
+    .logout:hover{
+        background: white;
+    }
 
-  
-
+    .logout{
+        cursor: pointer;
+    }
 }
 
 
