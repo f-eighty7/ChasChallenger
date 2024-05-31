@@ -47,8 +47,8 @@ const getCharacters = async (): Promise<Character[] | undefined> => {
       /* "http://localhost:5106/api/Character/GetCharacters" */
       /* `https://localhost:7110/api/Character/GetCharacters`  */
       /* `52.149.227.5:8081/api/Character/GetCharacters`, */
-      `https://chasfantasy.azurewebsites.net/api/Character/GetCharacters`
-      /* `/api/Character/GetCharacters` */
+      /* `https://chasfantasy.azurewebsites.net/api/Character/GetCharacters` */
+      `/api/Character/GetCharacters`
     );
 
     return await response.data;

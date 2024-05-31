@@ -15,7 +15,7 @@ export const HomeRoute = () => {
           Chass
         </h1>
       </div>
-      <p className={styles.introtext}>Det här är ett spel för den ensamme utan liv.</p>
+      <p className={styles.introtext}>Det här är ett spel för dig som lägger för lite tid framför skärmen</p>
       <Link to={"/login"}>
         <button title="Spela" className={styles.playbutton}>PLAY</button>
       </Link>
