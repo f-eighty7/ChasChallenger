@@ -75,7 +75,7 @@ export const NewPremadeCharacterRoute = () => {
   const navigate = useNavigate();
 
   return (
-    <main>
+    <main className={style["premade-character"]}>
       <h1>Premade Characters</h1>
       <ul className={style.charactersList}>
         {premades.map((character: Character, index: number) => {
