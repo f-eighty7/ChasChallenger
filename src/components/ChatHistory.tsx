@@ -9,7 +9,7 @@ const ChatHistory = () => {
   useEffect(() => {
     const fetchStoryMessages = async () => {
       const allMessages = await getStoryMessages();
-      setMessages(allMessages);
+      setMessages(allMessages.reverse());
     };
     fetchStoryMessages();
   }, []);

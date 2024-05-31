@@ -4,6 +4,7 @@ import Profession from "../types/Profession";
 import Species from "../types/Species";
 import style from "./NewPremadeCharacterRoute.module.css";
 import { Link, NavigateFunction, useNavigate } from "react-router-dom";
+import Footer from "../components/Footer"
 
 const premades: Character[] = [
   {
@@ -79,6 +80,7 @@ export const NewPremadeCharacterRoute = () => {
   const navigate = useNavigate();
 
   return (
+    <>
     <main>
       <h1>Premade Characters</h1>
       <ul className={style.charactersList}>
@@ -161,5 +163,7 @@ export const NewPremadeCharacterRoute = () => {
         Back
       </Link>
     </main>
+    <Footer />
+    </>
   );
 };

@@ -9,6 +9,7 @@ import { AbilityScoreDropdown } from "../components/AbilityScoreDropdown";
 import Profession, { ProfessionsArray } from "../types/Profession";
 import Species, { SpeciesArray } from "../types/Species";
 import axios from "axios";
+import Footer from "../components/Footer"
 
 const abilityAttributes: AbilityAttribute[] = [
   //TODO: refactor to enum like Species.ts
@@ -234,6 +235,7 @@ export const NewCustomCharacterRoute = () => {
   );
 
   return (
+    <>
     <main>
       <h1>Custom Character</h1>
       <div>
@@ -468,5 +470,7 @@ export const NewCustomCharacterRoute = () => {
         Back
       </Link>
     </main>
+    <Footer />
+    </>
   );
 };

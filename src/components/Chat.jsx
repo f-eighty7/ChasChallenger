@@ -65,10 +65,10 @@ export function Chat() {
     console.log(message);
     try {
       const result = await axios.post(
-        `https://chasfantasy.azurewebsites.net/api/chat/message`,
-        /*  `https://localhost:7110/api/chat/message/`, */
-        /*  `52.149.227.5:8081/api/chat/message/`, */
-
+        `https://chasfantasy.azurewebsites.net/api/chat/message` ,
+       /*  `https://localhost:7110/api/chat/message/`, */
+       /*  `http://52.149.227.5:8081/api/chat/message/`, */
+       
         message
       );
 
@@ -138,12 +138,12 @@ export function Chat() {
 
         <form className="chat-input" onSubmit={handleSend}>
           <div className="input-container">
-            <IoMdSettings
-              title="Game Settings"
-              className="game-settings-icon"
-              onClick={() => setButtonPopup(true)}
-            />
-            <input
+          <IoMdSettings
+          title="Game Settings"
+          className="game-settings-icon"
+          onClick={() => setButtonPopup(true)}
+        />
+            <textarea
               type="text"
               className="inputruta"
               value={query}
