@@ -8,10 +8,11 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import style from "./Navbar.module.css";
+import "./Footer.css"
 
 export default function Footer() {
 	return (
-		<footer className="w-[100vw] pt-4 mt-auto ">
+		<footer className="w-[100vw] pt-4 mt-auto">
 			<div className="bg-custom-darkestGreen mx-auto grid grid-cols-3 items-start py-9">
 				<Link
 					to={"/"}
@@ -43,12 +44,7 @@ export default function Footer() {
 						rel="noopener noreferrer">
 						<FaLinkedin className="text-white" />
 					</a>
-					<a
-						href="https://github.com"
-						target="_blank"
-						rel="noopener noreferrer">
-						<FaGithub className="text-white" />
-					</a>
+				
                 </div>
                 <div className="grid grid-cols-2 text-xs gap-2">
                     <h5>Privacy Notice</h5>

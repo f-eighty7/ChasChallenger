@@ -897,20 +897,20 @@ main {
   text-transform: capitalize;
 }
 
-@media (min-width: 375px) {
+/* @media (min-width: 375px) {
   .container {
     max-width: 375px;
   }
 
-  /* body {
+  body {
     background-image: url(./components/back.png);
     background-size: cover;
     background-repeat: no-repeat;
 
-  } */
-}
+  }
+} */
 
-@media (min-width: 425px) {
+/* @media (min-width: 425px) {
   .container {
     max-width: 425px;
   }
@@ -944,4 +944,4 @@ main {
   .container {
     max-width: 2560px;
   }
-}
+} */

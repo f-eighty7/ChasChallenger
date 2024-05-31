@@ -20,8 +20,8 @@ function LoginForm() {
       const response = await axios.post(
         /* "http://localhost:5106/login?useCookies=true", */
           /* "https://localhost:7110/login?useCookies=true", */
-          'http://52.149.227.5:8081login?useCookies=true',
-         /* `https://chasfantasy.azurewebsites.net/login?useCookies=true`, */
+          /* 'http://52.149.227.5:8081login?useCookies=true', */
+         `https://chasfantasy.azurewebsites.net/login?useCookies=true`,
 
         {
           email,
@@ -64,7 +64,7 @@ function LoginForm() {
         );
       } else {
         console.log("Login failed:", response.data.message);
-        setErrorMessage(response.data.message);
+        /* setErrorMessage(response.data.message); */
       }
     } catch (error) {
       console.error(
@@ -72,7 +72,7 @@ function LoginForm() {
         /* error.response ? error.response.data : "Server error" */
         alert("Server error. Nån har inte gjort sitt jobb!")
       );
-      setErrorMessage(error.response ? error.response.data : "Server error");
+      /* setErrorMessage(error.response ? error.response.data : "Server error"); */
     }
   };
 

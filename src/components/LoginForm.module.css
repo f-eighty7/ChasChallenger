@@ -31,44 +31,50 @@
 .login-checkbox-wrapper {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  
-  
+  justify-content: center; 
 }
+
 .login-button {
   padding: 0.1rem 1.4rem;
-  border: 3px solid var(--border-color);
+  border: 3px solid rgba(165, 193, 119, 1);
   border-radius: 2rem;
-  background: radial-gradient(
-    var(--button-yellow-color),
-    var(--button-green-color)
-  );
+ 
+  background-color:rgba(242, 242, 176, 1);
+  background-color: rgba(165, 183, 53, 1);
+  color: rgba(28, 25, 25, 1);
+  
   font-size: 1.1rem;
-  color: var(--black-color);
+  
   margin-top: 1rem;
   margin-right: 1rem;
   margin: 1.5rem 1rem 1.5rem 0rem;
   height: 8vh;
 }
-.input-checkbox {
-  width: 1rem;
-  height: 1rem;
-  cursor: pointer;
+
+.login-button:hover {
+ 
+  background-color: #cb2323;
+  cursor: pointer; 
+  
+  
 }
-.remember-text {
-  padding-left: 0.5rem;
-}
+
+
+
+
 .forgot-password {
   padding: 1rem;
   text-decoration: underline;
   margin-bottom: 1rem;
 }
+
 .or {
   text-align: center;
   font-family: "Cinzel Decorative", "serif";
   font-size: 1.75rem;
   padding: 1rem;
 }
+
 .signup-back-wrapper {
   display: flex;
   justify-content: center;
@@ -104,7 +110,7 @@
   background: none;
 }
 
-@media (min-width: 400px) {
+/* @media (min-width: 400px) {
   .form {
     border: 1px solid var(--text-color);
     border-radius: 20px;
@@ -133,4 +139,4 @@
     
   }
 
-}
+} */

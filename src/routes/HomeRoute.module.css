@@ -34,6 +34,11 @@ font-weight: bold;
 color: var(--black-color);
 margin-bottom: 4rem;
 }
+
+
+button:hover{
+    background-color: rgb(112, 79, 35);
+}
 .card {
 display: flex;
 flex-direction: column;
