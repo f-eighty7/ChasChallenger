@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import style from "./LoginForm.module.css"
+import style from "./LoginForm.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { FaArrowLeftLong } from "react-icons/fa6";
 
@@ -19,9 +19,10 @@ function LoginForm() {
     try {
       const response = await axios.post(
         /* "http://localhost:5106/login?useCookies=true", */
-          /* "https://localhost:7110/login?useCookies=true", */
-          /* 'http://52.149.227.5:8081login?useCookies=true', */
-         `https://chasfantasy.azurewebsites.net/login?useCookies=true`,
+        /* "https://localhost:7110/login?useCookies=true", */
+        /* 'http://52.149.227.5:8081login?useCookies=true', */
+        /* `https://chasfantasy.azurewebsites.net/login?useCookies=true`, */
+        `/api/login?useCookies=true`,
 
         {
           email,
@@ -77,7 +78,7 @@ function LoginForm() {
   };
 
   return (
-    <div >
+    <div>
       <form className={style.form} onSubmit={handleLogin}>
         <h2 className={style.title}>Logga in</h2>
         <div className={style["inputs"]}>
@@ -115,8 +116,6 @@ function LoginForm() {
             Logga in
           </button>
           {errorMessage && <p className="error">{errorMessage}</p>}
-       
-          
         </div>
         <div className={style["forgot-password"]}>
           <Link title="Har du supit bort ditt lösenord?" to={"/error"}>

@@ -6,9 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { selectedCharacterId } from "../Store/Slices/CharacterSlice";
 import axios from "axios";
-import Footer from "../components/Footer"
+import Footer from "../components/Footer";
 import { CharacterId } from "../types/CharacterId";
-
 
 const handleDeleteCharacterClicked = (
   event: React.MouseEvent<HTMLButtonElement>
@@ -35,7 +34,8 @@ const getCharacters = async (): Promise<Character[] | undefined> => {
       /* "http://localhost:5106/api/Character/GetCharacters" */
       /* `https://localhost:7110/api/Character/GetCharacters`  */
       /* `52.149.227.5:8081/api/Character/GetCharacters`, */
-      `https://chasfantasy.azurewebsites.net/api/Character/GetCharacters`,
+      /* `https://chasfantasy.azurewebsites.net/api/Character/GetCharacters` */
+      `/api/Character/GetCharacters`
     );
 
     return await response.data;
@@ -99,7 +99,7 @@ export const CharactersRoute = () => {
       <Link className={style.link} relative="path" to="new">
         New
       </Link>
-      < Footer />
+      <Footer />
     </main>
   );
 };
