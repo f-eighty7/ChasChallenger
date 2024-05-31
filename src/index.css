@@ -3,15 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+
   /* --button-color: rgba(175, 209, 130, 1); */
   /* --button-yellow-color: rgba(242, 242, 176, 1); */
-/*   --button-green-color: rgba(165, 183, 53, 1);
+  /*   --button-green-color: rgba(165, 183, 53, 1);
   --border-color: rgba(165, 193, 119, 1);
   --button-gray-color: rgba(255, 255, 255, 1); */
- /*  --black-color: rgba(28, 25, 25, 1); */
-  --text-color: rgba(245, 251, 241, 1);
-}
+  /*  --black-color: rgba(28, 25, 25, 1); */
+  /* --text-color: rgba(245, 251, 241, 1); */
+
 
 * {
   box-sizing: border-box;
@@ -20,7 +20,7 @@
   padding: 0;
   /* border: 0;  */
   margin: 0;
-  color: var(--text-color);
+  color: rgba(245, 251, 241, 1);
 }
 
 body {

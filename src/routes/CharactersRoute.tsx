@@ -21,7 +21,8 @@ const handleDeleteCharacterClicked = async (
     if (!id) throw "Character ID is undefined";
 
     /*const response =*/ await axios.delete(
-      "https://chasfantasy.azurewebsites.net/api/Character/DeleteCharacter",
+      /* "https://chasfantasy.azurewebsites.net/api/Character/DeleteCharacter", */
+      '/api/Character/DeleteCharacter',
       {
         data: {
           id: id,

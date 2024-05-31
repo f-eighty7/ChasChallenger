@@ -47,7 +47,8 @@ const handleGenerateAvatarsButtonClicked = async (
   try {
     const result = await axios.post(
       //TODO: NEEDS a loading indicator
-      "https://chasfantasy.azurewebsites.net/api/Image/CreateProfileImageWithAI",
+      /* "https://chasfantasy.azurewebsites.net/api/Image/CreateProfileImageWithAI" */
+      "/api/Image/CreateProfileImageWithAI",
       {
         ...getValues(),
         level: 0,

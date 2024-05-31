@@ -1,53 +1,68 @@
-.container-header {
+.containerheader {
 display: flex;
 flex-direction: column;
-text-align: center;
+justify-content:space-around
 }
 
-.title-one {
+.titleone {
+display: flex;
+justify-content: center;
 font-family: "Cinzel Decorative";
 font-size: 4rem;
 padding: 0;
 margin-top: 8rem;
 text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
 font-weight: bold;
+margin-top: 4vh;
 }
-.title-two {
+
+.titletwo {
+display: flex;
+justify-content: center;
 font-family: "Cinzel Decorative";
 font-size: 4rem;
 line-height: 80%;
 text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.8);
 font-weight: bold;
 }
-.intro-text {
+
+.introtext {
+display: flex;
+justify-content: center;
 text-align: center;
 padding: 1rem 0rem 1rem 0rem;
-width: 300px;
+width: px;
 }
-.play-button {
+
+.playbutton {
 padding: 0.5rem 4rem;
-border: 1px solid var(--border-color);
+border: 1px solid rgba(165, 193, 119, 1);
 border-radius: 2rem;
-background: radial-gradient(var(--button-yellow-color), var(--button-green-color));
+/* background: radial-gradient(var(--button-yellow-color), var(--button-green-color)); */
+background: radial-gradient( rgba(242, 242, 176, 1), rgba(165, 183, 53, 1));
 font-size: 1.25rem;
 font-weight: bold;
-color: var(--black-color);
+color: rgba(28, 25, 25, 1);
 margin-bottom: 4rem;
+margin-top: 6vh;
+cursor: pointer;
 }
 
-
-button:hover{
+.playbutton:hover{
+    background: rgba(153, 153, 153, 0.712);
+}
+/* button:hover{
     background-color: rgb(112, 79, 35);
-}
-.card {
+} */
+/* .card {
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 margin-top: 4rem;
 margin-bottom: 4rem;
-}
-.read-more-image {
+} */
+/* .read-more-image {
 height: 200px;
 width: 300px;
 border-radius: 3px;
@@ -65,4 +80,4 @@ border-radius: 2rem;
 background: var(--black-color);
 font-size: 1.25rem;
 color: var(--text-color);
-}
+} */
