@@ -17,7 +17,7 @@ export default function Footer() {
 				<Link
 					to={"/"}
 					className={`${style.title} mb-4`}>
-					fantasy ChasS
+					Fantasy Chass
 				</Link>
 				<div className="flex gap-4 mb-4">
 					<a

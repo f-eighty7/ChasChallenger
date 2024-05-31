@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import style from "./HomeRoute.module.css"
+import styles from "./HomeRoute.module.css"
 /* import back from "../Images/back.png" */
 import Footer from "../components/Footer"
 
@@ -7,18 +7,19 @@ export const HomeRoute = () => {
   return (
     <>
     <main>
-      <div className={style["container-header"]}>
-        <h2 className={style["title-one"]}>
+      <div className={styles.containerheader}>
+        <h2 className={styles.titleone}>
           Fantasy
         </h2>
-        <h1 className={style["title-two"]}>
+        <h1 className={styles.titletwo}>
           Chass
         </h1>
       </div>
-      <p className={style["intro-text"]}>Lorem ipsum dolor sit consectetur adipisicing elit. Neque ipsum tempora et maiores blanditiis vitae.</p>
+      <p className={styles.introtext}>Det här är ett spel för den ensamme utan liv.</p>
       <Link to={"/login"}>
-        <button title="Play" className={style["play-button"]}>PLAY</button>
+        <button title="Spela" className={styles.playbutton}>PLAY</button>
       </Link>
+     
    {/*    <article className={style["card"]}>
         <img src={back} alt="Bild" className={style["read-more-image"]}/>
         <p className={style["read-more-text"]}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure nihil magni. Rem voluptatem repellendus.</p>
