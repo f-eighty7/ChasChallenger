@@ -54,7 +54,7 @@ function CharacterCard({ character, onDelete, onFavorite, onSelect }) {
 					title="Delete character"
 					onClick={(e) => {
 						e.stopPropagation();
-						onDelete(character);
+						onDelete(e.target.closest("li"), character);
 					}}>
 					<img
 						// className="w-[40%] border"

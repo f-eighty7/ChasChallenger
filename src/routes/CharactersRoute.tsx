@@ -9,22 +9,34 @@ import axios from "axios";
 import Footer from "../components/Footer";
 import { CharacterId } from "../types/CharacterId";
 
-const handleDeleteCharacterClicked = (
-  event: React.MouseEvent<HTMLButtonElement>
+const handleDeleteCharacterClicked = async (
+  characters: Character[],
+  setCharacters: React.Dispatch<React.SetStateAction<Character[]>>,
+  id?: number
 ) => {
-  event.stopPropagation();
+  //TODO: maybe disable on favorited characters
+  //TODO: some sort of confirmation
 
-  //maybe disable on favorited characters
-  //have some sort of confirmation
+  try {
+    if (!id) throw "Character ID is undefined";
 
-  console.warn("Not yet implemented");
+    /*const response =*/ await axios.delete(
+      "https://chasfantasy.azurewebsites.net/api/Character/DeleteCharacter",
+      {
+        data: {
+          id: id,
+        },
+      }
+    );
+
+    //Remove visually
+    setCharacters([...characters.filter((character) => character.id != id)]);
+  } catch (error) {
+    console.error(error);
+  }
 };
 
-const handleFavoriteCharacterClicked = (
-  event: React.MouseEvent<HTMLButtonElement>
-) => {
-  event.stopPropagation();
-
+const handleFavoriteCharacterClicked = () => {
   console.warn("Not yet implemented");
 };
 
@@ -89,7 +101,13 @@ export const CharactersRoute = () => {
             <CharacterCard
               key={character.name + index}
               character={character}
-              onDelete={handleDeleteCharacterClicked}
+              onDelete={() =>
+                handleDeleteCharacterClicked(
+                  characters,
+                  setCharacters,
+                  character.id
+                )
+              }
               onFavorite={handleFavoriteCharacterClicked}
               onSelect={handleCharacterClicked}
             />

@@ -1,3 +1,7 @@
+.premade-character {
+  padding: 0 2.5rem;
+}
+
 .charactersList {
   display: flex;
   flex-direction: column;

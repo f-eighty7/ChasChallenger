@@ -106,7 +106,7 @@ function LoggedOutNav({ handleItemClicked, activeItem, menuOpen }) {
 }
 
 function Navbar({ isLoggedIn }) {
-	console.log("isLoggedIn:", isLoggedIn);
+	
 
 	const [menuOpen, setMenuOpen] = useState(false);
 	const [activeItem, setActiveItem] = useState(null);
