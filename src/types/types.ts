@@ -1,4 +1,3 @@
-
 export interface Register {
   email: string;
   password: string;
@@ -20,8 +19,9 @@ export interface StoryItemProps {
   onSelected: (name: string, summary: string) => void;
 }
 export interface StoryText {
+  characterId: number | undefined;
   name: string;
-  summary: string;
+  basePrompt: string;
 }
 
 export interface ResumeStory {
@@ -34,8 +34,10 @@ export interface ResumeStoryProps {
 }
 
 export interface StoryMessages {
-  text: string;
-  sender: string;
+  id: number;
+  message: string;
+  characterName: number | null;
+  timestamp: string;
 }
 export interface StoryMessageItemProps {
   storyMessages: StoryMessages;

@@ -9,6 +9,7 @@ import { AbilityScoreDropdown } from "../components/AbilityScoreDropdown";
 import Profession, { ProfessionsArray } from "../types/Profession";
 import Species, { SpeciesArray } from "../types/Species";
 import axios from "axios";
+import Footer from "../components/Footer";
 
 interface AvatarOption {
   expiryTime: string;
@@ -185,6 +186,8 @@ const formSubmit = async (character: Character, navigate: NavigateFunction) => {
   try {
     await axios.post(
       "https://chasfantasy.azurewebsites.net/api/Character/AddCharacter",
+      /* `https://localhost:7110/api/Character/AddCharacter`, */
+      /* `52.149.227.5:8081/api/Character/AddCharacter`, */
       { ...character, level: 0 }
     );
 
@@ -262,112 +265,113 @@ export const NewCustomCharacterRoute = () => {
     useState<string>("");
 
   return (
-    <main className={style["custom-character"]}>
-      <h1>Custom Character</h1>
-      <div className={style["generate-character"]}>
-        <h2>Generate With Prompt</h2>
-        <input
-          type="text"
-          value={generateCharacterPrompt}
-          onChange={(event: ChangeEvent<HTMLInputElement>) =>
-            setGenerateCharacterPrompt(event.target.value)
-          }
-        />
-        <button
-          type="button"
-          onClick={() =>
-            handleGenerateCharacterButtonClicked(
-              generateCharacterPrompt,
-              setValue,
-              setAbilityScoreAllocations,
-              setAvatarIconPreviewUrl
-            )
-          }
-        >
-          Generate Character
-        </button>
-      </div>
-      <form
-        className={style["new-character-form"]}
-        onSubmit={handleSubmit((character: Character) =>
-          formSubmit(character, navigate)
-        )}
-      >
-        <div>
-          <label htmlFor="name">
-            <h2>Name</h2>
-          </label>
+    <>
+      <main className={style["custom-character"]}>
+        <h1>Custom Character</h1>
+        <div className={style["generate-character"]}>
+          <h2>Generate With Prompt</h2>
           <input
             type="text"
-            id="name"
-            placeholder="John Doe..."
-            {...register("name", {
-              required: "Name is required!",
-            })}
+            value={generateCharacterPrompt}
+            onChange={(event: ChangeEvent<HTMLInputElement>) =>
+              setGenerateCharacterPrompt(event.target.value)
+            }
           />
-          {errors.name && <p>{errors.name.message}</p>}
+          <button
+            type="button"
+            onClick={() =>
+              handleGenerateCharacterButtonClicked(
+                generateCharacterPrompt,
+                setValue,
+                setAbilityScoreAllocations,
+                setAvatarIconPreviewUrl
+              )
+            }
+          >
+            Generate Character
+          </button>
         </div>
-
-        <div>
-          <label htmlFor="age">
-            <h2>Age</h2>
-          </label>
-          <input
-            type="number"
-            id="age"
-            {...register("age", {
-              required: "Age is required!",
-              min: {
-                value: 0,
-                message: "Age must be a positive value!",
-              },
-            })}
-          />
-          {errors.age && <p>{errors.age.message}</p>}
-        </div>
-
-        <div>
-          <h2>Gender</h2>
-          <div className={style["genders"]}>
-            <span>
-              <label htmlFor="gender-male">Male:</label>
-              <input
-                type="radio"
-                id="gender-male"
-                value="male"
-                {...register("gender", {
-                  required: "Gender is required!",
-                })}
-              />
-            </span>
-            <span>
-              <label htmlFor="gender-female">Female:</label>
-              <input
-                type="radio"
-                id="gender-female"
-                value="female"
-                {...register("gender", {
-                  required: "Gender is required!",
-                })}
-              />
-            </span>
-            <span>
-              <label htmlFor="gender-non-binary">Non-binary:</label>
-              <input
-                type="radio"
-                id="gender-non-binary"
-                value="non-binary"
-                {...register("gender", {
-                  required: "Gender is required!",
-                })}
-              />
-            </span>
+        <form
+          className={style["new-character-form"]}
+          onSubmit={handleSubmit((character: Character) =>
+            formSubmit(character, navigate)
+          )}
+        >
+          <div>
+            <label htmlFor="name">
+              <h2>Name</h2>
+            </label>
+            <input
+              type="text"
+              id="name"
+              placeholder="John Doe..."
+              {...register("name", {
+                required: "Name is required!",
+              })}
+            />
+            {errors.name && <p>{errors.name.message}</p>}
           </div>
 
-          {errors.gender && <p>{errors.gender.message}</p>}
-        </div>
+          <div>
+            <label htmlFor="age">
+              <h2>Age</h2>
+            </label>
+            <input
+              type="number"
+              id="age"
+              {...register("age", {
+                required: "Age is required!",
+                min: {
+                  value: 0,
+                  message: "Age must be a positive value!",
+                },
+              })}
+            />
+            {errors.age && <p>{errors.age.message}</p>}
+          </div>
 
-        {/* NOTE: Classes are on hold for MVP
+          <div>
+            <h2>Gender</h2>
+            <div className={style["genders"]}>
+              <span>
+                <label htmlFor="gender-male">Male:</label>
+                <input
+                  type="radio"
+                  id="gender-male"
+                  value="male"
+                  {...register("gender", {
+                    required: "Gender is required!",
+                  })}
+                />
+              </span>
+              <span>
+                <label htmlFor="gender-female">Female:</label>
+                <input
+                  type="radio"
+                  id="gender-female"
+                  value="female"
+                  {...register("gender", {
+                    required: "Gender is required!",
+                  })}
+                />
+              </span>
+              <span>
+                <label htmlFor="gender-non-binary">Non-binary:</label>
+                <input
+                  type="radio"
+                  id="gender-non-binary"
+                  value="non-binary"
+                  {...register("gender", {
+                    required: "Gender is required!",
+                  })}
+                />
+              </span>
+            </div>
+
+            {errors.gender && <p>{errors.gender.message}</p>}
+          </div>
+
+          {/* NOTE: Classes are on hold for MVP
         <div>
           <label htmlFor="class">
             <h2>Class</h2>
@@ -384,90 +388,92 @@ export const NewCustomCharacterRoute = () => {
           {errors.class && <p>{errors.class.message}</p>}
         </div> */}
 
-        <div>
-          <h2>Ability Scores</h2>
-          {abilityAttributes.map((abilityAttribute: AbilityAttribute) => {
-            return (
-              <AbilityScoreDropdown
-                key={abilityAttribute}
-                abilityScoreAttribute={abilityAttribute}
-                abilityScoreAllocations={abilityScoreAllocations}
-                setAbilityScoreAllocations={setAbilityScoreAllocations}
-                register={register}
-                getValues={getValues}
-                setValue={setValue}
-                errors={errors}
-              />
-            );
-          })}
-          <button
-            type="button"
-            onClick={() =>
-              handleResetAllAbilityScoreButtonClicked(
-                setValue,
-                setAbilityScoreAllocations
-              )
-            }
-          >
-            Reset All
-          </button>
-        </div>
-
-        <div>
-          <label htmlFor="species">
-            <h2>Species</h2>
-          </label>
-          <select
-            id="species"
-            {...register("species", { required: "Species is required!" })}
-          >
-            {SpeciesArray().map((species) => {
+          <div>
+            <h2>Ability Scores</h2>
+            {abilityAttributes.map((abilityAttribute: AbilityAttribute) => {
               return (
-                <option key={species} value={Species[species]}>
-                  {species}
-                </option>
+                <AbilityScoreDropdown
+                  key={abilityAttribute}
+                  abilityScoreAttribute={abilityAttribute}
+                  abilityScoreAllocations={abilityScoreAllocations}
+                  setAbilityScoreAllocations={setAbilityScoreAllocations}
+                  register={register}
+                  getValues={getValues}
+                  setValue={setValue}
+                  errors={errors}
+                />
               );
             })}
-          </select>
+            <button
+              type="button"
+              onClick={() =>
+                handleResetAllAbilityScoreButtonClicked(
+                  setValue,
+                  setAbilityScoreAllocations
+                )
+              }
+            >
+              Reset All
+            </button>
+          </div>
 
-          {errors.species && <p>{errors.species.message}</p>}
-        </div>
+          <div>
+            <label htmlFor="species">
+              <h2>Species</h2>
+            </label>
+            <select
+              id="species"
+              {...register("species", { required: "Species is required!" })}
+            >
+              {SpeciesArray().map((species) => {
+                return (
+                  <option key={species} value={Species[species]}>
+                    {species}
+                  </option>
+                );
+              })}
+            </select>
 
-        <div>
-          <label htmlFor="profession">
-            <h2>Profession</h2>
-          </label>
-          <select
-            id="profession"
-            {...register("profession", { required: "Profession is required!" })}
-          >
-            {ProfessionsArray().map((profession) => {
-              return (
-                <option key={profession} value={Profession[profession]}>
-                  {profession}
-                </option>
-              );
-            })}
-          </select>
+            {errors.species && <p>{errors.species.message}</p>}
+          </div>
 
-          {errors.profession && <p>{errors.profession.message}</p>}
-        </div>
+          <div>
+            <label htmlFor="profession">
+              <h2>Profession</h2>
+            </label>
+            <select
+              id="profession"
+              {...register("profession", {
+                required: "Profession is required!",
+              })}
+            >
+              {ProfessionsArray().map((profession) => {
+                return (
+                  <option key={profession} value={Profession[profession]}>
+                    {profession}
+                  </option>
+                );
+              })}
+            </select>
 
-        <div>
-          <label htmlFor="backstory">
-            <h2>Backstory</h2>
-          </label>
-          <textarea
-            id="backstory"
-            className={style.backstory}
-            {...register("backstory", {
-              maxLength: {
-                value: 500,
-                message: "Max 500 characters!",
-              },
-            })}
-          ></textarea>
-          {/* <button
+            {errors.profession && <p>{errors.profession.message}</p>}
+          </div>
+
+          <div>
+            <label htmlFor="backstory">
+              <h2>Backstory</h2>
+            </label>
+            <textarea
+              id="backstory"
+              className={style.backstory}
+              {...register("backstory", {
+                maxLength: {
+                  value: 500,
+                  message: "Max 500 characters!",
+                },
+              })}
+            ></textarea>
+            {/* <button
             type="button"
             onClick={() =>
               handleGenerateBackstoryButtonClicked(getValues, setValue)
@@ -476,76 +482,81 @@ export const NewCustomCharacterRoute = () => {
             Generate New
           </button> */}
 
-          {errors.backstory && <p>{errors.backstory.message}</p>}
-        </div>
+            {errors.backstory && <p>{errors.backstory.message}</p>}
+          </div>
 
-        <div className={style["avatar"]}>
-          <h2>Avatar</h2>
-          <img
-            className={style["your-avatar"]}
-            src={avatarIconPreviewUrl}
-            alt="Your Avatar"
-          />
-          <button
-            type="button"
-            onClick={() =>
-              handleGenerateAvatarsButtonClicked(
-                getValues,
-                avatarOptions,
-                setAvatarOptions
-              )
-            }
-          >
-            Generate New
-          </button>
-          {avatarOptions.length > 0 && (
-            <>
-              <h3>Avatar Options</h3>
-              <ul className={style["avatar-options-list"]}>
-                {avatarOptions.map((avatarOption: AvatarOption, index) => {
-                  return (
-                    <li className={style["avatar-option"]} key={index}>
-                      <img
-                        src={avatarOption.url}
-                        alt={`Avatar option ${index + 1}`}
-                        onClick={(
-                          event: React.MouseEvent<HTMLImageElement, MouseEvent>
-                        ) => {
-                          //TODO: check that image is not expired when selected and character created
-                          // const expiryDate = new Date(avatarOption.expiryTime);
+          <div className={style["avatar"]}>
+            <h2>Avatar</h2>
+            <img
+              className={style["your-avatar"]}
+              src={avatarIconPreviewUrl}
+              alt="Your Avatar"
+            />
+            <button
+              type="button"
+              onClick={() =>
+                handleGenerateAvatarsButtonClicked(
+                  getValues,
+                  avatarOptions,
+                  setAvatarOptions
+                )
+              }
+            >
+              Generate New
+            </button>
+            {avatarOptions.length > 0 && (
+              <>
+                <h3>Avatar Options</h3>
+                <ul className={style["avatar-options-list"]}>
+                  {avatarOptions.map((avatarOption: AvatarOption, index) => {
+                    return (
+                      <li className={style["avatar-option"]} key={index}>
+                        <img
+                          src={avatarOption.url}
+                          alt={`Avatar option ${index + 1}`}
+                          onClick={(
+                            event: React.MouseEvent<
+                              HTMLImageElement,
+                              MouseEvent
+                            >
+                          ) => {
+                            //TODO: check that image is not expired when selected and character created
+                            // const expiryDate = new Date(avatarOption.expiryTime);
 
-                          // const timeLeft = expiryDate.getTime() - Date.now();
-                          // if (timeLeft > 0) {
-                          //   const dateTimeLeft = new Date(timeLeft);
+                            // const timeLeft = expiryDate.getTime() - Date.now();
+                            // if (timeLeft > 0) {
+                            //   const dateTimeLeft = new Date(timeLeft);
 
-                          //   console.log();
-                          //   (dateTimeLeft.getUTCHours() > 0
-                          //     ? `${dateTimeLeft.getUTCHours()}h `
-                          //     : "") +
-                          //     dateTimeLeft.getUTCMinutes() +
-                          //     "m " +
-                          //     dateTimeLeft.getUTCMinutes() +
-                          //     "s";
-                          // }
+                            //   console.log();
+                            //   (dateTimeLeft.getUTCHours() > 0
+                            //     ? `${dateTimeLeft.getUTCHours()}h `
+                            //     : "") +
+                            //     dateTimeLeft.getUTCMinutes() +
+                            //     "m " +
+                            //     dateTimeLeft.getUTCMinutes() +
+                            //     "s";
+                            // }
 
-                          const src = event.currentTarget.src;
-                          setAvatarIconPreviewUrl(src); //Preview
-                          setValue("imageURL", src); //Form data
-                        }}
-                      />
-                    </li>
-                  );
-                })}
-              </ul>
-            </>
-          )}
-        </div>
+                            const src = event.currentTarget.src;
+                            setAvatarIconPreviewUrl(src); //Preview
+                            setValue("imageURL", src); //Form data
+                          }}
+                        />
+                      </li>
+                    );
+                  })}
+                </ul>
+              </>
+            )}
+          </div>
 
-        <button type="submit">Create!</button>
-      </form>
-      <Link className={style.backButton} relative="path" to="..">
-        Back
-      </Link>
-    </main>
+          <button type="submit">Create!</button>
+        </form>
+        <Link className={style.backButton} relative="path" to="..">
+          Back
+        </Link>
+      </main>
+      <Footer />
+    </>
   );
 };

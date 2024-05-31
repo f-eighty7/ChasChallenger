@@ -3,23 +3,13 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-  .input-form {
-    @apply bg-transparent border border-gray-300 text-white text-sm rounded-lg focus:ring-lime-500 focus:border-lime-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-lime-500 dark:focus:border-lime-500;
-  }
-
-  .input-checkbox {
-    @apply w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-lime-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-lime-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800;
-  }
-}
-
 :root {
-  --button-color: rgba(175, 209, 130, 1);
-  --button-yellow-color: rgba(242, 242, 176, 1);
-  --button-green-color: rgba(165, 183, 53, 1);
+  /* --button-color: rgba(175, 209, 130, 1); */
+  /* --button-yellow-color: rgba(242, 242, 176, 1); */
+/*   --button-green-color: rgba(165, 183, 53, 1);
   --border-color: rgba(165, 193, 119, 1);
-  --button-gray-color: rgba(255, 255, 255, 1);
-  --black-color: rgba(28, 25, 25, 1);
+  --button-gray-color: rgba(255, 255, 255, 1); */
+ /*  --black-color: rgba(28, 25, 25, 1); */
   --text-color: rgba(245, 251, 241, 1);
 }
 
@@ -55,20 +45,20 @@ body {
   overflow-x: hidden;
 }
 
-button {
+/* button {
   padding: 0.5rem;
   border: 2px solid white;
   border-radius: 0.8rem;
   background-color: #303030;
-}
+} */
 
-button:hover {
+/* button:hover {
   background-color: #404040;
-}
+} */
 
-button:active {
+/* button:active {
   background-color: #202020;
-}
+} */
 
 /* input,
 textarea {
@@ -77,12 +67,12 @@ textarea {
   color: black;
 } */
 
-select,
+/* select,
 select option {
   font: inherit;
   text-transform: capitalize;
   color: black;
-}
+} */
 
 main {
   display: flex;
@@ -103,21 +93,21 @@ main {
   margin-left: auto;
 }
 
-.capitalize::first-letter {
+/* .capitalize::first-letter {
   text-transform: capitalize;
-}
+} */
 
-@media (min-width: 375px) {
+/* @media (min-width: 375px) {
   .container {
     max-width: 375px;
   }
 
-  /* body {
+  body {
     background-image: url(./components/back.png);
     background-size: cover;
     background-repeat: no-repeat;
 
-  } */
+  }
 }
 
 @media (min-width: 425px) {
@@ -155,3 +145,4 @@ main {
     max-width: 2560px;
   }
 }
+ */

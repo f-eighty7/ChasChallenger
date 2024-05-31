@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
-import store from "./Store/Store.js";
+import store from "./Store/Store.ts";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { RootLayout } from "./layouts/RootLayout.tsx";
 import { ErrorRoute } from "./routes/ErrorRoute.tsx";
@@ -12,12 +12,9 @@ import { NewCustomCharacterRoute } from "./routes/NewCustomCharacterRoute.tsx";
 import { NewPremadeCharacterRoute } from "./routes/NewPremadeCharacterRoute.tsx";
 import { AdventureRoute } from "./routes/AdventureRoute.tsx";
 import { LoginRoute } from "./routes/LoginRoute.tsx";
-import { CountinueStoryRoute } from "./routes/CountinueStoryRoute.tsx";
-import { StoriesRoute } from "./routes/StoriesRoute.tsx";
-//import { MastersWelcomeRoute } from "./routes/MastersWelcomeRoute.tsx";
+import { StoriesRoute } from "./routes/StoriesRoute.tsx";  
 import { SignupRoute } from "./routes/SignupRoute.tsx";
 import "./index.css";
-import { AuthProvider } from "./context/AuthContext.jsx";
 import { AboutRoute } from "./routes/AboutRoute.tsx";
 import { HowToPlay } from "./routes/HowToPlayRoute.tsx";
 
@@ -67,10 +64,10 @@ const router = createBrowserRouter([
         path: "/signup",
         element: <SignupRoute />,
       },
-      {
-        path: "/countinuestory",
-        element: <CountinueStoryRoute />, //continue
-      },
+      // {
+      //   path: "/countinuestory",
+      //   element: <CountinueStoryRoute />, //continue
+      // },
       {
         path: "/stories",
         element: <StoriesRoute />,
@@ -85,10 +82,10 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <AuthProvider>
+    
       <Provider store={store}>
         <RouterProvider router={router} />
       </Provider>
-    </AuthProvider>
+   
   </React.StrictMode>
 );

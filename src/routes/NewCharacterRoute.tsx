@@ -1,8 +1,10 @@
 import style from "./NewCharacterRoute.module.css";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer"
 
 export const NewCharacterRoute = () => {
   return (
+    <>
     <main>
       <h1>New Character</h1>
       <ul className={style.linksList}>
@@ -38,5 +40,7 @@ export const NewCharacterRoute = () => {
         </li>
       </ul>
     </main>
+    <Footer />
+  </>
   );
 };

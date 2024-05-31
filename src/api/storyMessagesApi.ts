@@ -1,18 +1,26 @@
 import axios from "axios";
-import type { StoryMessages } from "../types/types";
+// import type { StoryMessages } from "../types/types";
 
-const BASE_URL = "http://localhost:8000/storyMessages";
+const BASE_URL =
+ /*  "https://localhost:7110/api/Chat/Chathistory?activeStoryId=5&amountPerPage=20&pageNumber=1"; */
+  `https://chasfantasy.azurewebsites.net/api/Chat/Chathistory?activeStoryId=10&amountPerPage=10&pageNumber=1`
+  
 
 //ADD
-export const addStoryMessage = async (message: StoryMessages) => {
-  const response = await axios.post(BASE_URL, message);
-  return response.data;
-};
+// export const addStoryMessage = async (message: StoryMessages) => {
+//   const response = await axios.post(BASE_URL, message);
+//   return response.data;
+// };
 
 //READ
 export const getStoryMessages = async () => {
-  const response = await axios.get(BASE_URL);
-  return response.data;
+  try {
+    const response = await axios.get(BASE_URL);
+    return response.data;
+  } catch (error) {
+    console.error("Failed to fetch story message:", error);
+    return null;
+  }
 };
 
 //UPDATE

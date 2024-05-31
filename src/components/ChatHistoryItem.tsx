@@ -1,14 +1,15 @@
-import style from "./MessageItem.module.css";
+import style from "./ChatHistoryItem.module.css"
 import { StoryMessageItemProps } from "../types/types";
+import "./Chat.css";
 
-export const MessageItem = ({ storyMessages }: StoryMessageItemProps) => {
+export const ChatHistoryItem = ({ storyMessages }: StoryMessageItemProps) => {
   return (
     <div className={style["container-chat"]}>
       <div
         className={`${
           storyMessages.characterName === null
-            ? style["message-received"]
-            : style["message-sent"]
+            ? style["chat-response-bubble"]
+            : style["user-query-bubble"]
         }`}
       >
         <div>

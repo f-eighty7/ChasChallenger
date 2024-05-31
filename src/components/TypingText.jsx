@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 const TypingText = ({ text }) => {
-  const [displayedText, setDisplayedText] = useState('');
+  const [displayedText, setDisplayedText] = useState("");
 
   useEffect(() => {
-    if (!text) return; 
+    if (!text) return;
 
     let currentIndex = -1;
-    setDisplayedText('');
-    
+    setDisplayedText(" ");
+
     const intervalId = setInterval(() => {
-      setDisplayedText(prev => prev + text[currentIndex]);
+      setDisplayedText((prev) => prev + text[currentIndex]);
       currentIndex += 1;
 
-      if (currentIndex >= text.length) {
+      if (currentIndex > text.length - 2) {
         clearInterval(intervalId);
       }
     }, 30); // speed (lower is faster)

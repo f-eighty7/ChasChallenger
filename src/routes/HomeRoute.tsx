@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import style from "./HomeRoute.module.css"
-import back from "../Images/back.png"
+/* import back from "../Images/back.png" */
+import Footer from "../components/Footer"
 
 export const HomeRoute = () => {
   return (
+    <>
     <main>
       <div className={style["container-header"]}>
         <h2 className={style["title-one"]}>
@@ -17,7 +19,7 @@ export const HomeRoute = () => {
       <Link to={"/login"}>
         <button title="Play" className={style["play-button"]}>PLAY</button>
       </Link>
-      <article className={style["card"]}>
+   {/*    <article className={style["card"]}>
         <img src={back} alt="Bild" className={style["read-more-image"]}/>
         <p className={style["read-more-text"]}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure nihil magni. Rem voluptatem repellendus.</p>
         
@@ -27,7 +29,11 @@ export const HomeRoute = () => {
         <img src={back} alt="Bild" className={style["read-more-image"]}/>
         <p className={style["read-more-text"]}>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Iure nihil magni. Rem voluptatem repellendus.</p>
         <button title="Read more" className={style["read-more-button"]}>Read more</button>
-      </article>
+      </article> */}
+     
     </main>
+    <Footer />
+    
+    </>
   );
 };

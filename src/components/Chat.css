@@ -7,7 +7,6 @@
 }
 
 .chat-box {
-  margin-top: 30px;
   width: 100%;
   position: relative;
   border-radius: 10px;
@@ -15,7 +14,7 @@
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
-  height: calc(100vh - 60px);
+  height: calc(87vh - 60px);
 }
 
 .chat-history {
@@ -25,6 +24,7 @@
 
 .chat-message {
   margin-bottom: 10px;
+  margin: 0rem 1rem 0rem 1rem;
 }
 
 .bubble {
@@ -38,7 +38,8 @@
   align-self: flex-start;
   background-color: #2eb3c2;
   border-top-left-radius: 0;
-  width: 50%;
+  width: 60%;
+  overflow: clip;  
 }
 
 .chat-response {
@@ -46,7 +47,7 @@
   background-color: #7553ff;
   border-top-right-radius: 0;
   margin-left: auto;
-  width: 50%;
+  width: 70%;
 }
 
 .chat-input {
@@ -55,38 +56,34 @@
   position: fixed;
   bottom: 1.2rem;
   background-color: white;
-  border-radius: 30px
-  
+  border-radius: 30px;
 }
 
-.chat-input :focus{
+.chat-input :focus {
   outline: none;
 }
 
-
-.knapp{
+.knapp {
   position: relative;
- 
   
-   /* filter: invert(1); */
- 
-  
-  
-  
+
+  /* filter: invert(1); */
+}
+
+.sendButton{
+  background-color: white;
+  font-size: 25px;
+  border-radius: 50px;
 }
 
 
-.inputruta{
-  color: #000000;
-  padding: 10px;
-}
 
-.icon{
-  background-color: #000000;
+.icon {
+  background-color: white;
   size: 60px;
-
+  fill: var(--black-color);
+  border-radius: 90px;
 }
-
 
 /* .chat-input input {
   flex: 1;
@@ -113,11 +110,21 @@
   cursor: not-allowed;
 } */
 
+
+
 .input-container {
   display: flex;
   align-items: center;
   position: relative;
   
+}
+
+.inputruta{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: black;
+  height: 4vh;
 }
 
 .loader {
@@ -126,10 +133,10 @@
   display: inline-block;
   left: 5px;
   position: relative;
-  border: 2px solid #FFF;
+  border: 2px solid #fff;
   box-sizing: border-box;
   animation: animloader 2s linear infinite alternate;
-  color: #FF3D00;
+  color: #ff3d00;
   border-radius: 0 0 4px 4px;
   transform: perspective(140px) rotateX(-45deg);
 }
@@ -143,4 +150,20 @@
   }
 }
 
-
+.game-settings-icon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  fill: var(--black-color);
+}
+.game-settings-icon:hover {
+  animation: spinn 2s linear infinite;
+}
+@keyframes spinn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

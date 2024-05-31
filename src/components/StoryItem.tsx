@@ -8,7 +8,7 @@ export const StoryItem = ({ story, onSelected }: StoryItemProps) => {
 
   const handleSelected = () => {
     if (!selected) {
-      onSelected(story.name, story.summary);
+      onSelected( story.name, story.summary);
     }
     setSelected(!selected);
   };
@@ -19,7 +19,11 @@ export const StoryItem = ({ story, onSelected }: StoryItemProps) => {
           <p className={style.summary}>{story.summary}</p>
         </li>
         <Link to="/adventure">
-          <button title="Next" className={style["next-button"]} onClick={handleSelected}>
+          <button
+            title="Next"
+            className={style["next-button"]}
+            onClick={handleSelected}
+          >
             Next
           </button>
         </Link>
