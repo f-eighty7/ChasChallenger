@@ -9,7 +9,7 @@ const BASE_URL = "https://chasfantasy.azurewebsites.net/api/ActiveStory/AddStory
 export const promptStoryText = async (text: StoryText) => {
   try {
     const response = await axios.post(BASE_URL, text);
-    console.log(response);
+    /* console.log(response); */
     return response.data;
   } catch (error) {
     console.error("Error during API call", error);
