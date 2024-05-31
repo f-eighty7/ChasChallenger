@@ -20,7 +20,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           port: ${{ secrets.SSH_PORT }}
           script: |
-            docker pull ghcr.io/f-eighty7/chaschallenger/app:latest
             docker stop frontend-container || true
             docker rm frontend-container || true
+            docker pull ghcr.io/f-eighty7/chaschallenger/app:latest
             docker run -d --name frontend-container -p 8080:80 ghcr.io/f-eighty7/chaschallenger/app:latest
