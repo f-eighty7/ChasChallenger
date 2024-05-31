@@ -22,5 +22,6 @@ jobs:
           script: |
             sudo docker stop frontend-container || true
             sudo docker rm frontend-container || true
+            sudo docker rmi ghcr.io/f-eighty7/chaschallenger/app:latest || true
             sudo docker pull ghcr.io/f-eighty7/chaschallenger/app:latest
             sudo docker run -d --name frontend-container -p 8080:80  ghcr.io/f-eighty7/chaschallenger/app:latest
