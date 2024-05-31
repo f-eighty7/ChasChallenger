@@ -14,7 +14,7 @@
   flex-direction: column;
   overflow-x: hidden;
   overflow-y: auto;
-  height: calc(100vh - 60px);
+  height: calc(87vh - 60px);
 }
 
 .chat-history {
@@ -39,8 +39,7 @@
   background-color: #2eb3c2;
   border-top-left-radius: 0;
   width: 60%;
-  overflow: clip;
-  
+  overflow: clip;  
 }
 
 .chat-response {
@@ -83,6 +82,7 @@
   background-color: white;
   size: 60px;
   fill: var(--black-color);
+  border-radius: 90px;
 }
 
 /* .chat-input input {

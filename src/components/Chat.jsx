@@ -132,8 +132,9 @@ export function Chat() {
                 </div>
               </div>
             ))}
-            <div ref={endOfMessagesRef} />
+            
           </section>
+          <div ref={endOfMessagesRef} />
         </div>
 
         <form className="chat-input" onSubmit={handleSend}>
