@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, lazy, Suspense } from "react";
 import axios from "axios";
 import "./Chat.css";
 import TypingText from "./TypingText";
@@ -7,7 +7,8 @@ import { IoSend } from "react-icons/io5";
 import { MdScheduleSend } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import { useSelector } from "react-redux";
-import { ChatHistory } from "./ChatHistory";
+
+// const ChatHistory = lazy(() => import("./ChatHistory"));
 
 axios.defaults.withCredentials = true;
 
@@ -19,6 +20,31 @@ export function Chat() {
   const endOfMessagesRef = useRef(null);
   const [buttonPopup, setButtonPopup] = useState(false);
   const { id } = useSelector((state) => state.character);
+
+  const storedData = localStorage.getItem("activeStory");
+  let charactersListFromLocal = [];
+
+  if (storedData) {
+    charactersListFromLocal = JSON.parse(storedData);
+  }
+
+  const idAndStory = {
+    id: id,
+    activeStory: false,
+  };
+
+  let newArray;
+  if (charactersListFromLocal.some((item) => item.id === id)) {
+    newArray = charactersListFromLocal;
+  } else {
+    newArray = [...charactersListFromLocal, idAndStory];
+  }
+
+  const updateActiveStory = newArray.map((item) =>
+    item.id === id ? { ...item, activeStory: true } : item
+  );
+
+  localStorage.setItem("activeStory", JSON.stringify(updateActiveStory));
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -88,10 +114,12 @@ export function Chat() {
 
   return (
     <>
-      <ChatHistory />
       <section className="chat-container">
         <div className="chat-box">
           <section className="chat-history">
+            {/* <Suspense fallback={<div>Loading...</div>}>
+              <ChatHistory />
+            </Suspense> */}
             {history.map((msg, index) => (
               <div key={index} className="chat-message">
                 <div className="user-query bubble">{msg.query}</div>
@@ -107,9 +135,8 @@ export function Chat() {
             <div ref={endOfMessagesRef} />
           </section>
         </div>
-       
+
         <form className="chat-input" onSubmit={handleSend}>
-        
           <div className="input-container">
           <IoMdSettings
           title="Game Settings"
@@ -134,9 +161,7 @@ export function Chat() {
                   onClick={handleSend}
                   disabled={!query.trim() || loading}
                   className="sendButton"
-                  
                 />
-                
               ) : (
                 <IoSend className="icon" />
               )}

@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { selectedCharacterId } from "../Store/Slices/CharacterSlice";
 import axios from "axios";
 import Footer from "../components/Footer"
+import { CharacterId } from "../types/CharacterId";
+
 
 const handleDeleteCharacterClicked = (
   event: React.MouseEvent<HTMLButtonElement>
@@ -61,9 +63,23 @@ export const CharactersRoute = () => {
     const id = character.id;
     dispatch(selectedCharacterId(id));
 
-    navigate("/adventure", { replace: true });
-  };
+    const charactersListFromLocal: CharacterId[] = JSON.parse(
+      localStorage.getItem("activeStory") || "[]"
+    );
 
+    if (charactersListFromLocal) {
+      const storyTrue = charactersListFromLocal.find(
+        (item) => item.id === id && item.activeStory === true
+      );
+      if (storyTrue) {
+        navigate("/adventure", { replace: true });
+      } else {
+        navigate("/stories", { replace: true });
+      }
+    } else {
+      navigate("/stories", { replace: true });
+    }
+  };
   return (
     <main>
       <h1>Your Characters</h1>

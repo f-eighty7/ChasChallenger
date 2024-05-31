@@ -3,7 +3,7 @@ import { ChatHistoryItem } from "./ChatHistoryItem"
 import { StoryMessages } from "../types/types";
 import { getStoryMessages } from "../api/storyMessagesApi";
 
-export const ChatHistory = () => {
+const ChatHistory = () => {
   const [messages, setMessages] = useState<StoryMessages[]>([]);
 
   useEffect(() => {
@@ -27,3 +27,4 @@ export const ChatHistory = () => {
     </>
   );
 };
+export default ChatHistory
