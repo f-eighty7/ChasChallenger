@@ -39,10 +39,9 @@ jobs:
         run: echo "${{ secrets.BACKEND_REPO_ACCESS_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
       - name: Build and push Docker image
-        env:
-          REPO_NAME: ${{ github.repository | toLower }}
-          DOCKER_IMAGE: ghcr.io/${{ github.repository | toLower }}/app:${{ github.sha }}
         run: |
+          REPO_NAME=$(echo ${{ github.repository }} | tr '[:upper:]' '[:lower:]')
+          DOCKER_IMAGE=ghcr.io/$REPO_NAME/app:${{ github.sha }}
           docker build -t $DOCKER_IMAGE .
           docker tag $DOCKER_IMAGE ghcr.io/$REPO_NAME/app:latest
           docker push $DOCKER_IMAGE
