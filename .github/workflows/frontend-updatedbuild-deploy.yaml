@@ -1,0 +1,26 @@
+name: Deploy Updated Docker Image (Frontend)
+
+on:
+  repository_dispatch:
+    types: [trigger_frontend_deploy]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Update Docker Image on VM (Frontend)
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.VM_HOST }}
+          username: ${{ secrets.VM_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            docker pull ghcr.io/f-eighty7/chaschallenger/app:latest
+            docker stop frontend-container || true
+            docker rm frontend-container || true
+            docker run -d --name frontend-container -p 8080:80 ghcr.io/f-eighty7/chaschallenger/app:latest
