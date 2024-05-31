@@ -125,7 +125,7 @@ function Navbar({ isLoggedIn }) {
 			<Link
 				to={"/"}
 				className={style.title}>
-				Chas Fantasy
+				Fantasy Chass
 			</Link>
 			<div
 				className={style.menu}
