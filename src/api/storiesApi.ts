@@ -3,8 +3,8 @@ import type { StoryText } from "../types/types";
 
 /* const BASE_URL = "https://localhost:7110/api/ActiveStory/AddStory"; */
 const BASE_URL =
-  /* "https://chasfantasy.azurewebsites.net/api/ActiveStory/AddStory" */
-  "/api/ActiveStory/AddStory";
+  "https://chasfantasy.azurewebsites.net/api/ActiveStory/AddStory"
+  /* "/api/ActiveStory/AddStory"; */
 
 /* "https://localhost:7110/api/ActiveStory/AddStory" */
 // CREATE
