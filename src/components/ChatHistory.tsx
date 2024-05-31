@@ -1,22 +1,27 @@
 import { useEffect, useState } from "react";
-import { ChatHistoryItem } from "./ChatHistoryItem"
+import { ChatHistoryItem } from "./ChatHistoryItem";
 import { StoryMessages } from "../types/types";
 import { getStoryMessages } from "../api/storyMessagesApi";
+import { useSelector } from "react-redux";
+import { RootState } from "../Store/Store";
 
 const ChatHistory = () => {
   const [messages, setMessages] = useState<StoryMessages[]>([]);
+  const { id } = useSelector((state: RootState) => state.character);
 
   useEffect(() => {
-    const fetchStoryMessages = async () => {
-      const allMessages = await getStoryMessages();
-      setMessages(allMessages.reverse());
-    };
-    fetchStoryMessages();
-  }, []);
+    if (id !== undefined) {
+      const fetchStoryMessages = async () => {
+        const allMessages = await getStoryMessages(id);
+        setMessages(allMessages.reverse());
+      };
+      fetchStoryMessages();
+    }
+  }, [id]);
 
   return (
     <>
-      <section style={{ margin: "1rem"}}>
+      <section style={{ margin: "1rem" }}>
         {messages.map((storyMessages: StoryMessages) => (
           <ChatHistoryItem
             key={storyMessages.message}
@@ -27,4 +32,4 @@ const ChatHistory = () => {
     </>
   );
 };
-export default ChatHistory
+export default ChatHistory;

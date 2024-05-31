@@ -8,7 +8,7 @@ import { MdScheduleSend } from "react-icons/md";
 import { IoMdSettings } from "react-icons/io";
 import { useSelector } from "react-redux";
 
-// const ChatHistory = lazy(() => import("./ChatHistory"));
+const ChatHistory = lazy(() => import("./ChatHistory"));
 
 axios.defaults.withCredentials = true;
 
@@ -65,10 +65,10 @@ export function Chat() {
     console.log(message);
     try {
       const result = await axios.post(
-        `https://chasfantasy.azurewebsites.net/api/chat/message` ,
-       /*  `https://localhost:7110/api/chat/message/`, */
-       /*  `http://52.149.227.5:8081/api/chat/message/`, */
-       
+        `https://chasfantasy.azurewebsites.net/api/chat/message`,
+        /*  `https://localhost:7110/api/chat/message/`, */
+        /*  `http://52.149.227.5:8081/api/chat/message/`, */
+
         message
       );
 
@@ -117,9 +117,9 @@ export function Chat() {
       <section className="chat-container">
         <div className="chat-box">
           <section className="chat-history">
-            {/* <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div>Loading...</div>}>
               <ChatHistory />
-            </Suspense> */}
+            </Suspense>
             {history.map((msg, index) => (
               <div key={index} className="chat-message">
                 <div className="user-query bubble">{msg.query}</div>
@@ -139,11 +139,11 @@ export function Chat() {
 
         <form className="chat-input" onSubmit={handleSend}>
           <div className="input-container">
-          <IoMdSettings
-          title="Game Settings"
-          className="game-settings-icon"
-          onClick={() => setButtonPopup(true)}
-        />
+            <IoMdSettings
+              title="Game Settings"
+              className="game-settings-icon"
+              onClick={() => setButtonPopup(true)}
+            />
             <textarea
               type="text"
               className="inputruta"
