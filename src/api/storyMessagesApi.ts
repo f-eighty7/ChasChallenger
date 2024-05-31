@@ -9,8 +9,8 @@ import axios from "axios";
 export const getStoryMessages = async (id: number) => {
   try {
     const response = await axios.get(
-      /* `/api/Chat/Chathistory?activeStoryId=${id}&amountPerPage=10&pageNumber=1` */
-      `https://chasfantasy.azurewebsites.net//api/Chat/Chathistory?activeStoryId=${id}&amountPerPage=10&pageNumber=1`
+      `/api/Chat/Chathistory?activeStoryId=${id}&amountPerPage=10&pageNumber=1`
+      /* `https://chasfantasy.azurewebsites.net//api/Chat/Chathistory?activeStoryId=${id}&amountPerPage=10&pageNumber=1` */
     );
     return response.data;
   } catch (error) {
