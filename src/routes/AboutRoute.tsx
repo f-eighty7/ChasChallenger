@@ -7,23 +7,15 @@ export const AboutRoute = () => {
     <>
     <main>
       <section>
+        
         <h2 className={style["about-title"]}>What is Fantasy Chass?</h2>
         <article>
           <p className={style.text}>
-            In Fantasy Chass, the players form an adventuring party who explore
-            fantasy worlds together as they embark on epic quests and level up
-            in experience. The Master is the game's referee and storyteller.
-            There's no winning or losing in D&D—at least, not in the
-            conventional way.
+          I spelet Fantasy Chass bildar spelarna ett äventyrssällskap som utforskar fantasivärldar tillsammans när de ger sig ut på episka uppdrag och samlar erfarenhetspoäng. Mästaren är spelets domare och berättare. Det finns ingen vinst eller förlust i D&D. Åtminstone inte på det traditionella sättet.
           </p>
           <p className={style.text}>
-            At its heart, Fantasy Chass is a game that focuses on storytelling.
-            The dice just help you along. Everything is your decision, from what
-            you look like, to how you act, to what happens next. <br />
-            The collective creativity in your D&D game builds stories that
-            you'll tell again and again—ranging from the stuff of legend to
-            absurd incidents that'll make you laugh years later. Have fun and
-            remember the golden rule—never split the party!
+          I grund och botten är Fantasy Chass ett spel som fokuserar på berättande. Tärningarna är bara till hjälp. Allt är ditt beslut, från hur du ser ut, till hur du beter dig, till vad som händer härnäst.
+Den gemensamma kreativiteten i ert D&D-spel bygger berättelser som ni kommer att berätta om och om igen, allt från saker värdiga legender till absurda händelser som kommer få er att skratta år senare. Ha kul och kom ihåg den gyllene regeln: dela aldrig upp gruppen!
           </p>
         </article>
       </section>
