@@ -28,8 +28,5 @@ RUN npm install -g http-server
 # Copy the built frontend files from the previous stage to the container
 COPY --from=build /app/dist /app/dist
 
-# Expose port 80 to the outside world
-EXPOSE 80
-
 # Command to start the HTTP server when the container starts
 CMD ["http-server", "/app/dist", "-p", "80"]
