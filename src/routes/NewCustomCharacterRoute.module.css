@@ -1,14 +1,80 @@
-.newCharacterForm {
+.custom-character {
+  padding: 0 2.5rem;
+}
+
+.custom-character h1 {
+  padding: 1rem 0;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.custom-character h2 {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.custom-character h3 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.custom-character input,
+.custom-character textarea {
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  font: inherit;
+  color: black;
+}
+
+.custom-character select {
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+
+.generate-character {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.75rem;
+}
+
+.new-character-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
 
-.newCharacterForm > div {
+.new-character-form > div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.75rem;
+
   padding-bottom: 0.5rem;
   border-bottom: 2px solid white;
+}
+
+.genders {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.genders > span {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-right: 0.5rem;
+  border: 2px solid white;
+  border-radius: 0.5rem;
+  background-color: #303030;
+}
+
+.genders > span label {
+  padding: 0.5rem 0 0.5rem 0.5rem;
 }
 
 .backstory {
@@ -17,15 +83,51 @@
   resize: none;
 }
 
-.avatarIcon {
+.avatar {
   display: flex;
   flex-direction: column;
 }
 
-.avatarIcon img {
+.avatar img {
+  aspect-ratio: 1/1;
   width: 12rem;
+  align-self: center;
+  object-fit: cover;
+}
+
+.avatar-options-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.avatar-option {
+  padding: 0;
+  border: 2px dashed white;
+  cursor: pointer;
 }
 
 .backButton {
   padding-bottom: 1.5rem;
+}
+
+@media (min-width: 425px) {
+}
+
+@media (min-width: 768px) {
+  /* .avatar-options-list {
+    grid-template-columns: repeat(2, 1fr);
+  } */
+}
+
+@media (min-width: 1024px) {
+}
+
+@media (min-width: 1440px) {
+}
+
+@media (min-width: 1920px) {
+}
+
+@media (min-width: 2560px) {
 }
